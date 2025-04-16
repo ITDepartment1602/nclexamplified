@@ -21,8 +21,12 @@ const FounderSection: React.FC = () => {
           {/* Maverick Leocadio */}
           <Card className="border-0 shadow-lg overflow-hidden bg-white">
             <div className="bg-nclex-blue h-24 relative">
-              <div className="absolute -bottom-16 left-1/2 transform -translate-x-1/2 w-32 h-32 rounded-full border-4 border-white overflow-hidden bg-blue-200">
-                <div className="w-full h-full flex items-center justify-center text-4xl font-bold text-nclex-blue">ML</div>
+              <div className="absolute -bottom-16 left-1/2 transform -translate-x-1/2 w-32 h-32 rounded-full border-4 border-white overflow-hidden">
+                <img 
+                  src="/lovable-uploads/99a4af79-1b39-4349-849a-f14e95b6bf74.png" 
+                  alt="Maverick Leocadio" 
+                  className="w-full h-full object-cover"
+                />
               </div>
             </div>
             
@@ -63,8 +67,12 @@ const FounderSection: React.FC = () => {
           {/* Sir Joshua Miguel Gamus */}
           <Card className="border-0 shadow-lg overflow-hidden bg-white">
             <div className="bg-nclex-blue h-24 relative">
-              <div className="absolute -bottom-16 left-1/2 transform -translate-x-1/2 w-32 h-32 rounded-full border-4 border-white overflow-hidden bg-blue-200">
-                <div className="w-full h-full flex items-center justify-center text-4xl font-bold text-nclex-blue">JG</div>
+              <div className="absolute -bottom-16 left-1/2 transform -translate-x-1/2 w-32 h-32 rounded-full border-4 border-white overflow-hidden">
+                <img 
+                  src="/lovable-uploads/4c0ba5f9-03e4-4055-881d-0f6669d6e2ce.png" 
+                  alt="Sir Joshua Miguel Gamus" 
+                  className="w-full h-full object-cover"
+                />
               </div>
             </div>
             

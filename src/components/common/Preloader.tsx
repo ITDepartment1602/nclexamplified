@@ -34,16 +34,16 @@ const Preloader: React.FC = () => {
   return (
     <div className="fixed inset-0 bg-white z-50 flex items-center justify-center">
       <div className="flex flex-col items-center">
-        <div className="text-3xl font-bold mb-4 font-serif">
-          <span className="text-[#3e53a0]">
+        <div className="text-3xl font-bold mb-4 font-sans">
+          <span className="text-nclex-blue">
             {text.substring(0, 5)}
           </span>
-          <span className="text-[#c04041]">
+          <span className="text-nclex-red">
             {text.substring(5)}
           </span>
         </div>
         <div className="w-40 h-1.5 bg-gray-200 rounded-full overflow-hidden">
-          <div className="h-full bg-[#3e53a0] rounded-full animate-[preloader_3s_ease-in-out]"></div>
+          <div className="h-full bg-nclex-blue rounded-full animate-[preloader_3s_ease-in-out]"></div>
         </div>
       </div>
     </div>

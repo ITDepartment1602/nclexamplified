@@ -12,24 +12,28 @@ const testimonials = [
     position: "RN, USRN",
     text: "NCLEX Amplified wasn't just a review center for me—it was my partner in achieving my American Dream. The unlimited review sessions and personalized approach boosted my confidence tremendously.",
     location: "New York, USA",
+    image: "https://randomuser.me/api/portraits/women/32.jpg"
   },
   {
     name: "John Dela Cruz",
     position: "RN, USRN",
     text: "The team at NCLEX Amplified truly cares about your success. Their updated materials and exam strategies were spot-on with what I encountered in the actual NCLEX. Passed on my first try!",
     location: "California, USA",
+    image: "https://randomuser.me/api/portraits/men/45.jpg"
   },
   {
     name: "Anna Reyes",
     position: "RN, USRN",
     text: "As someone who struggled with exam anxiety, the personalized coaching I received from Sir Joshua was life-changing. The review center's approach is comprehensive yet easy to follow.",
     location: "Texas, USA",
+    image: "https://randomuser.me/api/portraits/women/68.jpg"
   },
   {
     name: "Michael Tan",
     position: "RN, USRN",
     text: "Coming from a provincial school, I was worried about my chances. NCLEX Amplified leveled the playing field for me with their excellent materials and supportive environment. Forever grateful!",
     location: "Chicago, USA",
+    image: "https://randomuser.me/api/portraits/men/22.jpg"
   }
 ];
 
@@ -67,8 +71,12 @@ const TestimonialSlider: React.FC = () => {
             </div>
             
             <div className="flex items-center">
-              <div className="w-12 h-12 rounded-full bg-blue-100 flex items-center justify-center text-nclex-blue font-bold text-xl">
-                {testimonials[currentSlide].name.charAt(0)}
+              <div className="w-12 h-12 rounded-full overflow-hidden">
+                <img 
+                  src={testimonials[currentSlide].image} 
+                  alt={testimonials[currentSlide].name} 
+                  className="w-full h-full object-cover"
+                />
               </div>
               <div className="ml-4">
                 <h4 className="font-bold text-gray-900">{testimonials[currentSlide].name}</h4>
