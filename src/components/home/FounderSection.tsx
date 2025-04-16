@@ -30,7 +30,7 @@ const FounderSection: React.FC = () => {
               </div>
             </div>
             
-            <CardContent className="pt-20 p-6 text-center">
+            <CardContent className="pt-24 p-6 text-center"> {/* Increased pt from pt-20 to pt-24 */}
               <h3 className="text-2xl font-bold text-gray-900 mb-1">Maverick Leocadio</h3>
               <p className="text-gray-600 font-medium mb-2">President, COO | CFO</p>
               
@@ -76,7 +76,7 @@ const FounderSection: React.FC = () => {
               </div>
             </div>
             
-            <CardContent className="pt-20 p-6 text-center">
+            <CardContent className="pt-24 p-6 text-center"> {/* Increased pt from pt-20 to pt-24 */}
               <h3 className="text-2xl font-bold text-gray-900 mb-1">Sir Joshua Miguel Gamus, RN</h3>
               <p className="text-gray-600 font-medium mb-2">Vice President, NCLEX Reviewer | Nurse Educator</p>
               

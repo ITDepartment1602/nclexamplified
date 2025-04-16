@@ -94,8 +94,8 @@ const ContactInfo: React.FC = () => {
           </p>
         </div>
         
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-          <div className="lg:col-span-2">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+          <div className="">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               {contactSections.map((section, index) => (
                 <Card key={index} className="border-blue-100 overflow-hidden hover:shadow-md transition-all duration-300">
@@ -134,9 +134,9 @@ const ContactInfo: React.FC = () => {
               </Button>
               
               <Button asChild className="bg-nclex-blue hover:bg-blue-700 h-14 text-base font-medium">
-                <a href="https://www.facebook.com/OurPathwayOfficial" className="flex items-center justify-center">
+                <a href="https://www.facebook.com/NCLEX.Amplified.Official" className="flex items-center justify-center">
                   <Facebook className="h-5 w-5 mr-2" />
-                  <span>Processing Center</span>
+                  <span>Facebook Page</span>
                 </a>
               </Button>
             </div>
