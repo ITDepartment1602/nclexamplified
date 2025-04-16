@@ -6,10 +6,13 @@ import ServicesHero from "@/components/services/ServicesHero";
 import ServicesGrid from "@/components/services/ServicesGrid";
 import TestimonialSlider from "@/components/home/TestimonialSlider";
 import ProgramOverview from "@/components/home/ProgramOverview";
+import BackToTop from "@/components/common/BackToTop";
 
 const Services: React.FC = () => {
   useEffect(() => {
     document.title = "Our Services - NCLEX Amplified Review Center";
+    // Scroll to top when component mounts
+    window.scrollTo(0, 0);
   }, []);
 
   return (
@@ -22,6 +25,7 @@ const Services: React.FC = () => {
         <TestimonialSlider />
       </main>
       <Footer />
+      <BackToTop />
     </div>
   );
 };

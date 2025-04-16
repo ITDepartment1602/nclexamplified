@@ -7,10 +7,13 @@ import StandoutSection from "@/components/home/StandoutSection";
 import FounderSection from "@/components/home/FounderSection";
 import ProgramOverview from "@/components/home/ProgramOverview";
 import TestimonialSlider from "@/components/home/TestimonialSlider";
+import BackToTop from "@/components/common/BackToTop";
 
 const Index: React.FC = () => {
   useEffect(() => {
     document.title = "NCLEX Amplified - Leading NCLEX Review Center";
+    // Scroll to top when component mounts
+    window.scrollTo(0, 0);
   }, []);
 
   return (
@@ -24,6 +27,7 @@ const Index: React.FC = () => {
         <ProgramOverview />
       </main>
       <Footer />
+      <BackToTop />
     </div>
   );
 };

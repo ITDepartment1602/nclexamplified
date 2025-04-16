@@ -28,7 +28,7 @@ const BackToTop: React.FC = () => {
   return (
     <button
       onClick={scrollToTop}
-      className={`fixed bottom-6 right-6 p-3 rounded-full bg-purple-700 text-white shadow-lg transition-opacity duration-300 z-30 ${
+      className={`fixed bottom-6 right-6 p-3 rounded-full bg-nclex-blue text-white shadow-lg transition-opacity duration-300 z-30 ${
         isVisible ? "opacity-100" : "opacity-0 pointer-events-none"
       }`}
       aria-label="Back to top"

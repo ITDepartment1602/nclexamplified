@@ -48,9 +48,6 @@ const Navbar: React.FC = () => {
                className="text-gray-700 hover:text-nclex-blue font-medium transition-colors">
               Login
             </a>
-            <Button asChild size="lg" className="bg-nclex-red hover:bg-red-600">
-              <a href="https://m.me/NCLEX.Amplified.Official">Enroll Now!</a>
-            </Button>
           </nav>
           
           <div className="md:hidden flex items-center">

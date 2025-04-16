@@ -7,10 +7,13 @@ import AwardsSlider from "@/components/about/AwardsSlider";
 import CharitySlider from "@/components/about/CharitySlider";
 import TestimonialSlider from "@/components/home/TestimonialSlider";
 import FounderSection from "@/components/home/FounderSection";
+import BackToTop from "@/components/common/BackToTop";
 
 const About: React.FC = () => {
   useEffect(() => {
     document.title = "About Us - NCLEX Amplified Review Center";
+    // Scroll to top when component mounts
+    window.scrollTo(0, 0);
   }, []);
 
   return (
@@ -24,6 +27,7 @@ const About: React.FC = () => {
         <CharitySlider />
       </main>
       <Footer />
+      <BackToTop />
     </div>
   );
 };

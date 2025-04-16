@@ -12,28 +12,24 @@ const testimonials = [
     position: "RN, USRN",
     text: "NCLEX Amplified wasn't just a review center for me—it was my partner in achieving my American Dream. The unlimited review sessions and personalized approach boosted my confidence tremendously.",
     location: "New York, USA",
-    image: "/lovable-uploads/bdb8cd18-66f5-45a5-8130-d9a0449bd15c.png"
   },
   {
     name: "John Dela Cruz",
     position: "RN, USRN",
     text: "The team at NCLEX Amplified truly cares about your success. Their updated materials and exam strategies were spot-on with what I encountered in the actual NCLEX. Passed on my first try!",
     location: "California, USA",
-    image: "/lovable-uploads/bdb8cd18-66f5-45a5-8130-d9a0449bd15c.png"
   },
   {
     name: "Anna Reyes",
     position: "RN, USRN",
     text: "As someone who struggled with exam anxiety, the personalized coaching I received from Sir Joshua was life-changing. The review center's approach is comprehensive yet easy to follow.",
     location: "Texas, USA",
-    image: "/lovable-uploads/bdb8cd18-66f5-45a5-8130-d9a0449bd15c.png"
   },
   {
     name: "Michael Tan",
     position: "RN, USRN",
     text: "Coming from a provincial school, I was worried about my chances. NCLEX Amplified leveled the playing field for me with their excellent materials and supportive environment. Forever grateful!",
     location: "Chicago, USA",
-    image: "/lovable-uploads/bdb8cd18-66f5-45a5-8130-d9a0449bd15c.png"
   }
 ];
 
@@ -66,29 +62,17 @@ const TestimonialSlider: React.FC = () => {
           <div className="bg-white rounded-xl p-8 md:p-10 shadow-xl relative">
             <Quote className="absolute text-blue-200 w-20 h-20 -top-5 -left-5" />
             
-            <div className="flex flex-col md:flex-row items-center gap-8">
-              <div className="w-40 h-40 overflow-hidden flex-shrink-0">
-                <img 
-                  src={testimonials[currentSlide].image} 
-                  alt={testimonials[currentSlide].name}
-                  className="w-full h-full object-cover rounded-lg"
-                />
+            <div className="text-gray-700 text-lg relative z-10 mb-6">
+              "{testimonials[currentSlide].text}"
+            </div>
+            
+            <div className="flex items-center">
+              <div className="w-12 h-12 rounded-full bg-blue-100 flex items-center justify-center text-nclex-blue font-bold text-xl">
+                {testimonials[currentSlide].name.charAt(0)}
               </div>
-              
-              <div>
-                <div className="text-gray-700 text-lg relative z-10 mb-6">
-                  "{testimonials[currentSlide].text}"
-                </div>
-                
-                <div className="flex items-center">
-                  <div className="w-12 h-12 rounded-full bg-blue-100 flex items-center justify-center text-nclex-blue font-bold text-xl">
-                    {testimonials[currentSlide].name.charAt(0)}
-                  </div>
-                  <div className="ml-4">
-                    <h4 className="font-bold text-gray-900">{testimonials[currentSlide].name}</h4>
-                    <p className="text-sm text-gray-600">{testimonials[currentSlide].position} • {testimonials[currentSlide].location}</p>
-                  </div>
-                </div>
+              <div className="ml-4">
+                <h4 className="font-bold text-gray-900">{testimonials[currentSlide].name}</h4>
+                <p className="text-sm text-gray-600">{testimonials[currentSlide].position} • {testimonials[currentSlide].location}</p>
               </div>
             </div>
           </div>
