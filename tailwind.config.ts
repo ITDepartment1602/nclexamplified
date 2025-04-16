@@ -18,6 +18,10 @@ export default {
 			}
 		},
 		extend: {
+			fontFamily: {
+				sans: ['Inter', 'sans-serif'],
+				serif: ['Playfair Display', 'serif'],
+			},
 			colors: {
 				border: 'hsl(var(--border))',
 				input: 'hsl(var(--input))',
@@ -84,11 +88,16 @@ export default {
 					to: {
 						height: '0'
 					}
-				}
+				},
+        'progress': {
+          '0%': { width: '0%' },
+          '100%': { width: '100%' }
+        }
 			},
 			animation: {
 				'accordion-down': 'accordion-down 0.2s ease-out',
-				'accordion-up': 'accordion-up 0.2s ease-out'
+				'accordion-up': 'accordion-up 0.2s ease-out',
+        'preloader': 'progress 1.5s ease-in-out'
 			}
 		}
 	},
