@@ -1,5 +1,5 @@
 
-import React from "react";
+import React, { useEffect } from "react";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import AboutHero from "@/components/about/AboutHero";
@@ -9,6 +9,10 @@ import TestimonialSlider from "@/components/home/TestimonialSlider";
 import FounderSection from "@/components/home/FounderSection";
 
 const About: React.FC = () => {
+  useEffect(() => {
+    document.title = "About Us - NCLEX Amplified Review Center";
+  }, []);
+
   return (
     <div className="min-h-screen flex flex-col">
       <Navbar />

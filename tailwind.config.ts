@@ -1,3 +1,4 @@
+
 import type { Config } from "tailwindcss";
 
 export default {
@@ -65,6 +66,10 @@ export default {
 					'accent-foreground': 'hsl(var(--sidebar-accent-foreground))',
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
+				},
+				nclex: {
+					blue: '#3e53a0',
+					red: '#c04041'
 				}
 			},
 			borderRadius: {
@@ -92,12 +97,17 @@ export default {
         'progress': {
           '0%': { width: '0%' },
           '100%': { width: '100%' }
+        },
+        'typing': {
+          'from': { width: '0' },
+          'to': { width: '100%' }
         }
 			},
 			animation: {
 				'accordion-down': 'accordion-down 0.2s ease-out',
 				'accordion-up': 'accordion-up 0.2s ease-out',
-        'preloader': 'progress 1.5s ease-in-out'
+        'preloader': 'progress 3s ease-in-out',
+        'typing': 'typing 3.5s steps(40, end)'
 			}
 		}
 	},

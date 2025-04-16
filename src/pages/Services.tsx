@@ -1,5 +1,5 @@
 
-import React from "react";
+import React, { useEffect } from "react";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import ServicesHero from "@/components/services/ServicesHero";
@@ -8,6 +8,10 @@ import TestimonialSlider from "@/components/home/TestimonialSlider";
 import ProgramOverview from "@/components/home/ProgramOverview";
 
 const Services: React.FC = () => {
+  useEffect(() => {
+    document.title = "Our Services - NCLEX Amplified Review Center";
+  }, []);
+
   return (
     <div className="min-h-screen flex flex-col">
       <Navbar />

@@ -3,14 +3,30 @@ import React, { useEffect, useState } from "react";
 
 const Preloader: React.FC = () => {
   const [loading, setLoading] = useState(true);
-
+  const [text, setText] = useState("");
+  const fullText = "NCLEX Amplified";
+  
   useEffect(() => {
     // Simulate loading
     const timer = setTimeout(() => {
       setLoading(false);
-    }, 1500);
+    }, 3000);
 
-    return () => clearTimeout(timer);
+    // Text typing animation
+    let currentIndex = 0;
+    const typingInterval = setInterval(() => {
+      if (currentIndex <= fullText.length) {
+        setText(fullText.slice(0, currentIndex));
+        currentIndex++;
+      } else {
+        clearInterval(typingInterval);
+      }
+    }, 150);
+
+    return () => {
+      clearTimeout(timer);
+      clearInterval(typingInterval);
+    };
   }, []);
 
   if (!loading) return null;
@@ -18,9 +34,16 @@ const Preloader: React.FC = () => {
   return (
     <div className="fixed inset-0 bg-white z-50 flex items-center justify-center">
       <div className="flex flex-col items-center">
-        <div className="text-3xl font-bold text-purple-800 mb-4 font-serif">NCLEX Amplified</div>
-        <div className="w-24 h-1.5 bg-gray-200 rounded-full overflow-hidden">
-          <div className="h-full bg-purple-700 rounded-full animate-[preloader_1.5s_ease-in-out]"></div>
+        <div className="text-3xl font-bold mb-4 font-serif">
+          <span className="text-[#3e53a0]">
+            {text.substring(0, 5)}
+          </span>
+          <span className="text-[#c04041]">
+            {text.substring(5)}
+          </span>
+        </div>
+        <div className="w-40 h-1.5 bg-gray-200 rounded-full overflow-hidden">
+          <div className="h-full bg-[#3e53a0] rounded-full animate-[preloader_3s_ease-in-out]"></div>
         </div>
       </div>
     </div>

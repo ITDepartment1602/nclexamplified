@@ -27,10 +27,10 @@
     --popover: 0 0% 100%;
     --popover-foreground: 222.2 84% 4.9%;
 
-    --primary: 222.2 47.4% 11.2%;
+    --primary: 222 50% 44%;
     --primary-foreground: 210 40% 98%;
 
-    --secondary: 210 40% 96.1%;
+    --secondary: 359 49% 50%;
     --secondary-foreground: 222.2 47.4% 11.2%;
 
     --muted: 210 40% 96.1%;
@@ -63,6 +63,9 @@
     --sidebar-border: 220 13% 91%;
 
     --sidebar-ring: 217.2 91.2% 59.8%;
+    
+    --nclex-blue: 224 45% 44%;
+    --nclex-red: 359 49% 50%;
   }
 
   .dark {
@@ -112,4 +115,34 @@
   body {
     @apply bg-background text-foreground;
   }
+}
+
+@keyframes preloader {
+  0% { width: 0% }
+  100% { width: 100% }
+}
+
+@keyframes typing {
+  from { width: 0 }
+  to { width: 100% }
+}
+
+.text-nclex-blue {
+  color: #3e53a0;
+}
+
+.text-nclex-red {
+  color: #c04041;
+}
+
+.bg-nclex-blue {
+  background-color: #3e53a0;
+}
+
+.bg-nclex-red {
+  background-color: #c04041;
+}
+
+.hover-nclex-blue:hover {
+  background-color: #354889;
 }
