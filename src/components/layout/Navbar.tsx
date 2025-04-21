@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
+import { BiMenuAltRight, BiX } from "react-icons/bi"; // Importing the icons
 
 const Navbar: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -40,31 +41,30 @@ const Navbar: React.FC = () => {
         {/* Hamburger Menu for Mobile */}
         <div className="md:hidden flex items-center">
           <button onClick={toggleMenu} className="text-black focus:outline-none">
-            {isOpen ? (
-              <svg width="24" height="24" fill="currentColor">
-                <path d="M6 18L18 6M6 6l12 12"></path>
-              </svg>
-            ) : (
-              <svg width="24" height="24" fill="currentColor">
-                <path d="M4 6h16M4 12h16m-7 6h7"></path>
-              </svg>
-            )}
+            {isOpen ? <BiX size={24} /> : <BiMenuAltRight size={24} />}
           </button>
         </div>
       </div>
 
-      {/* Mobile Menu */}
-      <div className={`md:hidden transition-transform duration-300 ${isOpen ? "max-h-screen opacity-100" : "max-h-0 opacity-0 overflow-hidden"}`}>
-        <div className="flex flex-col items-center bg-white border-t border-gray-200 py-4">
-          <Link to="/" className="text-gray-700 text-sm font-medium transition hover:text-nclex-blue py-2">Home</Link>
-          <Link to="/about" className="text-gray-700 text-sm font-medium transition hover:text-nclex-blue py-2">About</Link>
-          <Link to="/services" className="text-gray-700 text-sm font-medium transition hover:text-nclex-blue py-2">Services</Link>
-          <Link to="/contact" className="text-gray-700 text-sm font-medium transition hover:text-nclex-blue py-2">Contact</Link>
-          <Link to="https://nclexamplifiedreviewcenter.com/nclex/login">
-            <Button className="mt-2 px-5 py-2 bg-primary text-white font-sans text-sm font-semibold rounded shadow hover:bg-nclex-blue transition focus:outline-none">
-              Login
-            </Button>
-          </Link>
+      {/* Sidebar for Mobile Menu */}
+      <div className={`fixed inset-0 bg-gray-800 bg-opacity-75 transition-opacity duration-300 ${isOpen ? "opacity-100" : "opacity-0 pointer-events-none"}`}>
+        <div className={`fixed right-0 top-0 w-3/4 max-w-sm bg-white h-full shadow-lg transform transition-transform duration-300 ${isOpen ? "translate-x-0" : "translate-x-full"}`}>
+          <div className="flex justify-end p-4">
+            <button onClick={toggleMenu} className="text-black">
+              <BiX size={24} />
+            </button>
+          </div>
+          <div className="flex flex-col items-center py-10">
+            <Link to="/" className="text-gray-700 text-lg font-medium transition hover:text-nclex-blue py-2">Home</Link>
+            <Link to="/about" className="text-gray-700 text-lg font-medium transition hover:text-nclex-blue py-2">About</Link>
+            <Link to="/services" className="text-gray-700 text-lg font-medium transition hover:text-nclex-blue py-2">Services</Link>
+            <Link to="/contact" className="text-gray-700 text-lg font-medium transition hover:text-nclex-blue py-2">Contact</Link>
+            <Link to="https://nclexamplifiedreviewcenter.com/nclex/login">
+              <Button className="mt-4 px-5 py-2 bg-primary text-white font-sans text-sm font-semibold rounded shadow hover:bg-nclex-blue transition focus:outline-none">
+                Login
+              </Button>
+            </Link>
+          </div>
         </div>
       </div>
     </nav>
