@@ -8,7 +8,7 @@ const Navbar: React.FC = () => {
     <nav className="w-full bg-white shadow font-sans">
       <div className="container mx-auto px-4 py-3 flex justify-between items-center">
         <Link to="/" className="flex items-center gap-2">
-          <img src="/lovable-uploads/33d4ee95-70e6-4893-ae6e-1f5dbd1943e0.png" alt="NCLEX Amplified Logo" className="h-10 w-auto" />  
+          <img src="/lovable-uploads/2e6dbcbd-c9b0-4ce8-8284-aff78cf1046d.png" alt="NCLEX Amplified Logo" className="h-10 w-auto" />  
         </Link>
         <div className="flex items-center space-x-4">
           <Link to="/" className="text-gray-700 text-sm font-medium transition hover:text-nclex-blue" style={{ fontFamily: 'Poppins, sans-serif' }}>Home</Link>
