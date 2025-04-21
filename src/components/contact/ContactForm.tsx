@@ -27,11 +27,11 @@ const ContactForm: React.FC = () => {
     
     try {
       // Initialize emailjs
-      emailjs.init("YOUR_PUBLIC_KEY"); // Replace with your EmailJS public key
+      emailjs.init("WDZ2MlsX2bBXgruDp"); // Replace with your EmailJS public key
       
       await emailjs.send(
-        "YOUR_SERVICE_ID", // Replace with your EmailJS service ID
-        "YOUR_TEMPLATE_ID", // Replace with your EmailJS template ID
+        "service_t6qj3ve", // Replace with your EmailJS service ID
+        "template_l9c5v1b", // Replace with your EmailJS template ID
         {
           from_name: formData.name,
           from_email: formData.email,
