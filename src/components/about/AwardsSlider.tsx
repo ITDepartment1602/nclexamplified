@@ -1,4 +1,3 @@
-
 import React from "react";
 import {
   Carousel,
@@ -12,20 +11,20 @@ import {
 const awardsImages = [
   "/lovable-uploads/a.jpg",
   "/lovable-uploads/b.jpg",
-   "/lovable-uploads/c.jpg",
-   "/lovable-uploads/d.jpg",
-   "/lovable-uploads/e.jpg",
-   "/lovable-uploads/f.jpg",
-   "/lovable-uploads/g.jpg",
-   "/lovable-uploads/h.jpg",
-   "/lovable-uploads/i.jpg",
-   "/lovable-uploads/j.jpg",
-   "/lovable-uploads/k.jpg",
-   "/lovable-uploads/l.jpg",
-   "/lovable-uploads/m.jpg",
+  "/lovable-uploads/c.jpg",
+  "/lovable-uploads/d.jpg",
+  "/lovable-uploads/e.jpg",
+  "/lovable-uploads/f.jpg",
+  "/lovable-uploads/g.jpg",
+  "/lovable-uploads/h.jpg",
+  "/lovable-uploads/i.jpg",
+  "/lovable-uploads/j.jpg",
+  "/lovable-uploads/k.jpg",
+  "/lovable-uploads/l.jpg",
+  "/lovable-uploads/m.jpg",
 ];
 
-// Utility: Split images into groups per slide (e.g. 6 per slide)
+// Utility: Split images into groups per slide (e.g., 6 per slide)
 function chunkArray(array: string[], size: number): string[][] {
   const result: string[][] = [];
   for (let i = 0; i < array.length; i += size) {
@@ -34,7 +33,7 @@ function chunkArray(array: string[], size: number): string[][] {
   return result;
 }
 
-const imagesPerSlide = 6; // Adjust as needed for your design/responsiveness
+const imagesPerSlide = 6; // Adjust as needed
 const slides = chunkArray(awardsImages, imagesPerSlide);
 
 const AwardsSlider: React.FC = () => (
@@ -46,7 +45,7 @@ const AwardsSlider: React.FC = () => (
         </h2>
         <div className="w-20 h-1 bg-nclex-blue mx-auto mb-4"></div>
       </div>
-      <Carousel className="w-full">
+      <Carousel className="w-full" loop>
         <CarouselContent>
           {slides.map((group, idx) => (
             <CarouselItem key={idx}>
@@ -70,4 +69,5 @@ const AwardsSlider: React.FC = () => (
     </div>
   </section>
 );
+
 export default AwardsSlider;
