@@ -5,7 +5,7 @@ const founders = [
   {
     name: "Maverick Leocadio",
     role: "President, COO | CFO",
-    image: "/lovable-uploads/8583d22c-72ff-4c18-a053-8ae90b271b90.png",
+    image: "/lovable-uploads/99a4af79-1b39-4349-849a-f14e95b6bf74.png",
     quote: '"Empowering Filipino nurses worldwide: bridging dreams and realities."',
     awards: [
       "2023: Youngest CEO of the Year",
@@ -17,7 +17,7 @@ const founders = [
   {
     name: "Sir Joshua Miguel Gamus, RN",
     role: "Vice President, NCLEX Reviewer | Nurse Educator",
-    image: "/lovable-uploads/545cccd8-22bb-479d-82a4-4efeae621aeb.png",
+    image: "/lovable-uploads/4c0ba5f9-03e4-4055-881d-0f6669d6e2ce.png",
     quote: undefined,
     awards: [],
     description1: "Sir Joshua Miguel Gamus, RN, is a highly respected NCLEX reviewer and nurse educator, widely recognized for his student-centered teaching style, exceptional communication skills, and mastery of nursing concepts. With a solid foundation in clinical practice and academic instruction, he has become a trusted figure in NCLEX preparation—both in the Philippines and on the global stage.",
