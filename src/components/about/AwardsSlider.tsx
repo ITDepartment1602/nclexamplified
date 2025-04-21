@@ -36,6 +36,9 @@ function chunkArray(array: string[], size: number): string[][] {
 const imagesPerSlide = 6; // Adjust as needed
 const slides = chunkArray(awardsImages, imagesPerSlide);
 
+// Duplicate first slide for infinite effect
+const extendedSlides = [...slides, slides[0]];
+
 const AwardsSlider: React.FC = () => (
   <section className="py-16 bg-white font-sans">
     <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -47,7 +50,7 @@ const AwardsSlider: React.FC = () => (
       </div>
       <Carousel className="w-full" loop>
         <CarouselContent>
-          {slides.map((group, idx) => (
+          {extendedSlides.map((group, idx) => (
             <CarouselItem key={idx}>
               <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-6 place-items-center">
                 {group.map((img, i) => (
