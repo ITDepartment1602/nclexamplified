@@ -39,13 +39,13 @@ const Navbar: React.FC = () => {
 
         {/* Hamburger Menu for Mobile */}
         <div className="md:hidden flex items-center">
-          <button onClick={toggleMenu} className="text-gray-700 focus:outline-none">
+          <button onClick={toggleMenu} className="text-black focus:outline-none">
             {isOpen ? (
-              <svg width="24" height="24" fill="currentColor" className="hover:text-nclex-blue">
+              <svg width="24" height="24" fill="currentColor" className="text-black">
                 <path d="M6 18L18 6M6 6l12 12"></path>
               </svg>
             ) : (
-              <svg width="24" height="24" fill="currentColor" className="hover:text-nclex-blue">
+              <svg width="24" height="24" fill="currentColor" className="text-black">
                 <path d="M4 6h16M4 12h16m-7 6h7"></path>
               </svg>
             )}
