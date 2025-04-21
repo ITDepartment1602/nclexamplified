@@ -83,7 +83,7 @@ const contactSections = [
 const ContactInfo: React.FC = () => {
   return (
     <section className="py-20 bg-white">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+      <div className=" mx-auto px-4 sm:px-6 lg:px-10">
         <div className="text-center max-w-3xl mx-auto mb-16">
           <h2 className="text-3xl font-bold font-serif text-gray-900 mb-4">
             Contact Information
