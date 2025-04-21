@@ -7,14 +7,19 @@ import { Card, CardContent } from "@/components/ui/card";
  */
 const TESTIMONIALS = [
   {
-    name: "Maria Santos",
-    avatar: "https://randomuser.me/api/portraits/women/68.jpg",
-    comment: "I never imagined passing NCLEX so easily! NCLEX Amplified's review program made all the difference."
+    name: "Khareen Cate Danan RN, USRN",
+     avatar: "../../../loveable-uploads/khareen.jpg",
+    comment: "To aspiring USRN's just keep the momentum high! lagi nyo iisipin ung sinabi ni sir JM, temporary sacrifice leads to permanent result, lahat tayo may struggles during our review hindi lahat smooth ang flow meron dyan may bagay or tao will put you down pero balik ka lagi sa WHY's mo. Pray to God, surrender nyo lahat sakanya ang worries nyo, I swear one day pag gising nyo everything will be okay. Aralin mabuti ang concept, sa qbank mas aralin and rationale mas madami kayong aral dun kaysa sa score lang, la charity sagutan po and read yung book na NCLEX success guide. "
+  },
+   {
+    name: "Louise Danielle Almazar RN, USRN",
+   avatar: "../../../loveable-uploads/louise.jpg",
+    comment: "Special Mention to TEAM BISDAK, you guys really helped lalo na sa mga QandA nagpapractice tayo sa groupchat and nag didrills din sa GC minsan and most specially sa prayers ninyo sobrang thank you! To sis Marichel Gamban, gumaan talaga loob ko before the exam after you prayed over me, thank you so much sis. To my family, friends and prayer warriors, Thank you for all your prayers Most especially to God, St. Jude and my little angel up there for guiding me during the exam."
   },
   {
-    name: "John Cruz",
-    avatar: "https://randomuser.me/api/portraits/men/65.jpg",
-    comment: "Their unlimited review, study materials, and helpful lecturers gave me confidence. Highly recommended!"
+    name: "Carla Jean Garcia RN, USRN",
+    avatar: "../../../loveable-uploads/carla.jpg",
+    comment: "The NCLEX journey will never be easy; there will be many ups and downs along the way. But nothing is impossible if you stay dedicated and focused on your goal, especially when you are studying with NCLEX Amplified, this review center approach is very holistic, it will not only hound your concepts but also your values and life's perspective.  I will be eternally grateful to this team for making my impossible dream a reality."
   }
 ];
 
