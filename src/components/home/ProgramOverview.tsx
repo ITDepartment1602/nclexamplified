@@ -59,7 +59,7 @@ const ProgramOverview: React.FC = () => {
         <div className="grid grid-cols-1 lg:grid-cols-5 gap-8">
           <div className="lg:col-span-2 flex items-center justify-center">
             <div className="bg-blue-100 p-1 rounded-lg">
-              <div className="relative overflow-hidden rounded-lg w-full h-[400px] bg-blue-50 flex items-center justify-center">
+              <div className="relative overflow-hidden rounded-lg w-full h-[600px] bg-blue-50 flex items-center justify-center">
             <img src="../../../lovable-uploads/bdb8cd18-66f5-45a5-8130-d9a0449bd15c.png" alt="" className="w-full h-full object-cover object-center" />
                
               </div>
