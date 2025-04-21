@@ -10,7 +10,7 @@ const Navbar: React.FC = () => {
   };
 
   return (
-    <nav className="w-full bg-white shadow font-sans">
+    <nav className="w-full bg-white shadow font-sans z-50"> {/* Added z-50 */}
       <div className="container mx-auto px-4 py-3 flex justify-between items-center">
         <Link to="/" className="flex items-center gap-2">
           <img src="/lovable-uploads/2e6dbcbd-c9b0-4ce8-8284-aff78cf1046d.png" alt="NCLEX Amplified Logo" className="h-10 w-auto" />  
