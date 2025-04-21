@@ -10,19 +10,19 @@ import {
 
 // All awards image URLs
 const awardsImages = [
-  "/lovable-uploads/8d78c976-f787-4fc9-9258-61824a42a619.png",
-  "/lovable-uploads/81e735c7-1645-49a5-9b22-16863db49faf.png",
-  "/lovable-uploads/89fd2c48-14d1-4bfa-8847-64c4c183e3da.png",
-  "/lovable-uploads/8d286dcf-3ffd-48ba-aab5-72681c072bf1.png",
-  "/lovable-uploads/e5f25f15-719f-438b-bd62-9c5f00102568.png",
-  "/lovable-uploads/4dc5cd4e-19fb-45d7-9d8e-4a7812746aa6.png",
-  "/lovable-uploads/19ee5267-0ef0-419e-87db-f3d3498031b6.png",
-  "/lovable-uploads/59a9086e-c0e9-4e09-9df2-dfdb7f0ef038.png",
-  "/lovable-uploads/c328acee-44d0-4853-b22f-33fac04cebc5.png",
-  "/lovable-uploads/ce639469-6d5d-4a66-a59b-6ad65c414e6a.png",
-  "/lovable-uploads/1e1b2852-8651-4bd1-91c1-e0c582a356e5.png",
-  "/lovable-uploads/8583d22c-72ff-4c18-a053-8ae90b271b90.png",
-  "/lovable-uploads/61109165-8bea-4a69-907a-14e0beeffad7.png",
+  "/lovable-uploads/a.jpg",
+  "/lovable-uploads/b.jpg",
+   "/lovable-uploads/c.jpg",
+   "/lovable-uploads/d.jpg",
+   "/lovable-uploads/e.jpg",
+   "/lovable-uploads/f.jpg",
+   "/lovable-uploads/g.jpg",
+   "/lovable-uploads/h.jpg",
+   "/lovable-uploads/i.jpg",
+   "/lovable-uploads/j.jpg",
+   "/lovable-uploads/k.jpg",
+   "/lovable-uploads/l.jpg",
+   "/lovable-uploads/m.jpg",
 ];
 
 // Utility: Split images into groups per slide (e.g. 6 per slide)
