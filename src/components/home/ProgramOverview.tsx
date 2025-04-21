@@ -60,15 +60,8 @@ const ProgramOverview: React.FC = () => {
           <div className="lg:col-span-2 flex items-center justify-center">
             <div className="bg-blue-100 p-1 rounded-lg">
               <div className="relative overflow-hidden rounded-lg w-full h-[400px] bg-blue-50 flex items-center justify-center">
-                <div className="absolute inset-0 flex items-center justify-center text-nclex-blue text-opacity-20 text-9xl font-serif font-bold">
-                  NCLEX
-                </div>
-                <div className="relative z-10 text-center p-6">
-                  <h3 className="text-2xl font-bold text-nclex-blue mb-3">Ready to Excel</h3>
-                  <p className="text-gray-700">
-                    Our program is meticulously designed to prepare you for every aspect of the NCLEX examination.
-                  </p>
-                </div>
+            <img src="../../../lovable-uploads/bdb8cd18-66f5-45a5-8130-d9a0449bd15c.png" alt="" className="w-full h-full object-cover object-center" />
+               
               </div>
             </div>
           </div>
