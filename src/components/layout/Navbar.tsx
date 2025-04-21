@@ -41,11 +41,11 @@ const Navbar: React.FC = () => {
         <div className="md:hidden flex items-center">
           <button onClick={toggleMenu} className="text-black focus:outline-none">
             {isOpen ? (
-              <svg width="24" height="24" fill="currentColor" className="text-black">
+              <svg width="24" height="24" fill="currentColor">
                 <path d="M6 18L18 6M6 6l12 12"></path>
               </svg>
             ) : (
-              <svg width="24" height="24" fill="currentColor" className="text-black">
+              <svg width="24" height="24" fill="currentColor">
                 <path d="M4 6h16M4 12h16m-7 6h7"></path>
               </svg>
             )}
@@ -54,7 +54,7 @@ const Navbar: React.FC = () => {
       </div>
 
       {/* Mobile Menu */}
-      <div className={`md:hidden ${isOpen ? "block" : "hidden"} transition-all duration-300`}>
+      <div className={`md:hidden transition-transform duration-300 ${isOpen ? "max-h-screen opacity-100" : "max-h-0 opacity-0 overflow-hidden"}`}>
         <div className="flex flex-col items-center bg-white border-t border-gray-200 py-4">
           <Link to="/" className="text-gray-700 text-sm font-medium transition hover:text-nclex-blue py-2">Home</Link>
           <Link to="/about" className="text-gray-700 text-sm font-medium transition hover:text-nclex-blue py-2">About</Link>
