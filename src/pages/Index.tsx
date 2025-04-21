@@ -9,19 +9,10 @@ import ProgramOverview from "@/components/home/ProgramOverview";
 import TestimonialSlider from "@/components/home/TestimonialSlider";
 import BackToTop from "@/components/common/BackToTop";
 
-// Helper for styled branding
-function BrandTitle() {
-  return (
-    <>
-      <span className="text-nclex-blue font-bold">NCLEX</span>
-      <span className="text-nclex-red font-bold"> Amplified</span>
-    </>
-  );
-}
-
 const Index: React.FC = () => {
   useEffect(() => {
     document.title = "NCLEX Amplified - Leading NCLEX Review Center";
+    // Scroll to top when component mounts
     window.scrollTo(0, 0);
   }, []);
 
@@ -42,4 +33,3 @@ const Index: React.FC = () => {
 };
 
 export default Index;
-

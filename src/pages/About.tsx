@@ -11,7 +11,7 @@ import BackToTop from "@/components/common/BackToTop";
 
 const About: React.FC = () => {
   useEffect(() => {
-    document.title = "About Us - ";
+    document.title = "About Us - NCLEX Amplified Review Center";
     window.scrollTo(0, 0);
   }, []);
 
@@ -32,4 +32,3 @@ const About: React.FC = () => {
 };
 
 export default About;
-
