@@ -29,7 +29,7 @@
     --popover: 0 0% 100%;
     --popover-foreground: 222.2 84% 4.9%;
 
-    --primary: 222 50% 44%;
+    --primary: 224 45% 44%;
     --primary-foreground: 210 40% 98%;
 
     --secondary: 359 49% 50%;
@@ -115,7 +115,7 @@
   }
 
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground font-sans;
   }
 }
 
@@ -130,21 +130,33 @@
 }
 
 .text-nclex-blue {
-  color: #3e53a0;
+  color: #3e53a0 !important;
 }
 
 .text-nclex-red {
-  color: #c04041;
+  color: #c04041 !important;
 }
 
 .bg-nclex-blue {
-  background-color: #3e53a0;
+  background-color: #3e53a0 !important;
 }
 
 .bg-nclex-red {
-  background-color: #c04041;
+  background-color: #c04041 !important;
 }
 
 .hover-nclex-blue:hover {
-  background-color: #354889;
+  background-color: #354889 !important;
+}
+
+/* Remove any left-over purple utility, purple classes, or purple bg/text */
+[class*="bg-purple"], [class*="text-purple"] {
+  background-color: transparent !important;
+  color: inherit !important;
+}
+
+/* Remove explicitly #9333EA and #F3E8FF if present anywhere */
+.bg-\[\#9333ea\], .bg-\[\#F3E8FF\], .text-\[\#9333ea\], .text-\[\#F3E8FF\] {
+  background-color: transparent !important;
+  color: inherit !important;
 }

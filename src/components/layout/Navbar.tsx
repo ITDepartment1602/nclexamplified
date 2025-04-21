@@ -1,7 +1,7 @@
 
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import { Menu, X } from "lucide-react";
+import { Menu, X, Facebook } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 const Navbar: React.FC = () => {
@@ -12,18 +12,17 @@ const Navbar: React.FC = () => {
   };
 
   return (
-    <header className="sticky top-0 w-full bg-white/95 backdrop-blur-sm border-b z-30">
+    <header className="sticky top-0 w-full bg-white/95 backdrop-blur-sm border-b z-30 font-sans">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           <div className="flex items-center">
             <Link to="/" className="flex items-center">
-              <div className="flex items-center">
-                <img 
-                  src="/lovable-uploads/2e6dbcbd-c9b0-4ce8-8284-aff78cf1046d.png" 
-                  alt="NCLEX Amplified Logo" 
-                  className="h-10 w-auto"
-                />
-              </div>
+              <img 
+                src="/lovable-uploads/2e6dbcbd-c9b0-4ce8-8284-aff78cf1046d.png" 
+                alt="NCLEX Amplified Logo" 
+                className="h-10 w-auto"
+              />
+              {/* Removed all NCLEX Amplified text */}
             </Link>
           </div>
           
@@ -40,13 +39,19 @@ const Navbar: React.FC = () => {
             <Link to="/contact" className="text-gray-700 hover:text-nclex-blue font-medium transition-colors">
               Contact
             </Link>
-            <Button asChild className="bg-nclex-blue hover:bg-blue-700">
+            <Button asChild className="bg-primary hover:bg-nclex-blue text-white font-bold">
               <a href="https://nclexamplifiedreviewcenter.com/nclex/login">
                 Login
               </a>
             </Button>
+            <a href="https://www.facebook.com/NCLEX.Amplified.Official" target="_blank" rel="noopener noreferrer" 
+              className="ml-3 inline-flex items-center text-nclex-blue hover:text-nclex-red transition-colors">
+              <Facebook className="h-6 w-6" />
+              <span className="sr-only">Facebook</span>
+            </a>
+            {/* No Instagram */}
           </nav>
-          
+
           <div className="md:hidden flex items-center">
             <button
               type="button"
@@ -84,9 +89,15 @@ const Navbar: React.FC = () => {
               Contact
             </Link>
             <a href="https://nclexamplifiedreviewcenter.com/nclex/login" 
-               className="block px-3 py-2 bg-nclex-blue text-white font-medium rounded-md hover:bg-blue-700 text-center"
+               className="block px-3 py-2 bg-primary text-white font-medium rounded-md hover:bg-nclex-blue text-center"
                onClick={() => setIsMenuOpen(false)}>
               Login
+            </a>
+            <a href="https://www.facebook.com/NCLEX.Amplified.Official"
+               className="block px-3 py-2 text-nclex-blue font-medium flex items-center gap-2"
+               target="_blank" rel="noopener noreferrer"
+               onClick={() => setIsMenuOpen(false)}>
+              <Facebook className="h-5 w-5" /> Facebook
             </a>
           </div>
         </div>

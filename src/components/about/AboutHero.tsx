@@ -4,20 +4,20 @@ import { Badge } from "@/components/ui/badge";
 
 const AboutHero: React.FC = () => {
   return (
-    <section className="py-20 bg-gradient-to-r from-blue-50 to-blue-100">
+    <section className="py-20 bg-gradient-to-r from-blue-50 to-blue-100 font-sans">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="max-w-3xl mx-auto text-center">
           <Badge className="mb-4 bg-nclex-blue text-white border-transparent">About Us</Badge>
           <h1 className="text-4xl md:text-5xl font-serif font-bold text-gray-900 mb-6">
-            NCLEX Amplified
+            <span className="text-nclex-blue">NCLEX</span>
+            <span className="text-nclex-red"> Amplified</span>
           </h1>
-          
           <p className="text-lg text-gray-700 mb-8">
-            Founded in 2021, NCLEX Amplified Review Center, one leading NCLEX Review Center in the Philippines, 
+            Founded in 2021, <span className="text-nclex-blue font-bold">NCLEX</span><span className="text-nclex-red font-bold"> Amplified</span> Review Center, 
+            one leading NCLEX Review Center in the Philippines, 
             provides the most affordable and reliable review program that produces high passing percentage 
             around the globe (USA, UK, Middle East and Canada).
           </p>
-          
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-12">
             <div className="bg-white rounded-xl p-6 shadow-md border border-blue-100">
               <h2 className="text-xl font-bold text-nclex-blue mb-3">Our Mission</h2>
@@ -26,7 +26,6 @@ const AboutHero: React.FC = () => {
                 achieve their AMERICAN DREAM.
               </p>
             </div>
-            
             <div className="bg-white rounded-xl p-6 shadow-md border border-blue-100">
               <h2 className="text-xl font-bold text-nclex-blue mb-3">Our Vision</h2>
               <p className="text-gray-700">
