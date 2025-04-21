@@ -24,6 +24,18 @@ const ContactForm: React.FC = () => {
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
     setStatus("loading");
+
+    const options = { 
+      year: 'numeric', 
+      month: 'long', 
+      day: 'numeric', 
+      hour: 'numeric', 
+      minute: 'numeric', 
+      hour12: true, 
+      timeZone: 'Asia/Singapore' // Adjust timezone as needed
+    };
+    
+    const formattedTime = new Date().toLocaleString('en-US', options);
     
     try {
       // Initialize emailjs
@@ -33,11 +45,12 @@ const ContactForm: React.FC = () => {
         "service_t6qj3ve", // Replace with your EmailJS service ID
         "template_l9c5v1b", // Replace with your EmailJS template ID
         {
-          from_name: formData.name,
-          from_email: formData.email,
-          subject: formData.subject,
-          message: formData.message,
-          to_email: "nclexamplified@gmail.com" // Destination email
+           from_name: formData.name,  // This is crucial
+    from_email: formData.email, // And this
+    subject: formData.subject,
+    message: formData.message,
+    to_email: 'nclexamplified@gmail.com',
+     time: formattedTime,  // Add timestamp
         }
       );
       
