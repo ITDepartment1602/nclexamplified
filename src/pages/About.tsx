@@ -12,12 +12,11 @@ import BackToTop from "@/components/common/BackToTop";
 const About: React.FC = () => {
   useEffect(() => {
     document.title = "About Us - NCLEX Amplified Review Center";
-    // Scroll to top when component mounts
     window.scrollTo(0, 0);
   }, []);
 
   return (
-    <div className="min-h-screen flex flex-col">
+    <div className="min-h-screen flex flex-col font-sans">
       <Navbar />
       <main className="flex-grow">
         <AboutHero />

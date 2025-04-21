@@ -1,108 +1,37 @@
 
-import React, { useState } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
-import { Menu, X, Facebook } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 const Navbar: React.FC = () => {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-
-  const toggleMenu = () => {
-    setIsMenuOpen(!isMenuOpen);
-  };
-
   return (
-    <header className="sticky top-0 w-full bg-white/95 backdrop-blur-sm border-b z-30 font-sans">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16">
-          <div className="flex items-center">
-            <Link to="/" className="flex items-center">
-              <img 
-                src="/lovable-uploads/2e6dbcbd-c9b0-4ce8-8284-aff78cf1046d.png" 
-                alt="NCLEX Amplified Logo" 
-                className="h-10 w-auto"
-              />
-              {/* Removed all NCLEX Amplified text */}
-            </Link>
-          </div>
-          
-          <nav className="hidden md:flex items-center space-x-8">
-            <Link to="/" className="text-gray-700 hover:text-nclex-blue font-medium transition-colors">
-              Home
-            </Link>
-            <Link to="/about" className="text-gray-700 hover:text-nclex-blue font-medium transition-colors">
-              About Us
-            </Link>
-            <Link to="/services" className="text-gray-700 hover:text-nclex-blue font-medium transition-colors">
-              Services
-            </Link>
-            <Link to="/contact" className="text-gray-700 hover:text-nclex-blue font-medium transition-colors">
-              Contact
-            </Link>
-            <Button asChild className="bg-primary hover:bg-nclex-blue text-white font-bold">
-              <a href="https://nclexamplifiedreviewcenter.com/nclex/login">
-                Login
-              </a>
+    <nav className="w-full bg-white shadow font-sans">
+      <div className="container mx-auto px-4 py-3 flex justify-between items-center">
+        <Link to="/" className="flex items-center gap-2">
+          <img src="/lovable-uploads/33d4ee95-70e6-4893-ae6e-1f5dbd1943e0.png" alt="NCLEX Amplified Logo" className="h-10 w-auto" />  
+        </Link>
+        <div className="flex items-center space-x-4">
+          <Link to="/" className="text-gray-700 text-sm font-medium transition hover:text-nclex-blue" style={{ fontFamily: 'Poppins, sans-serif' }}>Home</Link>
+          <Link to="/about" className="text-gray-700 text-sm font-medium transition hover:text-nclex-blue" style={{ fontFamily: 'Poppins, sans-serif' }}>About</Link>
+          <Link to="/services" className="text-gray-700 text-sm font-medium transition hover:text-nclex-blue" style={{ fontFamily: 'Poppins, sans-serif' }}>Services</Link>
+          <Link to="/contact" className="text-gray-700 text-sm font-medium transition hover:text-nclex-blue" style={{ fontFamily: 'Poppins, sans-serif' }}>Contact</Link>
+          <a
+            href="https://www.facebook.com/NCLEX.Amplified.Official"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="ml-2"
+            aria-label="Facebook Page"
+          >
+            <svg width="22" height="22" fill="currentColor" viewBox="0 0 24 24" className="text-nclex-blue hover:scale-110 transition-transform"><path d="M22 12a10 10 0 10-11.5 9.9v-7h-2v-2.9h2V9.5a3 3 0 013-3h2.05v2.38H15c-.5 0-1 .4-1 1v2.2h2.6l-.4 2.9H14v7A10 10 0 0022 12z"></path></svg>
+          </a>
+          <Link to="/login">
+            <Button className="ml-2 px-5 py-2 bg-primary text-white font-sans text-sm font-semibold rounded shadow hover:bg-nclex-blue transition focus:outline-none" style={{fontFamily:"Poppins, sans-serif"}}>
+              Login
             </Button>
-            <a href="https://www.facebook.com/NCLEX.Amplified.Official" target="_blank" rel="noopener noreferrer" 
-              className="ml-3 inline-flex items-center text-nclex-blue hover:text-nclex-red transition-colors">
-              <Facebook className="h-6 w-6" />
-              <span className="sr-only">Facebook</span>
-            </a>
-            {/* No Instagram */}
-          </nav>
-
-          <div className="md:hidden flex items-center">
-            <button
-              type="button"
-              className="inline-flex items-center justify-center p-2 rounded-md text-gray-700 hover:text-nclex-blue focus:outline-none"
-              onClick={toggleMenu}
-            >
-              {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
-            </button>
-          </div>
+          </Link>
         </div>
       </div>
-
-      {/* Mobile menu */}
-      {isMenuOpen && (
-        <div className="md:hidden">
-          <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-white border-b shadow-lg">
-            <Link to="/" 
-                  className="block px-3 py-2 text-gray-700 hover:text-nclex-blue font-medium"
-                  onClick={() => setIsMenuOpen(false)}>
-              Home
-            </Link>
-            <Link to="/about" 
-                  className="block px-3 py-2 text-gray-700 hover:text-nclex-blue font-medium"
-                  onClick={() => setIsMenuOpen(false)}>
-              About Us
-            </Link>
-            <Link to="/services" 
-                  className="block px-3 py-2 text-gray-700 hover:text-nclex-blue font-medium"
-                  onClick={() => setIsMenuOpen(false)}>
-              Services
-            </Link>
-            <Link to="/contact" 
-                  className="block px-3 py-2 text-gray-700 hover:text-nclex-blue font-medium"
-                  onClick={() => setIsMenuOpen(false)}>
-              Contact
-            </Link>
-            <a href="https://nclexamplifiedreviewcenter.com/nclex/login" 
-               className="block px-3 py-2 bg-primary text-white font-medium rounded-md hover:bg-nclex-blue text-center"
-               onClick={() => setIsMenuOpen(false)}>
-              Login
-            </a>
-            <a href="https://www.facebook.com/NCLEX.Amplified.Official"
-               className="block px-3 py-2 text-nclex-blue font-medium flex items-center gap-2"
-               target="_blank" rel="noopener noreferrer"
-               onClick={() => setIsMenuOpen(false)}>
-              <Facebook className="h-5 w-5" /> Facebook
-            </a>
-          </div>
-        </div>
-      )}
-    </header>
+    </nav>
   );
 };
 

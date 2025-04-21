@@ -5,7 +5,7 @@ const founders = [
   {
     name: "Maverick Leocadio",
     role: "President, COO | CFO",
-    image: "/lovable-uploads/b8392819-b4f7-433f-94fd-cbbc7c918404.png",
+    image: "/lovable-uploads/8583d22c-72ff-4c18-a053-8ae90b271b90.png",
     quote: '"Empowering Filipino nurses worldwide: bridging dreams and realities."',
     awards: [
       "2023: Youngest CEO of the Year",
@@ -17,7 +17,7 @@ const founders = [
   {
     name: "Sir Joshua Miguel Gamus, RN",
     role: "Vice President, NCLEX Reviewer | Nurse Educator",
-    image: "/lovable-uploads/bad1ba00-d88c-4e53-a1f0-580e8e584503.png",
+    image: "/lovable-uploads/545cccd8-22bb-479d-82a4-4efeae621aeb.png",
     quote: undefined,
     awards: [],
     description1: "Sir Joshua Miguel Gamus, RN, is a highly respected NCLEX reviewer and nurse educator, widely recognized for his student-centered teaching style, exceptional communication skills, and mastery of nursing concepts. With a solid foundation in clinical practice and academic instruction, he has become a trusted figure in NCLEX preparation—both in the Philippines and on the global stage.",
@@ -30,38 +30,44 @@ const FounderSection: React.FC = () => {
     <section className="py-20 bg-gradient-to-b from-white to-blue-50 font-sans">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <h2 className="text-3xl font-bold font-serif text-gray-900 mb-4">Our Founders</h2>
+          <h2 className="text-3xl font-bold font-serif text-gray-900 mb-4" style={{ fontFamily:'Poppins, sans-serif' }}>
+            Our Founders
+          </h2>
           <div className="w-20 h-1 bg-nclex-blue mx-auto mb-6"></div>
-          <p className="text-gray-600">
-            Meet the visionary leaders behind <span className="text-nclex-blue font-bold">NCLEX</span>
-            <span className="text-nclex-red font-bold"> Amplified</span> who are dedicated to 
+          <p className="text-gray-600" style={{ fontFamily:'Poppins, sans-serif' }}>
+            Meet the visionary leaders behind{" "}
+            <span className="text-nclex-blue font-bold inline" style={{fontFamily: 'Poppins, sans-serif'}}>NCLEX</span>
+            <span className="text-nclex-red font-bold inline" style={{fontFamily: 'Poppins, sans-serif'}}> Amplified</span> who are dedicated to
             transforming nursing education and helping you achieve your American Dream.
           </p>
         </div>
-        
         <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
           {founders.map((founder, idx) => (
-            <div key={founder.name} className="bg-white rounded-2xl shadow-xl border border-blue-100 flex flex-col items-center pb-7">
+            <div
+              key={founder.name}
+              className="bg-white rounded-2xl shadow-xl border border-blue-100 flex flex-col items-center pb-8"
+              style={{ fontFamily:'Poppins, sans-serif' }}
+            >
               <div className="w-full flex justify-center relative">
-                <img 
+                <img
                   src={founder.image}
                   alt={founder.name}
-                  className="w-56 h-56 object-cover object-center rounded-2xl border-4 border-white shadow-lg -mt-12 mb-6 z-10 bg-blue-50"
-                  style={{ marginTop: '-3rem' }}
+                  className="w-72 h-80 object-cover object-center rounded-2xl border-4 border-nclex-blue shadow-lg -mt-14 mx-auto"
+                  style={{ marginTop: "-3.5rem", marginBottom: "2.5rem", background: "#e9eefa" }}
                 />
               </div>
-              <div className="w-full px-6 pt-2">
-                <h3 className="text-2xl font-bold text-gray-900 mb-1 text-center">{founder.name}</h3>
-                <p className="text-gray-600 font-medium mb-3 text-center">{founder.role}</p>
+              <div className="w-full px-7 pt-2">
+                <h3 className="text-2xl font-bold text-gray-900 mb-1 text-center" style={{fontFamily: 'Poppins, sans-serif'}}>{founder.name}</h3>
+                <p className="text-gray-600 font-medium mb-3 text-center" style={{fontFamily: 'Poppins, sans-serif'}}>{founder.role}</p>
                 {founder.quote && (
-                  <p className="italic text-gray-700 border-l-4 border-nclex-blue pl-4 my-4 text-left">
+                  <p className="italic text-gray-700 border-l-4 border-nclex-blue pl-4 my-4 text-left" style={{fontFamily: 'Poppins, sans-serif'}}>
                     {founder.quote}
                   </p>
                 )}
                 {founder.awards.length > 0 && (
                   <div className="flex flex-wrap justify-center gap-2 mb-4">
                     {founder.awards.map((award, i) => (
-                      <span key={i} className="bg-nclex-blue text-white rounded-full px-3 py-1 text-xs font-semibold">
+                      <span key={i} className="bg-nclex-blue text-white rounded-full px-3 py-1 text-xs font-semibold" style={{fontFamily: 'Poppins, sans-serif'}}>
                         {award}
                       </span>
                     ))}

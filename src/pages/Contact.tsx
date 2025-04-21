@@ -1,3 +1,4 @@
+
 import React, { useEffect } from "react";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
@@ -16,7 +17,10 @@ const Contact: React.FC = () => {
       <Navbar />
       <main className="flex-grow">
         <ContactHero />
-        <ContactInfo />
+        {/* Only one ContactInfo, removed duplicate */}
+        <div className="w-full flex flex-col items-center px-2">
+          <ContactInfo />
+        </div>
       </main>
       <Footer />
       <BackToTop />
