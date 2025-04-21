@@ -32,7 +32,7 @@ const Preloader: React.FC = () => {
   if (!loading) return null;
 
   return (
-    <div className="fixed inset-0 bg-white z-60 flex items-center justify-center">
+    <div className="fixed inset-0 bg-white z-50 flex items-center justify-center">
       <div className="flex flex-col items-center">
         <div className="text-3xl font-bold mb-4 font-sans">
           <span className="text-nclex-blue">
