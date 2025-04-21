@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { BiMenuAltRight, BiX } from "react-icons/bi"; // Importing the icons
 
 const Navbar: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -41,7 +40,15 @@ const Navbar: React.FC = () => {
         {/* Hamburger Menu for Mobile */}
         <div className="md:hidden flex items-center">
           <button onClick={toggleMenu} className="text-black focus:outline-none">
-            {isOpen ? <BiX size={24} /> : <BiMenuAltRight size={24} />}
+            {isOpen ? (
+              <svg width="24" height="24" fill="currentColor">
+                <path d="M6 18L18 6M6 6l12 12"></path>
+              </svg>
+            ) : (
+              <svg width="24" height="24" fill="currentColor">
+                <path d="M4 6h16M4 12h16m-7 6h7"></path>
+              </svg>
+            )}
           </button>
         </div>
       </div>
@@ -51,7 +58,9 @@ const Navbar: React.FC = () => {
         <div className={`fixed right-0 top-0 w-3/4 max-w-sm bg-white h-full shadow-lg transform transition-transform duration-300 ${isOpen ? "translate-x-0" : "translate-x-full"}`}>
           <div className="flex justify-end p-4">
             <button onClick={toggleMenu} className="text-black">
-              <BiX size={24} />
+              <svg width="24" height="24" fill="currentColor">
+                <path d="M6 18L18 6M6 6l12 12"></path>
+              </svg>
             </button>
           </div>
           <div className="flex flex-col items-center py-10">
