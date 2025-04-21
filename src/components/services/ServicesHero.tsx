@@ -15,14 +15,7 @@ const ServicesHero: React.FC = () => {
             We provide comprehensive NCLEX preparation services designed to maximize your chances of success
             on your first attempt. Our programs are tailored to meet the needs of Filipino nurses worldwide.
           </p>
-          <div className="flex justify-center my-10">
-            <img
-              src="/lovable-uploads/6201e8fe-3b91-4591-962e-4efbac0ed283.png"
-              className="rounded-xl object-cover shadow-md max-h-96 w-full"
-              alt="Services Hero"
-              style={{maxWidth:"600px",minHeight:"200px"}}
-            />
-          </div>
+         
           <div className="mt-10 grid grid-cols-2 md:grid-cols-3 gap-3 max-w-lg mx-auto">
             <div className="px-4 py-2 bg-blue-100 rounded-full text-nclex-blue text-sm font-medium">Comprehensive</div>
             <div className="px-4 py-2 bg-blue-100 rounded-full text-nclex-blue text-sm font-medium">Personalized</div>
