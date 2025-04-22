@@ -26,10 +26,10 @@ const CharitySlider: React.FC = () => (
         <h2 className="text-3xl font-bold font-serif text-gray-900 mb-4">Charity Activities</h2>
         <div className="w-20 h-1 bg-nclex-blue mx-auto mb-6"></div>
       </div>
-      <div className="max-w-lg mx-auto">
+      <div className="max-w-4xl mx-auto">
         <Carousel
           opts={{
-            loop: true, // infinite slides
+            loop: true,
             align: "center",
             skipSnaps: false,
           }}
@@ -38,7 +38,7 @@ const CharitySlider: React.FC = () => (
           <CarouselContent>
             {charityImages.map((img, idx) => (
               <CarouselItem key={idx} className="flex justify-center items-center">
-                <div className="flex items-center justify-center w-full h-72 sm:h-80 md:h-96">
+                <div className="flex items-center justify-center w-full h-96 sm:h-[32rem] md:h-[40rem]">
                   <img
                     src={img}
                     alt={`Charity Event ${idx + 1}`}

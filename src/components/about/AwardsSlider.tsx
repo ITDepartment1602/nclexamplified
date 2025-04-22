@@ -8,24 +8,28 @@ import {
   CarouselPrevious,
 } from "@/components/ui/carousel";
 
-// All awards image URLs
 const awardsImages = [
   "/lovable-uploads/a.jpg",
   "/lovable-uploads/b.jpg",
-   "/lovable-uploads/c.jpg",
-   "/lovable-uploads/d.jpg",
-   "/lovable-uploads/e.jpg",
-   "/lovable-uploads/f.jpg",
-   "/lovable-uploads/g.jpg",
-   "/lovable-uploads/h.jpg",
-   "/lovable-uploads/i.jpg",
-   "/lovable-uploads/j.jpg",
-   "/lovable-uploads/k.jpg",
-   "/lovable-uploads/l.jpg",
-   "/lovable-uploads/m.jpg",
+  "/lovable-uploads/c.jpg",
+  "/lovable-uploads/d.jpg",
+  "/lovable-uploads/e.jpg",
+  "/lovable-uploads/f.jpg",
+  "/lovable-uploads/g.jpg",
+  "/lovable-uploads/h.jpg",
+  "/lovable-uploads/i.jpg",
+  "/lovable-uploads/j.jpg",
+  "/lovable-uploads/k.jpg",
+  "/lovable-uploads/l.jpg",
+  "/lovable-uploads/m.jpg",
 ];
 
-// Utility: Split images into groups per slide (e.g. 6 per slide)
+// Create an infinite repeating array for continuous loop
+const createInfiniteArray = (arr: string[], repetitions: number): string[] => {
+  return Array(repetitions).fill(arr).flat();
+};
+
+// Utility: Split images into groups per slide
 function chunkArray(array: string[], size: number): string[][] {
   const result: string[][] = [];
   for (let i = 0; i < array.length; i += size) {
@@ -34,8 +38,10 @@ function chunkArray(array: string[], size: number): string[][] {
   return result;
 }
 
-const imagesPerSlide = 6; // Adjust as needed for your design/responsiveness
-const slides = chunkArray(awardsImages, imagesPerSlide);
+const imagesPerSlide = 6; // Show 6 images per slide
+const repetitions = 5; // Show the sequence 5 times
+const infiniteImages = createInfiniteArray(awardsImages, repetitions);
+const slides = chunkArray(infiniteImages, imagesPerSlide);
 
 const AwardsSlider: React.FC = () => (
   <section className="py-16 bg-white font-sans">
@@ -46,7 +52,14 @@ const AwardsSlider: React.FC = () => (
         </h2>
         <div className="w-20 h-1 bg-nclex-blue mx-auto mb-4"></div>
       </div>
-      <Carousel className="w-full">
+      <Carousel
+        opts={{
+          loop: true,
+          align: "center",
+          skipSnaps: false,
+        }}
+        className="w-full"
+      >
         <CarouselContent>
           {slides.map((group, idx) => (
             <CarouselItem key={idx}>
@@ -70,4 +83,6 @@ const AwardsSlider: React.FC = () => (
     </div>
   </section>
 );
+
 export default AwardsSlider;
+
