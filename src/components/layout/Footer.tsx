@@ -3,7 +3,6 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { 
   Facebook, 
-  Instagram, 
   Mail, 
   MapPin, 
   Phone, 
@@ -41,12 +40,10 @@ const Footer: React.FC = () => {
               the Leading Review Centers in the Philippines."
             </p>
             <div className="flex space-x-4 pt-2">
-              <a href="https://facebook.com" className="text-gray-300 hover:text-blue-300 transition-colors">
+              <a href="https://www.facebook.com/NCLEX.Amplified.Official" className="text-gray-300 hover:text-blue-300 transition-colors">
                 <Facebook size={20} />
               </a>
-              <a href="https://instagram.com" className="text-gray-300 hover:text-blue-300 transition-colors">
-                <Instagram size={20} />
-              </a>
+        
               <a href="mailto:nclexamplified@gmail.com" className="text-gray-300 hover:text-blue-300 transition-colors">
                 <Mail size={20} />
               </a>
