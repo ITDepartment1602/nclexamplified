@@ -1,189 +1,151 @@
 
-import React, { useState, FormEvent } from "react";
+import React, { useState } from "react";
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { z } from "zod";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent } from "@/components/ui/card";
-import { Send, CheckCircle, XCircle } from "lucide-react";
-import emailjs from "@emailjs/browser";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
+import { useToast } from "@/components/ui/use-toast";
+import emailjs from '@emailjs/browser';
+
+const formSchema = z.object({
+  name: z.string().min(2, { message: "Name must be at least 2 characters." }),
+  email: z.string().email({ message: "Please enter a valid email address." }),
+  subject: z.string().min(5, { message: "Subject must be at least 5 characters." }),
+  message: z.string().min(10, { message: "Message must be at least 10 characters." }),
+});
+
+type FormValues = z.infer<typeof formSchema>;
 
 const ContactForm: React.FC = () => {
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    subject: "",
-    message: ""
-  });
+  const { toast } = useToast();
+  const [isSubmitting, setIsSubmitting] = useState(false);
   
-  const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
-  const [errorMessage, setErrorMessage] = useState("");
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors },
+  } = useForm<FormValues>({
+    resolver: zodResolver(formSchema),
+    defaultValues: {
+      name: "",
+      email: "",
+      subject: "",
+      message: "",
+    },
+  });
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    const { name, value } = e.target;
-    setFormData(prev => ({ ...prev, [name]: value }));
-  };
-
-  const handleSubmit = async (e: FormEvent) => {
-    e.preventDefault();
-    setStatus("loading");
-
-    const options = { 
-      year: 'numeric', 
-      month: 'long', 
-      day: 'numeric', 
-      hour: 'numeric', 
-      minute: 'numeric', 
-      hour12: true, 
-      timeZone: 'Asia/Singapore' // Adjust timezone as needed
-    };
-    
-    const formattedTime = new Date().toLocaleString('en-US', options);
+  const onSubmit = async (data: FormValues) => {
+    setIsSubmitting(true);
     
     try {
-      // Initialize emailjs
-      emailjs.init("WDZ2MlsX2bBXgruDp"); // Replace with your EmailJS public key
-      
-      await emailjs.send(
-        "service_t6qj3ve", // Replace with your EmailJS service ID
-        "template_l9c5v1b", // Replace with your EmailJS template ID
-        {
-           from_name: formData.name,  // This is crucial
-    from_email: formData.email, // And this
-    subject: formData.subject,
-    message: formData.message,
-    to_email: 'nclexamplified@gmail.com',
-     time: formattedTime,  // Add timestamp
-        }
-      );
-      
-      setStatus("success");
-      // Reset form after successful submission
-      setFormData({
-        name: "",
-        email: "",
-        subject: "",
-        message: ""
+      // Create a timestamp for the message
+      const now = new Date();
+      const formattedDate = now.toLocaleDateString(undefined, {
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric'
+      });
+      const formattedTime = now.toLocaleTimeString(undefined, {
+        hour: 'numeric',
+        minute: 'numeric',
+        hour12: true
       });
       
-      // Reset success message after 5 seconds
-      setTimeout(() => {
-        setStatus("idle");
-      }, 5000);
+      const timestamp = `${formattedDate} at ${formattedTime}`;
       
+      // Prepare the template parameters
+      const templateParams = {
+        name: data.name,
+        email: data.email,
+        subject: data.subject,
+        message: data.message,
+        timestamp
+      };
+      
+      await emailjs.send(
+        'service_nclex_amplified',
+        'template_contact_form',
+        templateParams,
+        'YOUR_PUBLIC_KEY'
+      );
+      
+      toast({
+        title: "Message Sent Successfully",
+        description: "We'll get back to you as soon as possible.",
+      });
+      
+      reset();
     } catch (error) {
-      console.error("Email send failed:", error);
-      setStatus("error");
-      setErrorMessage("Failed to send email. Please try again later.");
-      
-      // Reset error message after 5 seconds
-      setTimeout(() => {
-        setStatus("idle");
-        setErrorMessage("");
-      }, 5000);
+      console.error('Error sending email:', error);
+      toast({
+        title: "Error",
+        description: "There was an error sending your message. Please try again later.",
+        variant: "destructive",
+      });
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
   return (
-    <Card className="shadow-lg border-0">
-      <CardContent className="p-6">
-        <h3 className="text-2xl font-bold text-gray-900 mb-6 text-center">Send Us a Message</h3>
+    <div className="bg-white rounded-xl shadow-lg p-8 border border-blue-100">
+      <h3 className="text-2xl font-semibold text-gray-900 mb-6">Send Us a Message</h3>
+      
+      <form onSubmit={handleSubmit(onSubmit)} className="space-y-5">
+        <div>
+          <Input
+            placeholder="Your Name"
+            {...register("name")}
+            className={errors.name ? "border-red-500" : ""}
+          />
+          {errors.name && (
+            <p className="text-red-500 text-sm mt-1">{errors.name.message}</p>
+          )}
+        </div>
         
-        {status === "success" && (
-          <div className="mb-6 p-4 bg-green-50 text-green-700 rounded-lg flex items-center">
-            <CheckCircle className="mr-2 h-5 w-5" />
-            <span>Your message has been sent successfully!</span>
-          </div>
-        )}
+        <div>
+          <Input
+            placeholder="Your Email"
+            type="email"
+            {...register("email")}
+            className={errors.email ? "border-red-500" : ""}
+          />
+          {errors.email && (
+            <p className="text-red-500 text-sm mt-1">{errors.email.message}</p>
+          )}
+        </div>
         
-        {status === "error" && (
-          <div className="mb-6 p-4 bg-red-50 text-red-700 rounded-lg flex items-center">
-            <XCircle className="mr-2 h-5 w-5" />
-            <span>{errorMessage}</span>
-          </div>
-        )}
+        <div>
+          <Input
+            placeholder="Subject"
+            {...register("subject")}
+            className={errors.subject ? "border-red-500" : ""}
+          />
+          {errors.subject && (
+            <p className="text-red-500 text-sm mt-1">{errors.subject.message}</p>
+          )}
+        </div>
         
-        <form onSubmit={handleSubmit}>
-          <div className="space-y-4">
-            <div>
-              <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-1">
-                Your Name
-              </label>
-              <input
-                type="text"
-                id="name"
-                name="name"
-                value={formData.name}
-                onChange={handleChange}
-                className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-nclex-blue focus:border-transparent"
-                placeholder="Sean Jimwell"
-                required
-              />
-            </div>
-            
-            <div>
-              <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">
-                Your Email
-              </label>
-              <input
-                type="email"
-                id="email"
-                name="email"
-                value={formData.email}
-                onChange={handleChange}
-                className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-nclex-blue focus:border-transparent"
-                placeholder="seanjimwell@example.com"
-                required
-              />
-            </div>
-            
-            <div>
-              <label htmlFor="subject" className="block text-sm font-medium text-gray-700 mb-1">
-                Subject
-              </label>
-              <input
-                type="text"
-                id="subject"
-                name="subject"
-                value={formData.subject}
-                onChange={handleChange}
-                className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-nclex-blue focus:border-transparent"
-                placeholder="NCLEX Amplified Inquiry"
-                required
-              />
-            </div>
-            
-            <div>
-              <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-1">
-                Your Message
-              </label>
-              <textarea
-                id="message"
-                name="message"
-                rows={5}
-                value={formData.message}
-                onChange={handleChange}
-                className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-nclex-blue focus:border-transparent"
-                placeholder="Type your message here..."
-                required
-              ></textarea>
-            </div>
-            
-            <Button 
-              type="submit" 
-              disabled={status === "loading"}
-              className="w-full bg-nclex-blue hover:bg-blue-700 py-3 text-base"
-            >
-              {status === "loading" ? (
-                "Sending..."
-              ) : (
-                <>
-                  <Send className="h-5 w-5 mr-2" />
-                  Send Message
-                </>
-              )}
-            </Button>
-          </div>
-        </form>
-      </CardContent>
-    </Card>
+        <div>
+          <Textarea
+            placeholder="Your Message"
+            rows={5}
+            {...register("message")}
+            className={errors.message ? "border-red-500" : ""}
+          />
+          {errors.message && (
+            <p className="text-red-500 text-sm mt-1">{errors.message.message}</p>
+          )}
+        </div>
+        
+        <Button type="submit" className="w-full bg-nclex-blue hover:bg-blue-700 py-6" disabled={isSubmitting}>
+          {isSubmitting ? "Sending..." : "Send Message"}
+        </Button>
+      </form>
+    </div>
   );
 };
 
