@@ -10,18 +10,16 @@ import Services from "./pages/Services";
 import Contact from "./pages/Contact";
 import NotFound from "./pages/NotFound";
 import Preloader from "./components/common/Preloader";
-import BackToTop from "./components/common/BackToTop";
 
 const queryClient = new QueryClient();
 
 const App = () => (
   <QueryClientProvider client={queryClient}>
     <TooltipProvider>
-      <Toaster />
-      <Sonner />
-      <Preloader />
-      <BackToTop />
       <BrowserRouter>
+        <Toaster />
+        <Sonner />
+        <Preloader />
         <Routes>
           <Route path="/" element={<Index />} />
           <Route path="/about" element={<About />} />
