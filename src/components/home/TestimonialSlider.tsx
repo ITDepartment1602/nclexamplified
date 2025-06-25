@@ -1,21 +1,25 @@
+
 import React from "react";
 import { Card, CardContent } from "@/components/ui/card";
 
 const TESTIMONIALS = [
   {
-    name: "Khareen Cate Danan RN, USRN",
-    avatar: "lovable-uploads/khareen.jpg",
-    comment: "To aspiring USRN's just keep the momentum high! lagi nyo iisipin ung sinabi ni sir JM, temporary sacrifice leads to permanent result, lahat tayo may struggles during our review hindi lahat smooth ang flow meron dyan may bagay or tao will put you down pero balik ka lagi sa WHY's mo. Pray to God, surrender nyo lahat sakanya ang worries nyo, I swear one day pag gising nyo everything will be okay. Aralin mabuti ang concept, sa qbank mas aralin and rationale mas madami kayong aral dun kaysa sa score lang, la charity sagutan po and read yung book na NCLEX success guide."
+    name: "Mikaela Ligacion, CDRN",
+    achievement: "Passed NCLEX 2025",
+    avatar: "/lovable-uploads/10a61823-e49c-4e4b-8380-798b96419b48.png",
+    comment: "A special thank you to NCLEX Amplified for providing comprehensive and effective review materials. Your resources were instrumental in my preparation, and I truly believe they played a significant role in my success."
   },
   {
-    name: "Louise Danielle Almazar RN, USRN",
-    avatar: "lovable-uploads/louise.jpg",
-    comment: "Special Mention to TEAM BISDAK, you guys really helped lalo na sa mga QandA nagpapractice tayo sa groupchat and nag didrills din sa GC minsan and most specially sa prayers ninyo sobrang thank you! To sis Marichel Gamban, gumaan talaga loob ko before the exam after you prayed over me, thank you so much sis. To my family, friends and prayer warriors, Thank you for all your prayers Most especially to God, St. Jude and my little angel up there for guiding me during the exam."
+    name: "Ruark Lim Ritardo, USRN",
+    achievement: "Passed NCLEX 2025",
+    avatar: "/lovable-uploads/43e3ca09-5df1-44b1-b654-26b2b96675ee.png",
+    comment: "I can't thank NCLEX Amplified Review Center enough for helping me pass the NCLEX! Their content was exactly what I needed - clear, focused, and incredibly effective."
   },
   {
-    name: "Carla Jean Garcia RN, USRN",
-    avatar: "lovable-uploads/carla.jpg",
-    comment: "The NCLEX journey will never be easy; there will be many ups and downs along the way. But nothing is impossible if you stay dedicated and focused on your goal, especially when you are studying with NCLEX Amplified, this review center approach is very holistic, it will not only hound your concepts but also your values and life's perspective. I will be eternally grateful to this team for making my impossible dream a reality."
+    name: "Krystle Kay L. Almoete, USRN",
+    achievement: "Passed NCLEX 2025",
+    avatar: "/lovable-uploads/ff8b5b12-0727-4776-bd9b-9a8566d45a00.png",
+    comment: "I want to extend my heartfelt gratitude to NCLEX AMPLIFIED for being such an essential part of my NCLEX journey. Your comprehensive review sessions helped me gain the knowledge and test-taking strategies I needed."
   }
 ];
 
@@ -38,7 +42,10 @@ const TestimonialSlider: React.FC = () => {
                   loading="lazy"
                 />
                 <p className="text-lg text-gray-800 italic mb-4 flex-grow">{`"${t.comment}"`}</p>
-                <p className="font-semibold text-nclex-blue">{t.name}</p>
+                <div className="text-center">
+                  <p className="font-semibold text-nclex-blue">{t.name}</p>
+                  <p className="text-sm text-gray-600 font-medium">{t.achievement}</p>
+                </div>
               </CardContent>
             </Card>
           ))}
