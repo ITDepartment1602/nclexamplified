@@ -17,6 +17,7 @@ const charityImages = [
   "/lovable-uploads/8d286dcf-3ffd-48ba-aab5-72681c072bf1.png",
   "/lovable-uploads/89fd2c48-14d1-4bfa-8847-64c4c183e3da.png",
   "/lovable-uploads/81e735c7-1645-49a5-9b22-16863db49faf.png",
+  "/lovable-uploads/e78b3212-2e6e-4aec-b36c-170daa9d849b.png",
 ];
 
 const CharitySlider: React.FC = () => (
