@@ -65,11 +65,12 @@ const Hero: React.FC = () => {
               <Button asChild className="bg-nclex-red hover:bg-red-600 rounded-full px-8 py-6 text-lg shadow-lg shadow-red-200">
                 <a href="https://m.me/NCLEX.Amplified.Official">Enroll Now!</a>
               </Button>
-                <Button asChild className="border-nclex-red text-nclex-red bg-white hover:shadow-nclex-red rounded-full px-8 py-6 text-lg hover:shadow-lg ">
+                <Button className="border-nclex-red text-nclex-red bg-white hover:shadow-nclex-red rounded-full px-8 py-6 text-lg hover:shadow-lg hover:bg-white ">
                 <a href="https://nclexamplifiedreviewcenter.com/nclex/guest">Try our Demo!</a>
               </Button>
-              <p className="text-sm mt-3 text-gray-500 font-medium">Join 8326+ nurses who achieved their American dream</p>
+             
             </div>
+             <p className="text-sm mt-3 text-gray-500 font-medium">Join 8326+ nurses who achieved their American dream</p>
           </div>
           <div className="bg-white rounded-xl shadow-xl p-6 border border-blue-100 grid grid-cols-1 md:grid-cols-2 gap-4">
             {features.map((feature, index) => (
