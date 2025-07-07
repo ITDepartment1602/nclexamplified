@@ -60,12 +60,12 @@ const Hero: React.FC = () => {
               Empowering Filipino nurses worldwide: bridging dreams and realities. 
               With a 94.7% passing rate, we're committed to turning your <span className="text-nclex-blue font-bold">NCLEX</span> <span className="text-nclex-red font-bold">Amplified</span> aspirations into reality.
             </p>
-            <div className="pt-6">
+            <div className="pt-6 flex items-center gap-3">
               {/* No change needed in button or call to action */}
               <Button asChild className="bg-nclex-red hover:bg-red-600 rounded-full px-8 py-6 text-lg shadow-lg shadow-red-200">
                 <a href="https://m.me/NCLEX.Amplified.Official">Enroll Now!</a>
               </Button>
-                <Button asChild className="bg-nclex-red hover:bg-red-600 rounded-full px-8 py-6 text-lg shadow-lg shadow-red-200">
+                <Button asChild className="border-nclex-red text-nclex-red bg-white hover:shadow-nclex-red rounded-full px-8 py-6 text-lg hover:shadow-lg ">
                 <a href="https://nclexamplifiedreviewcenter.com/nclex/guest">Try our Demo!</a>
               </Button>
               <p className="text-sm mt-3 text-gray-500 font-medium">Join 8326+ nurses who achieved their American dream</p>
