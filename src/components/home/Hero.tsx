@@ -65,7 +65,7 @@ const Hero: React.FC = () => {
               <Button asChild className="bg-nclex-red hover:bg-red-600 rounded-full px-8 py-6 text-lg shadow-lg shadow-red-200">
                 <a href="https://m.me/NCLEX.Amplified.Official">Enroll Now!</a>
               </Button>
-                <Button className="border-nclex-red text-nclex-red bg-white hover:shadow-nclex-red rounded-full px-8 py-6 text-lg hover:shadow-lg hover:bg-white ">
+                <Button className="border-nclex-red text-nclex-red bg-white hover:shadow-nclex-red rounded-full px-8 py-6 text-lg hover:shadow hover:bg-white ">
                 <a href="https://nclexamplifiedreviewcenter.com/nclex/guest">Try our Demo!</a>
               </Button>
              
