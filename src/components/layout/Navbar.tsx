@@ -31,7 +31,7 @@ const Navbar: React.FC = () => {
               <path d="M22 12a10 10 0 10-11.5 9.9v-7h-2v-2.9h2V9.5a3 3 0 013-3h2.05v2.38H15c-.5 0-1 .4-1 1v2.2h2.6l-.4 2.9H14v7A10 10 0 0022 12z" />
             </svg>
           </a>
-          <a href="https://nclexamplifiedreviewcenter.com/nclex/">
+          <a href="https://nclexamplifiedreviewcenter.com/nclex/login">
             <Button className="ml-2 px-5 py-2 bg-primary text-white font-sans text-sm font-semibold rounded shadow hover:bg-nclex-blue transition focus:outline-none">
               Login
             </Button>
