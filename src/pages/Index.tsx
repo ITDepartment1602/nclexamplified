@@ -5,6 +5,7 @@ import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import Hero from "@/components/home/Hero";
 import StandoutSection from "@/components/home/StandoutSection";
+import GlobalReach from "@/components/home/GlobalReach";
 import ProgramOverview from "@/components/home/ProgramOverview";
 import TestimonialSlider from "@/components/home/TestimonialSlider";
 import BackToTop from "@/components/common/BackToTop";
@@ -54,6 +55,7 @@ const Index: React.FC = () => {
       <main className="flex-grow">
         <Hero />
         <StandoutSection />
+        <GlobalReach />
         <TestimonialSlider />
         <ProgramOverview />
       </main>
