@@ -116,7 +116,7 @@ const GlobalReach: React.FC = () => {
         {/* World Map */}
         <div className="relative max-w-6xl mx-auto mb-8">
           <img 
-            src="/lovable-uploads/9c46f4e9-ac14-441f-baa9-42b7de1a02c1.gif"
+            src="/lovable-uploads/how.gif"
             alt="Global NCLEX Success Map showing connections from Philippines to USA, Canada, Australia, Middle East, Europe, Columbia, Argentina, and Spain"
             className="w-full h-auto"
           />
