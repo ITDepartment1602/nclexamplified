@@ -63,12 +63,11 @@ const GlobalReach: React.FC = () => {
           <div className="flex items-center justify-center mb-4">
             <Globe className="w-8 h-8 text-nclex-blue mr-3" />
             <h2 className="text-3xl sm:text-4xl font-bold text-gray-800">
-              Global NCLEX Success
+              Amplified Conquer’s the World
             </h2>
           </div>
           <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-            From the Philippines to the world - our review center has helped nurses 
-            pass the NCLEX exam across continents, making dreams come true globally.
+           From the Philippines to the world – our review center empowers nurses to pass the NCLEX, amplifying success and conquering dreams across continents.
           </p>
         </div>
 
