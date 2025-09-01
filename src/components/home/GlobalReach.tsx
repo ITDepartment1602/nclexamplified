@@ -105,7 +105,7 @@ const GlobalReach: React.FC = () => {
           <div className="flex items-center justify-center mb-4">
             <Globe className="w-8 h-8 text-nclex-blue mr-3" />
             <h2 className="text-3xl sm:text-4xl font-bold text-gray-800">
-              Amplified Conquer's the World
+              Amplified Conquer the World
             </h2>
           </div>
           <p className="text-lg text-gray-600 max-w-3xl mx-auto">
