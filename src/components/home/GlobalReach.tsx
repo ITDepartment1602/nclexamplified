@@ -1,9 +1,8 @@
-
 import React, { useState, useEffect } from "react";
 import { Globe, MapPin, Users, X } from "lucide-react";
+import { Typed } from 'react-typed';
 
 const GlobalReach: React.FC = () => {
-  const [isFullscreen, setIsFullscreen] = useState(false);
   const [animatedStats, setAnimatedStats] = useState({
     passers: 0,
     countries: 0,
@@ -46,16 +45,6 @@ const GlobalReach: React.FC = () => {
     return () => clearInterval(timer);
   }, []);
 
-  const handleMapClick = () => {
-    if (window.innerWidth <= 768) { // Mobile breakpoint
-      setIsFullscreen(true);
-    }
-  };
-
-  const closeFullscreen = () => {
-    setIsFullscreen(false);
-  };
-
   return (
     <section className="py-16 bg-gradient-to-br from-blue-50 to-white">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -63,7 +52,7 @@ const GlobalReach: React.FC = () => {
           <div className="flex items-center justify-center mb-4">
             <Globe className="w-8 h-8 text-nclex-blue mr-3" />
             <h2 className="text-3xl sm:text-4xl font-bold text-gray-800">
-              Amplified Conquer’s the World
+              Amplified Conquer's the World
             </h2>
           </div>
           <p className="text-lg text-gray-600 max-w-3xl mx-auto">
@@ -72,43 +61,64 @@ const GlobalReach: React.FC = () => {
         </div>
 
         {/* World Map */}
-        <div className="relative max-w-6xl mx-auto mb-12">
+        <div className="relative max-w-6xl mx-auto mb-8">
           <img 
-            src="/lovable-uploads/how.gif"
+            src="/lovable-uploads/9c46f4e9-ac14-441f-baa9-42b7de1a02c1.gif"
             alt="Global NCLEX Success Map showing connections from Philippines to USA, Canada, Australia, Middle East, Europe, Columbia, Argentina, and Spain"
-            className="w-full h-auto cursor-pointer md:cursor-default"
-            onClick={handleMapClick}
+            className="w-full h-auto"
           />
-          
-          {/* Mobile tap hint */}
-          <div className="md:hidden absolute bottom-2 right-2 bg-black/50 text-white text-xs px-2 py-1 rounded">
-            Tap to view fullscreen
+        </div>
+
+        {/* Global Passers - Center below map */}
+        <div className="text-center mb-8">
+          <div className="bg-white rounded-lg shadow-md p-8 max-w-md mx-auto">
+            <Users className="w-12 h-12 text-nclex-blue mx-auto mb-4" />
+            <div className="text-4xl font-bold text-gray-800 mb-2">
+              <Typed
+                strings={[`${animatedStats.passers.toLocaleString()}+`]}
+                typeSpeed={50}
+                showCursor={false}
+              />
+            </div>
+            <div className="text-lg text-gray-600">Global Passers</div>
           </div>
         </div>
 
-        {/* Statistics Grid */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-4xl mx-auto">
-          <div className="text-center p-6 bg-white rounded-lg shadow-md">
-            <Users className="w-8 h-8 text-nclex-blue mx-auto mb-3" />
-            <div className="text-2xl font-bold text-gray-800">{animatedStats.passers.toLocaleString()}+</div>
-            <div className="text-sm text-gray-600">Global Passers</div>
-          </div>
-          
+        {/* Other Statistics - Bottom row */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto mb-12">
           <div className="text-center p-6 bg-white rounded-lg shadow-md">
             <MapPin className="w-8 h-8 text-red-500 mx-auto mb-3" />
-            <div className="text-2xl font-bold text-gray-800">{animatedStats.countries}+</div>
+            <div className="text-2xl font-bold text-gray-800">
+              <Typed
+                strings={[`${animatedStats.countries}+`]}
+                typeSpeed={50}
+                showCursor={false}
+              />
+            </div>
             <div className="text-sm text-gray-600">Countries</div>
           </div>
           
           <div className="text-center p-6 bg-white rounded-lg shadow-md">
             <Globe className="w-8 h-8 text-green-500 mx-auto mb-3" />
-            <div className="text-2xl font-bold text-gray-800">{animatedStats.successRate}%</div>
+            <div className="text-2xl font-bold text-gray-800">
+              <Typed
+                strings={[`${animatedStats.successRate}%`]}
+                typeSpeed={50}
+                showCursor={false}
+              />
+            </div>
             <div className="text-sm text-gray-600">Success Rate</div>
           </div>
           
           <div className="text-center p-6 bg-white rounded-lg shadow-md">
             <Users className="w-8 h-8 text-purple-500 mx-auto mb-3" />
-            <div className="text-2xl font-bold text-gray-800">{animatedStats.satisfaction}%</div>
+            <div className="text-2xl font-bold text-gray-800">
+              <Typed
+                strings={[`${animatedStats.satisfaction}%`]}
+                typeSpeed={50}
+                showCursor={false}
+              />
+            </div>
             <div className="text-sm text-gray-600">Satisfaction</div>
           </div>
         </div>
@@ -139,25 +149,6 @@ const GlobalReach: React.FC = () => {
           </div>
         </div>
       </div>
-
-      {/* Fullscreen Modal for Mobile */}
-      {isFullscreen && (
-        <div className="fixed inset-0 bg-black bg-opacity-90 z-50 flex items-center justify-center p-4">
-          <div className="relative max-w-full max-h-full">
-            <button
-              onClick={closeFullscreen}
-              className="absolute top-4 right-4 text-white bg-black/50 rounded-full p-2 z-10"
-            >
-              <X className="w-6 h-6" />
-            </button>
-            <img 
-              src="/lovable-uploads/9c46f4e9-ac14-441f-baa9-42b7de1a02c1.gif"
-              alt="Global NCLEX Success Map - Fullscreen"
-              className="max-w-full max-h-full object-contain"
-            />
-          </div>
-        </div>
-      )}
     </section>
   );
 };
