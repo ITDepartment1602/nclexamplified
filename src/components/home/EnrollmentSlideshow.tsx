@@ -92,7 +92,7 @@ const EnrollmentSlideshow: React.FC<EnrollmentSlideshowProps> = ({
       <DialogContent className="max-w-2xl">
         <DialogHeader>
           <DialogTitle className="text-2xl font-bold text-nclex-blue text-center">
-            {isFinalStep ? finalStep.title : `Question ${currentSlide + 1} of ${questions.length}`}
+            {isFinalStep ? '' : `Question ${currentSlide + 1} of ${questions.length}`}
           </DialogTitle>
         </DialogHeader>
 
