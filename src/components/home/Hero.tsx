@@ -99,7 +99,7 @@ const Hero: React.FC = () => {
       <div 
         className="absolute inset-0 bg-cover bg-center bg-no-repeat"
         style={{
-          backgroundImage: `linear-gradient( rgba(0, 0, 0, 0.85),       /* Black */
+          backgroundImage: `linear-gradient(  rgba(40, 40, 40, 0.9),       /* Black */
   rgba(62, 83, 160, 0.85)    /* Blue */
 ), url('/lovable-uploads/f87ff03c-aad5-4e52-8972-cee4283cb0d2.png')`
         }}
