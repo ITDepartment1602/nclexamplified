@@ -136,19 +136,7 @@ const Hero: React.FC = () => {
             </div>
             <p className="text-sm mt-3 text-white/80 font-medium">Join 8326+ nurses who achieved their American dream</p>
           </div>
-          <div className="bg-white/95 backdrop-blur-sm rounded-xl shadow-xl p-6 border border-blue-100 grid grid-cols-1 md:grid-cols-2 gap-4">
-            {features.map((feature, index) => (
-              <div 
-                key={index} 
-                className="flex items-start p-3 rounded-lg hover:bg-blue-50 transition-colors"
-              >
-                <div className="bg-blue-100 p-2 rounded-lg mr-3 mt-1">
-                  {feature.icon}
-                </div>
-                <p className="text-sm font-medium text-gray-700">{feature.text}</p>
-              </div>
-            ))}
-          </div>
+      
         </div>
       </div>
 
