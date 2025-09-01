@@ -1,6 +1,6 @@
+
 import React, { useState, useEffect } from "react";
-import { Globe, MapPin, Users, X } from "lucide-react";
-import { Typed } from 'react-typed';
+import { Globe, MapPin, Users } from "lucide-react";
 
 const GlobalReach: React.FC = () => {
   const [animatedStats, setAnimatedStats] = useState({
@@ -8,6 +8,13 @@ const GlobalReach: React.FC = () => {
     countries: 0,
     successRate: 0,
     satisfaction: 0
+  });
+
+  const [typedText, setTypedText] = useState({
+    passers: "",
+    countries: "",
+    successRate: "",
+    satisfaction: ""
   });
 
   // Animation for counting numbers
@@ -45,6 +52,52 @@ const GlobalReach: React.FC = () => {
     return () => clearInterval(timer);
   }, []);
 
+  // Typing effect for final values
+  useEffect(() => {
+    const typeText = (text: string, setter: (value: string) => void) => {
+      let i = 0;
+      const timer = setInterval(() => {
+        setter(text.slice(0, i));
+        i++;
+        if (i > text.length) {
+          clearInterval(timer);
+        }
+      }, 100);
+      return timer;
+    };
+
+    const timer1 = setTimeout(() => {
+      typeText(`${animatedStats.passers.toLocaleString()}+`, (value) => 
+        setTypedText(prev => ({ ...prev, passers: value }))
+      );
+    }, 2100);
+
+    const timer2 = setTimeout(() => {
+      typeText(`${animatedStats.countries}+`, (value) => 
+        setTypedText(prev => ({ ...prev, countries: value }))
+      );
+    }, 2200);
+
+    const timer3 = setTimeout(() => {
+      typeText(`${animatedStats.successRate}%`, (value) => 
+        setTypedText(prev => ({ ...prev, successRate: value }))
+      );
+    }, 2300);
+
+    const timer4 = setTimeout(() => {
+      typeText(`${animatedStats.satisfaction}%`, (value) => 
+        setTypedText(prev => ({ ...prev, satisfaction: value }))
+      );
+    }, 2400);
+
+    return () => {
+      clearTimeout(timer1);
+      clearTimeout(timer2);
+      clearTimeout(timer3);
+      clearTimeout(timer4);
+    };
+  }, [animatedStats]);
+
   return (
     <section className="py-16 bg-gradient-to-br from-blue-50 to-white">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -74,11 +127,7 @@ const GlobalReach: React.FC = () => {
           <div className="bg-white rounded-lg shadow-md p-8 max-w-md mx-auto">
             <Users className="w-12 h-12 text-nclex-blue mx-auto mb-4" />
             <div className="text-4xl font-bold text-gray-800 mb-2">
-              <Typed
-                strings={[`${animatedStats.passers.toLocaleString()}+`]}
-                typeSpeed={50}
-                showCursor={false}
-              />
+              {typedText.passers || `${animatedStats.passers.toLocaleString()}+`}
             </div>
             <div className="text-lg text-gray-600">Global Passers</div>
           </div>
@@ -89,11 +138,7 @@ const GlobalReach: React.FC = () => {
           <div className="text-center p-6 bg-white rounded-lg shadow-md">
             <MapPin className="w-8 h-8 text-red-500 mx-auto mb-3" />
             <div className="text-2xl font-bold text-gray-800">
-              <Typed
-                strings={[`${animatedStats.countries}+`]}
-                typeSpeed={50}
-                showCursor={false}
-              />
+              {typedText.countries || `${animatedStats.countries}+`}
             </div>
             <div className="text-sm text-gray-600">Countries</div>
           </div>
@@ -101,11 +146,7 @@ const GlobalReach: React.FC = () => {
           <div className="text-center p-6 bg-white rounded-lg shadow-md">
             <Globe className="w-8 h-8 text-green-500 mx-auto mb-3" />
             <div className="text-2xl font-bold text-gray-800">
-              <Typed
-                strings={[`${animatedStats.successRate}%`]}
-                typeSpeed={50}
-                showCursor={false}
-              />
+              {typedText.successRate || `${animatedStats.successRate}%`}
             </div>
             <div className="text-sm text-gray-600">Success Rate</div>
           </div>
@@ -113,11 +154,7 @@ const GlobalReach: React.FC = () => {
           <div className="text-center p-6 bg-white rounded-lg shadow-md">
             <Users className="w-8 h-8 text-purple-500 mx-auto mb-3" />
             <div className="text-2xl font-bold text-gray-800">
-              <Typed
-                strings={[`${animatedStats.satisfaction}%`]}
-                typeSpeed={50}
-                showCursor={false}
-              />
+              {typedText.satisfaction || `${animatedStats.satisfaction}%`}
             </div>
             <div className="text-sm text-gray-600">Satisfaction</div>
           </div>
