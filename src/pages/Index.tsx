@@ -7,6 +7,7 @@ import Hero from "@/components/home/Hero";
 import StandoutSection from "@/components/home/StandoutSection";
 import ProgramOverview from "@/components/home/ProgramOverview";
 import TestimonialSlider from "@/components/home/TestimonialSlider";
+import GlobalReach from "@/components/home/GlobalReach";
 import BackToTop from "@/components/common/BackToTop";
 
 const Index: React.FC = () => {
@@ -53,6 +54,7 @@ const Index: React.FC = () => {
       <Navbar />
       <main className="flex-grow">
         <Hero />
+        <GlobalReach />
         <StandoutSection />
         <TestimonialSlider />
         <ProgramOverview />

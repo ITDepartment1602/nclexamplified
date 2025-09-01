@@ -1,3 +1,4 @@
+
 import React, { useState } from "react";
 import { 
   Award, 
@@ -136,7 +137,7 @@ const Hero: React.FC = () => {
                 <a href="https://nclexamplifiedreviewcenter.com/nclex/guest">Try our Demo!</a>
               </Button>
             </div>
-            <p className="text-sm mt-3 text-white/80 font-medium">Join 8326+ nurses who achieved their American dream</p>
+            <p className="text-sm mt-3 text-white/80 font-medium">Join 20,231+ nurses who achieved their American dream all over the world</p>
           </div>
       
         </div>
@@ -212,7 +213,7 @@ const Hero: React.FC = () => {
                   <div className="text-sm text-green-700">Passing Rate</div>
                 </div>
                 <div>
-                  <div className="text-2xl font-bold text-green-600">8,326+</div>
+                  <div className="text-2xl font-bold text-green-600">20,231+</div>
                   <div className="text-sm text-green-700">Successful Nurses</div>
                 </div>
                 <div>
