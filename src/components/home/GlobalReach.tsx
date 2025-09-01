@@ -17,6 +17,8 @@ const GlobalReach: React.FC = () => {
     satisfaction: ""
   });
 
+  const [animationComplete, setAnimationComplete] = useState(false);
+
   // Animation for counting numbers
   useEffect(() => {
     const targets = {
@@ -46,6 +48,7 @@ const GlobalReach: React.FC = () => {
       if (currentStep >= steps) {
         clearInterval(timer);
         setAnimatedStats(targets); // Ensure final values are exact
+        setAnimationComplete(true);
       }
     }, stepTime);
 
@@ -54,41 +57,38 @@ const GlobalReach: React.FC = () => {
 
   // Typing effect for final values
   useEffect(() => {
-    const typeText = (text: string, setter: (value: string) => void) => {
-      let i = 0;
-      const timer = setInterval(() => {
-        setter(text.slice(0, i));
-        i++;
-        if (i > text.length) {
-          clearInterval(timer);
-        }
-      }, 100);
+    if (!animationComplete) return;
+
+    const typeText = (text: string, setter: (value: string) => void, delay: number = 0) => {
+      const timer = setTimeout(() => {
+        let i = 0;
+        const typeTimer = setInterval(() => {
+          if (i <= text.length) {
+            setter(text.slice(0, i));
+            i++;
+          } else {
+            clearInterval(typeTimer);
+          }
+        }, 100);
+      }, delay);
       return timer;
     };
 
-    const timer1 = setTimeout(() => {
-      typeText(`${animatedStats.passers.toLocaleString()}+`, (value) => 
-        setTypedText(prev => ({ ...prev, passers: value }))
-      );
-    }, 2100);
+    const timer1 = typeText(`${animatedStats.passers.toLocaleString()}+`, (value) => 
+      setTypedText(prev => ({ ...prev, passers: value })), 100
+    );
 
-    const timer2 = setTimeout(() => {
-      typeText(`${animatedStats.countries}+`, (value) => 
-        setTypedText(prev => ({ ...prev, countries: value }))
-      );
-    }, 2200);
+    const timer2 = typeText(`${animatedStats.countries}+`, (value) => 
+      setTypedText(prev => ({ ...prev, countries: value })), 200
+    );
 
-    const timer3 = setTimeout(() => {
-      typeText(`${animatedStats.successRate}%`, (value) => 
-        setTypedText(prev => ({ ...prev, successRate: value }))
-      );
-    }, 2300);
+    const timer3 = typeText(`${animatedStats.successRate}%`, (value) => 
+      setTypedText(prev => ({ ...prev, successRate: value })), 300
+    );
 
-    const timer4 = setTimeout(() => {
-      typeText(`${animatedStats.satisfaction}%`, (value) => 
-        setTypedText(prev => ({ ...prev, satisfaction: value }))
-      );
-    }, 2400);
+    const timer4 = typeText(`${animatedStats.satisfaction}%`, (value) => 
+      setTypedText(prev => ({ ...prev, satisfaction: value })), 400
+    );
 
     return () => {
       clearTimeout(timer1);
@@ -96,7 +96,7 @@ const GlobalReach: React.FC = () => {
       clearTimeout(timer3);
       clearTimeout(timer4);
     };
-  }, [animatedStats]);
+  }, [animationComplete, animatedStats]);
 
   return (
     <section className="py-16 bg-gradient-to-br from-blue-50 to-white">
