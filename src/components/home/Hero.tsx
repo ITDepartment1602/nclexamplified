@@ -104,8 +104,8 @@ const Hero: React.FC = () => {
       />
       
       {/* Abstract blue shapes */}
-      <div className="absolute top-0 right-0 w-1/3 h-full bg-blue-200 rounded-bl-[200px] opacity-20 -z-10"></div>
-      <div className="absolute bottom-0 left-0 w-64 h-64 bg-blue-200 rounded-full translate-x-[-30%] translate-y-[30%] opacity-20 -z-10"></div>
+      <div className="absolute top-0 right-0 w-1/3 h-full bg-primary rounded-bl-[200px] opacity-20 -z-10"></div>
+      <div className="absolute bottom-0 left-0 w-64 h-64 bg-primary rounded-full translate-x-[-30%] translate-y-[30%] opacity-20 -z-10"></div>
       
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-2 items-center gap-12">
@@ -113,15 +113,15 @@ const Hero: React.FC = () => {
             <div className="flex items-center">
               <Sparkles className="text-white mr-2" />
               <span className="text-sm font-medium text-white tracking-wide uppercase">
-                Welcome to the Leading <span className="text-white font-bold">NCLEX</span> <span className="text-blue-300 font-bold">Amplified</span> Review Center
+                Welcome to the Leading <span className="text-white font-bold">NCLEX</span> <span className="text-primary font-bold">Amplified</span> Review Center
               </span>
             </div>
             <h1 className="text-4xl sm:text-5xl font-serif font-bold leading-tight text-white">
-              <span className="text-white">NCLEX</span><span className="text-blue-300"> Amplified</span> Review Center
+              <span className="text-white">NCLEX</span><span className="text-primary"> Amplified</span> Review Center
             </h1>
             <p className="text-lg text-white/90">
               Empowering Filipino nurses worldwide: bridging dreams and realities. 
-              With a 94.7% passing rate, we're committed to turning your <span className="text-white font-bold">NCLEX</span> <span className="text-blue-300 font-bold">Amplified</span> aspirations into reality.
+              With a 94.7% passing rate, we're committed to turning your <span className="text-white font-bold">NCLEX</span> <span className="text-primary font-bold">Amplified</span> aspirations into reality.
             </p>
             <div className="pt-6 flex items-center gap-3">
               <Button 
