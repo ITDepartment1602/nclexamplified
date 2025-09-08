@@ -29,24 +29,6 @@ const Navbar: React.FC = () => {
           <Link to="/services" className="text-gray-700 text-sm font-medium transition hover:text-nclex-blue">Services</Link>
           <Link to="/contact" className="text-gray-700 text-sm font-medium transition hover:text-nclex-blue">Contact</Link>
 
-          {/* Facebook Icon */}
-          <a
-            href="https://www.facebook.com/NCLEX.Amplified.Official"
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="Facebook Page"
-          >
-            <svg
-              width="22"
-              height="22"
-              fill="currentColor"
-              viewBox="0 0 24 24"
-              className="text-nclex-blue hover:scale-110 transition-transform"
-            >
-              <path d="M22 12a10 10 0 10-11.5 9.9v-7h-2v-2.9h2V9.5a3 3 0 013-3h2.05v2.38H15c-.5 0-1 .4-1 1v2.2h2.6l-.4 2.9H14v7A10 10 0 0022 12z" />
-            </svg>
-          </a>
-
           {/* Login */}
           <a href="https://nclexamplifiedreviewcenter.com/nclex/login">
             <Button className="ml-2 px-5 py-2 bg-primary text-white text-sm font-semibold rounded shadow hover:bg-nclex-blue transition">
