@@ -57,7 +57,7 @@ const Navbar: React.FC = () => {
           {/* Register (Modal Trigger) */}
           <Button
             onClick={() => setShowModal(true)}
-            className="ml-2 px-5 py-2 bg-primary text-white text-sm font-semibold rounded shadow hover:bg-nclex-blue transition"
+            className="ml-2 px-5 py-2 bg-secondary text-white text-sm font-semibold rounded shadow hover:bg-nclex-blue transition"
           >
             Register
           </Button>
@@ -107,6 +107,13 @@ const Navbar: React.FC = () => {
                 Login
               </Button>
             </a>
+  
+          <Button
+            onClick={() => setShowModal(true)}
+            className="mt-4 px-5 py-2 bg-secondary text-white text-sm font-semibold rounded shadow hover:bg-nclex-blue transition"
+          >
+            Register
+          </Button>
           </div>
         </div>
       </div>
