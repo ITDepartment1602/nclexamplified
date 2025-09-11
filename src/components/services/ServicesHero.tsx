@@ -4,9 +4,9 @@ import { Badge } from "@/components/ui/badge";
 
 const ServicesHero: React.FC = () => {
   return (
-    <section className="py-20 bg-gradient-to-r from-blue-50 to-blue-100 font-sans">
+    <section className="py-24 bg-gradient-to-br from-blue-50 via-white to-blue-50 font-sans">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="max-w-3xl mx-auto text-center">
+        <div className="max-w-4xl mx-auto text-center">
           <Badge className="mb-4 bg-nclex-blue text-white border-transparent">Our Services</Badge>
           <h1 className="text-4xl md:text-5xl font-serif font-bold text-gray-900 mb-6" style={{ fontFamily: 'Poppins, sans-serif' }}>
             <span className="text-nclex-blue">NCLEX</span> <span className="text-nclex-red">AMPLIFIED</span> - Your Ultimate Key to NCLEX Success!
@@ -18,13 +18,13 @@ const ServicesHero: React.FC = () => {
             Why settle for the usual when you can have the most complete, powerful, and proven NCLEX review experience?
           </p>
          
-          <div className="mt-10 grid grid-cols-2 md:grid-cols-3 gap-3 max-w-lg mx-auto">
-            <div className="px-4 py-2 bg-blue-100 rounded-full text-nclex-blue text-sm font-medium">Comprehensive</div>
-            <div className="px-4 py-2 bg-blue-100 rounded-full text-nclex-blue text-sm font-medium">Personalized</div>
-            <div className="px-4 py-2 bg-blue-100 rounded-full text-nclex-blue text-sm font-medium">Affordable</div>
-            <div className="px-4 py-2 bg-blue-100 rounded-full text-nclex-blue text-sm font-medium">Up-to-date</div>
-            <div className="px-4 py-2 bg-blue-100 rounded-full text-nclex-blue text-sm font-medium">Unlimited</div>
-            <div className="px-4 py-2 bg-blue-100 rounded-full text-nclex-blue text-sm font-medium">Accessible</div>
+          <div className="mt-12 grid grid-cols-2 md:grid-cols-3 gap-4 max-w-2xl mx-auto">
+            <div className="px-6 py-3 bg-gradient-to-r from-blue-100 to-blue-50 rounded-full text-nclex-blue text-sm font-semibold border border-blue-200 hover:shadow-md transition-all duration-300">Comprehensive</div>
+            <div className="px-6 py-3 bg-gradient-to-r from-blue-100 to-blue-50 rounded-full text-nclex-blue text-sm font-semibold border border-blue-200 hover:shadow-md transition-all duration-300">Personalized</div>
+            <div className="px-6 py-3 bg-gradient-to-r from-blue-100 to-blue-50 rounded-full text-nclex-blue text-sm font-semibold border border-blue-200 hover:shadow-md transition-all duration-300">Affordable</div>
+            <div className="px-6 py-3 bg-gradient-to-r from-blue-100 to-blue-50 rounded-full text-nclex-blue text-sm font-semibold border border-blue-200 hover:shadow-md transition-all duration-300">Up-to-date</div>
+            <div className="px-6 py-3 bg-gradient-to-r from-blue-100 to-blue-50 rounded-full text-nclex-blue text-sm font-semibold border border-blue-200 hover:shadow-md transition-all duration-300">Unlimited</div>
+            <div className="px-6 py-3 bg-gradient-to-r from-blue-100 to-blue-50 rounded-full text-nclex-blue text-sm font-semibold border border-blue-200 hover:shadow-md transition-all duration-300">Accessible</div>
           </div>
         </div>
       </div>

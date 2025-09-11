@@ -68,6 +68,7 @@
     
     --nclex-blue: 224 45% 44%;
     --nclex-red: 359 49% 50%;
+    --studium-primary: 204 49% 33%;
   }
 
   .dark {
@@ -145,8 +146,20 @@
   background-color: #c04041 !important;
 }
 
+.bg-studium-primary {
+  background-color: #1B4965 !important;
+}
+
+.text-studium-primary {
+  color: #1B4965 !important;
+}
+
 .hover-nclex-blue:hover {
   background-color: #354889 !important;
+}
+
+.hover-studium-primary:hover {
+  background-color: #0f3a52 !important;
 }
 
 /* Remove any left-over purple utility, purple classes, or purple bg/text */
