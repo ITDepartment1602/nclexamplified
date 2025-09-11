@@ -30,22 +30,6 @@ const contactSections = [
     ]
   },
   {
-    icon: <CreditCard className="h-10 w-10 text-nclex-blue" />,
-    title: "NCLEX Amplified Payment Transaction",
-    items: [
-      {
-        icon: <Phone className="h-5 w-5 text-gray-500" />,
-        label: "Phone Number",
-        value: "09054741481"
-      },
-      {
-        icon: <Mail className="h-5 w-5 text-gray-500" />,
-        label: "Email Address",
-        value: "nclexamplifiedpayment@gmail.com"
-      }
-    ]
-  },
-  {
     icon: <MessageCircle className="h-10 w-10 text-nclex-blue" />,
     title: "NCLEX Amplified Consultation",
     items: [
@@ -57,7 +41,7 @@ const contactSections = [
       {
         icon: <Mail className="h-5 w-5 text-gray-500" />,
         label: "Email Address",
-        value: "nclexamplifiedconsultation@gmail.com"
+        value: "consultation.amplifiedrc@gmail.com"
       }
     ]
   },
@@ -94,7 +78,7 @@ const ContactInfo: React.FC = () => {
         </div>
         
         <div className="max-w-6xl mx-auto">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
             {contactSections.map((section, index) => (
               <Card key={index} className="border-blue-100 overflow-hidden hover:shadow-md transition-all duration-300">
                 <CardContent className="p-6">

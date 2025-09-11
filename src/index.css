@@ -10,11 +10,13 @@
   }
   
   body {
-    @apply text-gray-800 font-sans;
+    @apply text-gray-800;
+    font-family: 'Poppins', sans-serif;
   }
   
   h1, h2, h3, h4, h5, h6 {
     @apply text-gray-900;
+    font-family: 'Poppins', sans-serif;
   }
 }
 
@@ -116,7 +118,8 @@
   }
 
   body {
-    @apply bg-background text-foreground font-sans;
+    @apply bg-background text-foreground;
+    font-family: 'Poppins', sans-serif;
   }
 }
 
