@@ -9,11 +9,13 @@ const ServicesHero: React.FC = () => {
         <div className="max-w-3xl mx-auto text-center">
           <Badge className="mb-4 bg-nclex-blue text-white border-transparent">Our Services</Badge>
           <h1 className="text-4xl md:text-5xl font-serif font-bold text-gray-900 mb-6" style={{ fontFamily: 'Poppins, sans-serif' }}>
-            What Services We Offer
+            <span className="text-nclex-blue">NCLEX</span> <span className="text-nclex-red">AMPLIFIED</span> - Your Ultimate Key to NCLEX Success!
           </h1>
-          <p className="text-lg text-gray-700" style={{ fontFamily: 'Poppins, sans-serif' }}>
-            We provide comprehensive NCLEX preparation services designed to maximize your chances of success
-            on your first attempt. Our programs are tailored to meet the needs of Filipino nurses worldwide.
+          <p className="text-lg text-gray-700 mb-4" style={{ fontFamily: 'Poppins, sans-serif' }}>
+            "Make time for the NCLEX review, your American dream begins once you pass the Exam"
+          </p>
+          <p className="text-base text-gray-600" style={{ fontFamily: 'Poppins, sans-serif' }}>
+            Why settle for the usual when you can have the most complete, powerful, and proven NCLEX review experience?
           </p>
          
           <div className="mt-10 grid grid-cols-2 md:grid-cols-3 gap-3 max-w-lg mx-auto">
