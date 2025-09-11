@@ -41,15 +41,18 @@ const Hero: React.FC = () => {
             <div className="flex items-center">
               <Sparkles className="text-white mr-2" />
               <span className="text-sm font-medium text-white tracking-wide uppercase">
-                Welcome to the Leading <span className="text-white font-bold">NCLEX</span> <span className="text-blue-300 font-bold">Amplified</span> Review Center
+                Your Ultimate Key to <span className="text-white font-bold">NCLEX</span> <span className="text-blue-300 font-bold">Success!</span>
               </span>
             </div>
             <h1 className="text-4xl sm:text-5xl font-serif font-bold leading-tight text-white">
               <span className="text-white">NCLEX</span><span className="text-blue-300"> Amplified</span> Review Center
             </h1>
             <p className="text-lg text-white/90">
-              Empowering Filipino nurses worldwide: bridging dreams and realities. 
-              With a 94.7% passing rate, we're committed to turning your <span className="text-white font-bold">NCLEX</span> <span className="text-blue-300 font-bold">Amplified</span> aspirations into reality.
+              "Make time for the NCLEX review, your American dream begins once you pass the Exam"
+            </p>
+            <p className="text-base text-white/80">
+              Why settle for the usual when you can have the most complete, powerful, and proven NCLEX review experience? 
+              With 94.7% passing rate and unlimited review until you pass!
             </p>
             <div className="pt-6 flex items-center gap-3">
               <Button 

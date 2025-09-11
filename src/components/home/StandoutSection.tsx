@@ -15,49 +15,49 @@ import { Card, CardContent } from "@/components/ui/card";
 
 const features = [
   {
-    icon: <Award className="h-10 w-10 text-nclex-blue" />,
-    title: "The Leading and Most Awarded Center",
-    description: "Numerous individual customers have recognized NCLEX Amplified as the Most Outstanding Review Center in the Philippines."
-  },
-  {
-    icon: <DollarSign className="h-10 w-10 text-nclex-blue" />,
-    title: "Most Affordable Review Program",
-    description: "NCLEX Amplified Review Center is a place where a high level of learning for everyone is passed."
-  },
-  {
     icon: <Infinity className="h-10 w-10 text-nclex-blue" />,
-    title: "With Unlimited Review Until you Pass",
-    description: "You have Free Unlimited reviews until you Pass the Exam 94.7% of Our Students Pass the NCLEX Exam on Their First Attempt."
+    title: "Unlimited Review Until You Pass",
+    description: "No expiration, no limits — attend as many cycles as you need. Learn from top-performing USRN passers with proven experience."
+  },
+  {
+    icon: <Users className="h-10 w-10 text-nclex-blue" />,
+    title: "Live, Interactive Zoom Classes",
+    description: "Real-time coaching & discussion of ALL NCLEX concepts with regular updates aligned with NCLEX Next Gen (NGN) standards."
   },
   {
     icon: <FileText className="h-10 w-10 text-nclex-blue" />,
-    title: "Consistently Updated Materials",
-    description: "Our review materials are consistently updated to align with the latest EXAM in the NCLEX world."
+    title: "4,000+ NGN Question Bank",
+    description: "Practice with trend-based NCLEX questions and understand the 'why' with detailed rationales, just like UWorld and Archer."
   },
   {
     icon: <BarChart2 className="h-10 w-10 text-nclex-blue" />,
     title: "94.7% Passing Rate",
-    description: "2021-2022 NCLEX Amplified Pass Rates show excellence across multiple categories of candidates, U.S. and international."
-  },
-  {
-    icon: <Users className="h-10 w-10 text-nclex-blue" />,
-    title: "Personalized 1-on-1 Consultation",
-    description: "The only Review Center that offers personalized NCLEX 1-on-1 Consultation on an individual basis via Zoom."
+    description: "Proven track record with 20,231+ nurses who achieved their American dream all over the world."
   },
   {
     icon: <Layers className="h-10 w-10 text-nclex-blue" />,
-    title: "Hybrid Approach",
-    description: "Concept and Q&A (NCLEX CONCEPTS AND APPLICATION) Comprehensive NCLEX approach based on the latest trends."
+    title: "Amplified Dashboard Access",
+    description: "Our very own website! Missed a class? Watch recordings anytime. Study at your own pace, anywhere, anytime."
   },
   {
-    icon: <Pill className="h-10 w-10 text-nclex-blue" />,
-    title: "Focused Specialty Drills",
-    description: "5 days pharma, 5 days nursing skills enhancing top-classified techniques in answering specialized questions."
+    icon: <Award className="h-10 w-10 text-nclex-blue" />,
+    title: "FREE Reviewer PDFs & Ebooks",
+    description: "Care for the NCLEX RN, Practice and Exercises (4th Edition), Linda A. LaCharity – Prioritization & Delegation, and more."
   },
   {
     icon: <Target className="h-10 w-10 text-nclex-blue" />,
-    title: "NCLEX Mastery (Final Coaching)",
-    description: "The last touch or polishing of all the needed topics for the examinee to bring in the exam center and pass the NCLEX."
+    title: "Simulated Mock Exams",
+    description: "Adaptive style exams that train you under real-exam conditions with 4-hour full-length mock exams and rationales."
+  },
+  {
+    icon: <DollarSign className="h-10 w-10 text-nclex-blue" />,
+    title: "Most Affordable Program",
+    description: "High-quality NCLEX preparation at the most competitive prices, making your American dream accessible to everyone."
+  },
+  {
+    icon: <Pill className="h-10 w-10 text-nclex-blue" />,
+    title: "Comprehensive Study Cycle",
+    description: "50+ lectures per cycle, 20 NCLEX drills, specialized pharmacy and nursing skills training with the 'Amplified Way' method."
   }
 ];
 
@@ -67,12 +67,12 @@ const StandoutSection: React.FC = () => {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center max-w-3xl mx-auto mb-16">
           <h2 className="text-3xl font-bold font-serif text-gray-900 mb-4">
-            What makes NCLEX Amplified a standout choice?
+            Why Choose NCLEX Amplified? We Don't Just Prepare You to Pass...
           </h2>
           <div className="w-20 h-1 bg-nclex-blue mx-auto mb-6"></div>
           <p className="text-gray-600">
-            We're dedicated to providing you with the most comprehensive and effective NCLEX review experience, 
-            designed to maximize your chances of success on your first attempt.
+            <strong>We prepare you to conquer the NCLEX with confidence!</strong> From world-class lecturers to unlimited reviews, 
+            from global accessibility to personalized mentorship, NCLEX Amplified gives you the competitive edge other review centers can't match.
           </p>
         </div>
         

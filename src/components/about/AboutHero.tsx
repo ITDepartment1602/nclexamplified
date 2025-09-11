@@ -12,11 +12,13 @@ const AboutHero: React.FC = () => {
             <span className="text-nclex-blue">NCLEX</span>
             <span className="text-nclex-red"> Amplified</span>
           </h1>
-          <p className="text-lg text-gray-700 mb-8">
-            Founded in 2021, <span className="text-nclex-blue font-bold">NCLEX</span><span className="text-nclex-red font-bold"> Amplified</span> Review Center, 
-            one leading NCLEX Review Center in the Philippines, 
-            provides the most affordable and reliable review program that produces high passing percentage 
-            around the globe (USA, UK, Middle East and Canada).
+          <p className="text-lg text-gray-700 mb-4">
+            Founded in 2021, <span className="text-nclex-blue font-bold">NCLEX</span><span className="text-nclex-red font-bold"> Amplified</span> Review Center 
+            is the leading NCLEX Review Center in the Philippines with a proven 94.7% passing rate.
+          </p>
+          <p className="text-base text-gray-600 mb-8">
+            We provide the most comprehensive, powerful, and proven NCLEX review experience with unlimited review until you pass, 
+            helping 20,231+ Filipino nurses achieve their American dream worldwide (USA, UK, Middle East and Canada).
           </p>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-12">
             <div className="bg-white rounded-xl p-6 shadow-md border border-blue-100">

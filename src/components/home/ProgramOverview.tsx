@@ -12,32 +12,32 @@ import {
 
 const features = [
   {
-    icon: <Clock className="w-6 h-6 text-nclex-blue" />,
-    text: "Enjoy our unlimited review at your pace"
-  },
-  {
-    icon: <CalendarDays className="w-6 h-6 text-nclex-blue" />,
-    text: "1 session Study Plan Consultation"
-  },
-  {
     icon: <BookCheck className="w-6 h-6 text-nclex-blue" />,
-    text: "NGN-ready Question & Answer Books Compilation"
+    text: "📘 Concept Mastery – 32 Key Topics (160 Hours)"
   },
   {
     icon: <CheckCircle2 className="w-6 h-6 text-nclex-blue" />,
-    text: "Your contract ends when you \"PASS THE NCLEX\""
-  },
-  {
-    icon: <BookOpen className="w-6 h-6 text-nclex-blue" />,
-    text: "Boost your NCLEX Mastery with the exclusive NCLEX Success Guide E-Book"
-  },
-  {
-    icon: <Video className="w-6 h-6 text-nclex-blue" />,
-    text: "UWorld-Archer Question and Answer Drills (Video)"
+    text: "🧠 Question Drills – 21 Sessions (840 Questionnaires)"
   },
   {
     icon: <FileText className="w-6 h-6 text-nclex-blue" />,
-    text: "2 Editions of Prioritization & Delegation Practice Test E-Books"
+    text: "🧪 Mock Exams – 6 Full-Length Exams (420 Questionnaires)"
+  },
+  {
+    icon: <Video className="w-6 h-6 text-nclex-blue" />,
+    text: "🎯 Final Coaching – 9 Sessions (72 Hours)"
+  },
+  {
+    icon: <BookOpen className="w-6 h-6 text-nclex-blue" />,
+    text: "🔐 NCLEX Secrets – Exclusive high-yield questionnaires"
+  },
+  {
+    icon: <CalendarDays className="w-6 h-6 text-nclex-blue" />,
+    text: "📊 Smart Calendar tailored to your schedule"
+  },
+  {
+    icon: <Clock className="w-6 h-6 text-nclex-blue" />,
+    text: "🎥 Unlimited access to recorded videos until you pass"
   }
 ];
 
@@ -47,13 +47,15 @@ const ProgramOverview: React.FC = () => {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center max-w-3xl mx-auto mb-16">
           <h2 className="text-3xl font-bold font-serif text-gray-900 mb-4">
-            PROGRAM OVERVIEW
+            NCLEX COMPREHENSIVE REVIEW PROGRAM
           </h2>
           <div className="w-20 h-1 bg-nclex-blue mx-auto mb-6"></div>
-          <p className="text-gray-600">
-            Our comprehensive program is designed to provide you with all the tools and support 
-            you need to succeed in your NCLEX journey.
+          <p className="text-gray-600 mb-4">
+            An intensive and structured review program tailored to help aspiring nurses successfully pass the NCLEX-RN on their first attempt.
           </p>
+          <div className="bg-nclex-blue text-white px-6 py-3 rounded-full inline-block">
+            <span className="font-bold">Program Duration: 1 Cycle = 4 Months</span>
+          </div>
         </div>
         
         <div className="grid grid-cols-1 lg:grid-cols-5 gap-8">
