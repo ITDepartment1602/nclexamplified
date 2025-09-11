@@ -13,31 +13,31 @@ import {
 const features = [
   {
     icon: <BookCheck className="w-6 h-6 text-nclex-blue" />,
-    text: "📘 Concept Mastery – 32 Key Topics (160 Hours)"
+    text: "Concept Mastery – 32 Key Topics (160 Hours)"
   },
   {
     icon: <CheckCircle2 className="w-6 h-6 text-nclex-blue" />,
-    text: "🧠 Question Drills – 21 Sessions (840 Questionnaires)"
+    text: "Question Drills – 21 Sessions (840 Questionnaires)"
   },
   {
     icon: <FileText className="w-6 h-6 text-nclex-blue" />,
-    text: "🧪 Mock Exams – 6 Full-Length Exams (420 Questionnaires)"
+    text: "Mock Exams – 6 Full-Length Exams (420 Questionnaires)"
   },
   {
     icon: <Video className="w-6 h-6 text-nclex-blue" />,
-    text: "🎯 Final Coaching – 9 Sessions (72 Hours)"
+    text: "Final Coaching – 9 Sessions (72 Hours)"
   },
   {
     icon: <BookOpen className="w-6 h-6 text-nclex-blue" />,
-    text: "🔐 NCLEX Secrets – Exclusive high-yield questionnaires"
+    text: "NCLEX Secrets – Exclusive high-yield questionnaires"
   },
   {
     icon: <CalendarDays className="w-6 h-6 text-nclex-blue" />,
-    text: "📊 Smart Calendar tailored to your schedule"
+    text: "Smart Calendar tailored to your schedule"
   },
   {
     icon: <Clock className="w-6 h-6 text-nclex-blue" />,
-    text: "🎥 Unlimited access to recorded videos until you pass"
+    text: "Unlimited access to recorded videos until you pass"
   }
 ];
 
