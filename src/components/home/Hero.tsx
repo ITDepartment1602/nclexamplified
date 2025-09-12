@@ -61,7 +61,7 @@ const Hero: React.FC = () => {
               >
                 Enroll Now!
               </Button>
-              <Button className="border-white text-white bg-white hover:bg-transparent hover:text-nclex-blue rounded-full px-8 py-6 text-lg border-2">
+              <Button className="border-white text-black bg-white hover:bg-transparent hover:text-white rounded-full px-8 py-6 text-lg border-2">
                 <a href="https://nclexamplifiedreviewcenter.com/nclex/video%20tutorials/video/guest.php?bundle_name=BUNDLE&course_name=Demo">Go to Lectures Demo</a>
               </Button>
             </div>
