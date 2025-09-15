@@ -62,7 +62,7 @@ const Hero: React.FC = () => {
                 Enroll Now!
               </Button>
               <Button className="border-white text-black bg-white hover:bg-transparent hover:text-white rounded-full px-8 py-6 text-lg border-2">
-                <a href="https://nclexamplifiedreviewcenter.com/nclex/video%20tutorials/video/guest.php?bundle_name=BUNDLE&course_name=Demo">Go to Lectures Demo</a>
+                <a href="https://nclexamplifiedreviewcenter.com/nclex/video%20tutorials/video/guest.php?bundle_name=BUNDLE&course_name=Demo">Dashboard Demo</a>
               </Button>
             </div>
             <p className="text-sm mt-3 text-white/80 font-medium">Join 20,231+ nurses who achieved their American dream all over the world</p>
