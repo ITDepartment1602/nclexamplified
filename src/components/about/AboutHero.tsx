@@ -1,41 +1,96 @@
-
 import React from "react";
+import { motion } from "framer-motion";
 import { Badge } from "@/components/ui/badge";
+import { CheckCircle } from "lucide-react";
 
 const AboutHero: React.FC = () => {
   return (
-    <section className="py-20 bg-gradient-to-r from-blue-50 to-blue-100 font-sans">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="max-w-3xl mx-auto text-center">
-          <Badge className="mb-4 bg-nclex-blue text-white border-transparent">About Us</Badge>
-          <h1 className="text-4xl md:text-5xl font-serif font-bold text-gray-900 mb-6">
-            <span className="text-nclex-blue">NCLEX</span>
-            <span className="text-nclex-red"> Amplified</span>
-          </h1>
-          <p className="text-lg text-gray-700 mb-4">
-            Founded in 2021, <span className="text-nclex-blue font-bold">NCLEX</span><span className="text-nclex-red font-bold"> Amplified</span> Review Center 
-            is the leading NCLEX Review Center in the Philippines with a proven 94.7% passing rate.
-          </p>
-          <p className="text-base text-gray-600 mb-8">
-            We provide the most comprehensive, powerful, and proven NCLEX review experience with unlimited review until you pass, 
-            helping 20,231+ Filipino nurses achieve their American dream worldwide (USA, UK, Middle East and Canada).
-          </p>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-12">
-            <div className="bg-white rounded-xl p-6 shadow-md border border-blue-100">
-              <h2 className="text-xl font-bold text-nclex-blue mb-3">Our Mission</h2>
-              <p className="text-gray-700">
-                To help all Filipino Nurses in every corner of the world to pass the NCLEX Exam and 
-                achieve their AMERICAN DREAM.
-              </p>
-            </div>
-            <div className="bg-white rounded-xl p-6 shadow-md border border-blue-100">
-              <h2 className="text-xl font-bold text-nclex-blue mb-3">Our Vision</h2>
-              <p className="text-gray-700">
-                We are here to provide the LEGIT UNLIMITED NCLEX review program in the market with 
-                a high quality teaching style.
-              </p>
-            </div>
-          </div>
+    <section className="relative py-28 overflow-hidden font-sans">
+      {/* ✨ Soft Blue-White Gradient Background */}
+      <div
+        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+        style={{
+          backgroundImage: `linear-gradient(
+            rgba(255,255,255,0.9),
+            rgba(200,220,255,0.75)
+          ), url('/lovable-uploads/aboutbg.png')`,
+        }}
+      />
+
+      {/* ✅ Content Section */}
+      <div className="relative container mx-auto px-6 text-center max-w-4xl">
+        <Badge className="mb-6 bg-nclex-blue text-white px-4 py-1 text-sm font-small tracking-wide">
+          About NCLEX Amplified
+        </Badge>
+
+        <motion.h1
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
+          className="text-4xl md:text-5xl lg:text-7xl font-extrabold text-[#3E58A2] leading-[1.1] tracking-[-0.015em] drop-shadow-md"
+        >
+          Empowering Filipino Nurses For
+          <br />
+          <span className="text-[#BE4143]">Global Success</span>
+        </motion.h1>
+
+        <p className="mt-8 text-lg md:text-xl text-gray-700 leading-relaxed max-w-3xl mx-auto text-balance">
+          Founded in 2021,{" "}
+          <span className="font-semibold text-nclex-blue">NCLEX </span>{" "}
+          <span className="font-semibold text-nclex-red">Amplified </span>
+          <span>Review Center</span> is the leading NCLEX Review Center in the
+          Philippines with a proven{" "}
+          <span className="font-semibold text-nclex-blue">
+            94.7% passing rate
+          </span>
+          . We provide the most comprehensive, powerful, and proven NCLEX review
+          experience with{" "}
+          <span className="font-semibold text-nclex-blue">
+            unlimited review until you pass
+          </span>
+          , helping{" "}
+          <span className="font-semibold text-nclex-red">
+            20,231+ Filipino nurses
+          </span>{" "}
+          achieve their American dream worldwide —{" "}
+          <span className="font-semibold text-nclex-blue">
+            USA, UK, Middle East & Canada.
+          </span>
+        </p>
+
+        {/* 🌟 Mission & Vision */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-20">
+          <motion.div
+            className="bg-white/80 backdrop-blur-md p-8 rounded-2xl shadow-lg border border-gray-100"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.1 }}
+            viewport={{ once: true }}
+          >
+            <h2 className="text-2xl font-bold text-nclex-blue mb-4 flex items-center gap-3 tracking-tight">
+              <CheckCircle className="w-6 h-6 text-nclex-blue" /> Our Mission
+            </h2>
+            <p className="text-gray-700 leading-relaxed text-base">
+              To help all Filipino Nurses around the world pass the NCLEX Exam
+              and achieve their American dream.
+            </p>
+          </motion.div>
+
+          <motion.div
+            className="bg-white/80 backdrop-blur-md p-8 rounded-2xl shadow-lg border border-gray-100"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+            viewport={{ once: true }}
+          >
+            <h2 className="text-2xl font-bold text-nclex-blue mb-4 flex items-center gap-3 tracking-tight">
+              <CheckCircle className="w-6 h-6 text-nclex-blue" /> Our Vision
+            </h2>
+            <p className="text-gray-700 leading-relaxed text-base">
+              To remain the most trusted NCLEX Review Program providing LEGIT
+              Unlimited Review with high-quality teaching.
+            </p>
+          </motion.div>
         </div>
       </div>
     </section>
