@@ -1,16 +1,15 @@
-
 import React from "react";
-import { 
-  MessageCircle, 
-  Phone, 
-  Mail, 
-  CreditCard, 
+import {
+  MessageCircle,
+  Phone,
+  Mail,
   HelpCircle,
   Facebook,
-  ExternalLink
+  ExternalLink,
 } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
+import { motion } from "framer-motion";
 
 const contactSections = [
   {
@@ -18,109 +17,145 @@ const contactSections = [
     title: "NCLEX Amplified Official Page",
     items: [
       {
-        icon: <Phone className="h-5 w-5 text-gray-500" />,
+        icon: <Phone className="h-5 w-5 text-nclex-blue" />,
         label: "Phone Number",
-        value: "09261021491"
+        value: "09261021491",
       },
       {
-        icon: <Mail className="h-5 w-5 text-gray-500" />,
+        icon: <Mail className="h-5 w-5 text-nclex-blue" />,
         label: "Email Address",
-        value: "nclexamplified@gmail.com"
-      }
-    ]
+        value: "nclexamplified@gmail.com",
+      },
+    ],
   },
   {
     icon: <MessageCircle className="h-10 w-10 text-nclex-blue" />,
     title: "NCLEX Amplified Consultation",
     items: [
       {
-        icon: <Phone className="h-5 w-5 text-gray-500" />,
+        icon: <Phone className="h-5 w-5 text-nclex-blue" />,
         label: "Phone Number",
-        value: "09165297237"
+        value: "09165297237",
       },
       {
-        icon: <Mail className="h-5 w-5 text-gray-500" />,
+        icon: <Mail className="h-5 w-5 text-nclex-blue" />,
         label: "Email Address",
-        value: "consultation.amplifiedrc@gmail.com"
-      }
-    ]
+        value: "consultation.amplifiedrc@gmail.com",
+      },
+    ],
   },
   {
     icon: <HelpCircle className="h-10 w-10 text-nclex-blue" />,
     title: "NCLEX Amplified Technical Support",
     items: [
       {
-        icon: <Phone className="h-5 w-5 text-gray-500" />,
+        icon: <Phone className="h-5 w-5 text-nclex-blue" />,
         label: "Phone Number",
-        value: "09858099011"
+        value: "09858099011",
       },
       {
-        icon: <Mail className="h-5 w-5 text-gray-500" />,
+        icon: <Mail className="h-5 w-5 text-nclex-blue" />,
         label: "Email Address",
-        value: "nclexamplifiedtechnical@gmail.com"
-      }
-    ]
-  }
+        value: "nclexamplifiedtechnical@gmail.com",
+      },
+    ],
+  },
 ];
 
 const ContactInfo: React.FC = () => {
   return (
-    <section className="py-20 bg-white">
-      <div className="mx-auto px-4 sm:px-6 lg:px-10">
-        <div className="text-center max-w-3xl mx-auto mb-16">
-          <h2 className="text-3xl font-bold font-serif text-gray-900 mb-4">
-            Contact Information
+    <section className="py-24 bg-white relative overflow-hidden">
+      {/* ====================== */}
+      {/* Main Content Only */}
+      {/* ====================== */}
+      <div className="relative z-10 mx-auto px-4 sm:px-6 lg:px-10">
+        {/* Heading */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          className="text-center max-w-3xl mx-auto mb-20"
+        >
+          <h2 className="text-4xl font-extrabold text-gray-900 mb-4">
+            Connect with Our Team of NCLEX Experts
           </h2>
-          <div className="w-20 h-1 bg-nclex-blue mx-auto mb-6"></div>
-          <p className="text-gray-600">
-            For Questions and Queries, feel free to message our Designated Links
+          <p className="text-lg text-gray-600 font-medium">
+            Fast support. Real answers. Let’s build your NCLEX success plan
+            together.
           </p>
-        </div>
-        
-        <div className="max-w-6xl mx-auto">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
-            {contactSections.map((section, index) => (
-              <Card key={index} className="border-blue-100 overflow-hidden hover:shadow-md transition-all duration-300">
-                <CardContent className="p-6">
-                  <div className="flex flex-col items-center text-center mb-4">
-                    <div className="rounded-full w-14 h-14 bg-blue-100 flex items-center justify-center mb-4">
+        </motion.div>
+
+        {/* Contact Cards */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-20">
+          {contactSections.map((section, index) => (
+            <motion.div
+              key={index}
+              whileHover={{ scale: 1.03 }}
+              transition={{ type: "spring", stiffness: 200 }}
+              className="relative"
+            >
+              <Card className="border border-blue-100 shadow-sm hover:shadow-xl transition-all duration-300 rounded-2xl bg-white">
+                <CardContent className="p-6 text-center">
+                  <div className="flex flex-col items-center mb-4">
+                    <div className="rounded-full w-16 h-16 bg-blue-50 flex items-center justify-center mb-4">
                       {section.icon}
                     </div>
-                    <h3 className="text-lg font-semibold text-gray-900 leading-tight">{section.title}</h3>
+                    <h3 className="text-lg font-bold text-gray-900">
+                      {section.title}
+                    </h3>
                   </div>
-                  
-                  <div className="space-y-4 mt-6">
+                  <div className="space-y-4">
                     {section.items.map((item, itemIndex) => (
-                      <div key={itemIndex} className="text-center">
-                        <div className="flex justify-center mb-2">
+                      <div key={itemIndex}>
+                        <div className="flex justify-center mb-1">
                           {item.icon}
                         </div>
                         <p className="text-sm text-gray-500">{item.label}</p>
-                        <p className="text-gray-700 font-medium text-sm break-words">{item.value}</p>
+                        <p className="text-gray-800 font-semibold text-sm">
+                          {item.value}
+                        </p>
                       </div>
                     ))}
                   </div>
                 </CardContent>
               </Card>
-            ))}
-          </div>
-          
-          <div className="flex flex-col sm:flex-row gap-6 justify-center max-w-md mx-auto">
-            <Button asChild className="bg-blue-600 hover:bg-blue-700 h-14 text-base font-medium flex-1">
-              <a href="https://nclexamplifiedreviewcenter.com/nclex/login" className="flex items-center justify-center">
-                <span>Student Login</span>
-                <ExternalLink className="h-4 w-4 ml-2" />
-              </a>
-            </Button>
-            
-            <Button asChild className="bg-nclex-blue hover:bg-blue-700 h-14 text-base font-medium flex-1">
-              <a href="https://www.facebook.com/NCLEX.Amplified.Official" className="flex items-center justify-center">
-                <Facebook className="h-5 w-5 mr-2" />
-                <span>Facebook Page</span>
-              </a>
-            </Button>
-          </div>
+            </motion.div>
+          ))}
         </div>
+
+        {/* CTA Buttons */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          className="flex flex-col sm:flex-row gap-6 justify-center max-w-xl mx-auto"
+        >
+          <Button
+            asChild
+            className="bg-blue-600 hover:bg-blue-700 h-14 text-base font-semibold flex-1 rounded-xl"
+          >
+            <a
+              href="https://nclexamplifiedreviewcenter.com/nclex/login"
+              className="flex items-center justify-center"
+            >
+              <span>Student Login</span>
+              <ExternalLink className="h-4 w-4 ml-2" />
+            </a>
+          </Button>
+
+          <Button
+            asChild
+            className="bg-nclex-blue hover:bg-blue-600 h-14 text-base font-semibold flex-1 rounded-xl"
+          >
+            <a
+              href="https://www.facebook.com/NCLEX.Amplified.Official"
+              className="flex items-center justify-center"
+            >
+              <Facebook className="h-5 w-5 mr-2" />
+              <span>Facebook Page</span>
+            </a>
+          </Button>
+        </motion.div>
       </div>
     </section>
   );
