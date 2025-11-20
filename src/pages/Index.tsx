@@ -9,6 +9,7 @@ import ProgramOverview from "@/components/home/ProgramOverview";
 import TestimonialSlider from "@/components/home/TestimonialSlider";
 import GlobalReach from "@/components/home/GlobalReach";
 import BackToTop from "@/components/common/BackToTop";
+import CycleCalendar from "@/components/home/CycleCalendar";
 
 const Index: React.FC = () => {
   useEffect(() => {
@@ -55,6 +56,7 @@ const Index: React.FC = () => {
       <main className="flex-grow">
         <Hero />
         <GlobalReach />
+        <CycleCalendar />
         <StandoutSection />
         <TestimonialSlider />
         <ProgramOverview />
