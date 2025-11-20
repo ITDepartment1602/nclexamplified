@@ -53,7 +53,7 @@ const CycleCalendar: React.FC = () => {
             />
               {/* Slide 4 */}
             <img
-              src="/lovable-uploads/cyclecalendar4.png"
+              src="../../../public/lovable-uploads/cyclecalendar4.png"
               alt="Cycle Calendar Slide 4"
               className="w-full flex-shrink-0"
             />
