@@ -1,11 +1,13 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { X } from "lucide-react";
 
 const Navbar: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [showModal, setShowModal] = useState(false);
+  const navigate = useNavigate();
+  const location = useLocation();
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
@@ -13,10 +15,23 @@ const Navbar: React.FC = () => {
 
   const scrollToCalendar = (e: React.MouseEvent) => {
     e.preventDefault();
-    const calendarSection = document.getElementById('calendar');
-    if (calendarSection) {
-      calendarSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      setIsOpen(false);
+    setIsOpen(false);
+    
+    if (location.pathname === '/') {
+      // Already on home page, just scroll
+      const calendarSection = document.getElementById('calendar');
+      if (calendarSection) {
+        calendarSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    } else {
+      // Navigate to home page first, then scroll
+      navigate('/');
+      setTimeout(() => {
+        const calendarSection = document.getElementById('calendar');
+        if (calendarSection) {
+          calendarSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      }, 100);
     }
   };
 
