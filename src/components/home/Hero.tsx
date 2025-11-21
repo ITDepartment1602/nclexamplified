@@ -160,7 +160,7 @@ const Hero: React.FC = () => {
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  Dashboard Demo
+                  Try our Dashboard
                 </a>
               </Button>
             </div>
