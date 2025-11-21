@@ -20,7 +20,7 @@ const CycleCalendar: React.FC = () => {
   };
 
   return (
-    <section className="relative py-20 bg-gradient-to-b from-white to-blue-50 font-sans overflow-hidden">
+    <section id="calendar" className="relative py-20 bg-gradient-to-b from-white to-blue-50 font-sans overflow-hidden">
       <div className="container mx-auto px-6 relative z-10 flex flex-col items-center text-center">
         <h1 className="text-3xl sm:text-5xl font-bold text-gray-900 mb-10 drop-shadow-sm">
           NCLEX Cycle Calendar

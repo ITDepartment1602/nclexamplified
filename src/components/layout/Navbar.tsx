@@ -27,6 +27,7 @@ const Navbar: React.FC = () => {
           <Link to="/" className="text-gray-700 text-sm font-medium transition hover:text-nclex-blue">Home</Link>
           <Link to="/about" className="text-gray-700 text-sm font-medium transition hover:text-nclex-blue">About</Link>
           <Link to="/services" className="text-gray-700 text-sm font-medium transition hover:text-nclex-blue">Services</Link>
+          <Link to="/#calendar" className="text-gray-700 text-sm font-medium transition hover:text-nclex-blue">Calendar</Link>
           <Link to="/contact" className="text-gray-700 text-sm font-medium transition hover:text-nclex-blue">Contact</Link>
 
           {/* Login */}
@@ -83,6 +84,7 @@ const Navbar: React.FC = () => {
             <Link to="/" className="text-gray-700 text-lg font-medium transition hover:text-nclex-blue py-2">Home</Link>
             <Link to="/about" className="text-gray-700 text-lg font-medium transition hover:text-nclex-blue py-2">About</Link>
             <Link to="/services" className="text-gray-700 text-lg font-medium transition hover:text-nclex-blue py-2">Services</Link>
+            <Link to="/#calendar" className="text-gray-700 text-lg font-medium transition hover:text-nclex-blue py-2">Calendar</Link>
             <Link to="/contact" className="text-gray-700 text-lg font-medium transition hover:text-nclex-blue py-2">Contact</Link>
             <a href="https://nclexamplifiedreviewcenter.com/nclex/login">
               <Button className="mt-4 px-5 py-2 bg-primary text-white text-sm font-semibold rounded shadow hover:bg-nclex-blue transition">
