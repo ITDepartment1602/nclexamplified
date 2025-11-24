@@ -15,61 +15,24 @@ const contactSections = [
   {
     icon: <MessageCircle className="h-10 w-10 text-nclex-blue" />,
     title: "NCLEX Amplified Official Page",
-    items: [
-      {
-        icon: <Phone className="h-5 w-5 text-nclex-blue" />,
-        label: "Phone Number",
-        value: "09261021491",
-      },
-      {
-        icon: <Mail className="h-5 w-5 text-nclex-blue" />,
-        label: "Email Address",
-        value: "nclexamplified@gmail.com",
-      },
-    ],
+    href: "https://m.me/100183112691578",
   },
   {
     icon: <MessageCircle className="h-10 w-10 text-nclex-blue" />,
     title: "NCLEX Amplified Consultation",
-    items: [
-      {
-        icon: <Phone className="h-5 w-5 text-nclex-blue" />,
-        label: "Phone Number",
-        value: "09165297237",
-      },
-      {
-        icon: <Mail className="h-5 w-5 text-nclex-blue" />,
-        label: "Email Address",
-        value: "consultation.amplifiedrc@gmail.com",
-      },
-    ],
+    href: "https://m.me/913514575178519",
   },
   {
     icon: <HelpCircle className="h-10 w-10 text-nclex-blue" />,
     title: "NCLEX Amplified Technical Support",
-    items: [
-      {
-        icon: <Phone className="h-5 w-5 text-nclex-blue" />,
-        label: "Phone Number",
-        value: "09858099011",
-      },
-      {
-        icon: <Mail className="h-5 w-5 text-nclex-blue" />,
-        label: "Email Address",
-        value: "nclexamplifiedtechnical@gmail.com",
-      },
-    ],
+    href: "https://m.me/", // add correct link if needed
   },
 ];
 
 const ContactInfo: React.FC = () => {
   return (
     <section className="py-24 bg-white relative overflow-hidden">
-      {/* ====================== */}
-      {/* Main Content Only */}
-      {/* ====================== */}
       <div className="relative z-10 mx-auto px-4 sm:px-6 lg:px-10">
-        {/* Heading */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -80,12 +43,10 @@ const ContactInfo: React.FC = () => {
             Connect with Our Team of NCLEX Experts
           </h2>
           <p className="text-lg text-gray-600 font-medium">
-            Fast support. Real answers. Let’s build your NCLEX success plan
-            together.
+            Fast support. Real answers. Let’s build your NCLEX success plan together.
           </p>
         </motion.div>
 
-        {/* Contact Cards */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-20">
           {contactSections.map((section, index) => (
             <motion.div
@@ -104,18 +65,17 @@ const ContactInfo: React.FC = () => {
                       {section.title}
                     </h3>
                   </div>
-                  <div className="space-y-4">
-                    {section.items.map((item, itemIndex) => (
-                      <div key={itemIndex}>
-                        <div className="flex justify-center mb-1">
-                          {item.icon}
-                        </div>
-                        <p className="text-sm text-gray-500">{item.label}</p>
-                        <p className="text-gray-800 font-semibold text-sm">
-                          {item.value}
-                        </p>
-                      </div>
-                    ))}
+
+                  <div className="mt-6">
+                    <a
+                      href={section.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center justify-center gap-2 text-nclex-blue font-semibold hover:underline"
+                    >
+                      <Facebook className="h-5 w-5" />
+                      Open Messenger
+                    </a>
                   </div>
                 </CardContent>
               </Card>
@@ -123,7 +83,6 @@ const ContactInfo: React.FC = () => {
           ))}
         </div>
 
-        {/* CTA Buttons */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
