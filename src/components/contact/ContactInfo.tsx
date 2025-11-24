@@ -4,6 +4,8 @@ import {
   HelpCircle,
   Facebook,
   ExternalLink,
+  Phone,
+  Mail,
 } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -15,7 +17,8 @@ const contactSections = [
     title: "NCLEX Amplified Official Page",
     href: "https://m.me/100183112691578",
     items: [
-      { label: "Email Address", value: "nclexamplified@gmail.com" },
+      { icon: <Phone className="h-5 w-5 text-nclex-blue" />, label: "Phone Number", value: "09261021491" },
+      { icon: <Mail className="h-5 w-5 text-nclex-blue" />, label: "Email Address", value: "nclexamplified@gmail.com" },
     ],
   },
   {
@@ -23,15 +26,17 @@ const contactSections = [
     title: "NCLEX Amplified Consultation",
     href: "https://m.me/913514575178519",
     items: [
-      { label: "Email Address", value: "consultation.amplifiedrc@gmail.com" },
+      { icon: <Phone className="h-5 w-5 text-nclex-blue" />, label: "Phone Number", value: "09165297237" },
+      { icon: <Mail className="h-5 w-5 text-nclex-blue" />, label: "Email Address", value: "consultation.amplifiedrc@gmail.com" },
     ],
   },
   {
     icon: <HelpCircle className="h-10 w-10 text-nclex-blue" />,
     title: "NCLEX Amplified Technical Support",
-    href: "https://m.me/", // update if needed
+    href: "https://m.me/", // replace later
     items: [
-      { label: "Email Address", value: "nclexamplifiedtechnical@gmail.com" },
+      { icon: <Phone className="h-5 w-5 text-nclex-blue" />, label: "Phone Number", value: "09858099011" },
+      { icon: <Mail className="h-5 w-5 text-nclex-blue" />, label: "Email Address", value: "nclexamplifiedtechnical@gmail.com" },
     ],
   },
 ];
@@ -68,9 +73,17 @@ const ContactInfo: React.FC = () => {
                     <div className="rounded-full w-16 h-16 bg-blue-50 flex items-center justify-center mb-4">
                       {section.icon}
                     </div>
-                    <h3 className="text-lg font-bold text-gray-900">
-                      {section.title}
-                    </h3>
+                    <h3 className="text-lg font-bold text-gray-900">{section.title}</h3>
+                  </div>
+
+                  <div className="space-y-3 mb-6">
+                    {section.items.map((item, i) => (
+                      <div key={i} className="flex items-center justify-center gap-3 text-gray-700">
+                        {item.icon}
+                        <span className="font-medium">{item.label}:</span>
+                        <span>{item.value}</span>
+                      </div>
+                    ))}
                   </div>
 
                   <div className="mt-6">
