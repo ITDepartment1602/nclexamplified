@@ -14,16 +14,25 @@ const contactSections = [
     icon: <MessageCircle className="h-10 w-10 text-nclex-blue" />,
     title: "NCLEX Amplified Official Page",
     href: "https://m.me/100183112691578",
+    items: [
+      { label: "Email Address", value: "nclexamplified@gmail.com" },
+    ],
   },
   {
     icon: <MessageCircle className="h-10 w-10 text-nclex-blue" />,
     title: "NCLEX Amplified Consultation",
     href: "https://m.me/913514575178519",
+    items: [
+      { label: "Email Address", value: "consultation.amplifiedrc@gmail.com" },
+    ],
   },
   {
     icon: <HelpCircle className="h-10 w-10 text-nclex-blue" />,
     title: "NCLEX Amplified Technical Support",
-    href: "https://m.me/", // Add correct link later
+    href: "https://m.me/", // update if needed
+    items: [
+      { label: "Email Address", value: "nclexamplifiedtechnical@gmail.com" },
+    ],
   },
 ];
 
