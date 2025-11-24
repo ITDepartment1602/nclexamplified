@@ -1,8 +1,6 @@
 import React from "react";
 import {
   MessageCircle,
-  Phone,
-  Mail,
   HelpCircle,
   Facebook,
   ExternalLink,
@@ -25,7 +23,7 @@ const contactSections = [
   {
     icon: <HelpCircle className="h-10 w-10 text-nclex-blue" />,
     title: "NCLEX Amplified Technical Support",
-    href: "https://m.me/", // add correct link if needed
+    href: "https://m.me/", // Add correct link later
   },
 ];
 
