@@ -21,10 +21,10 @@ const charityImages = [
 ];
 
 const CharitySlider: React.FC = () => (
-  <section className="py-20 bg-gradient-to-b from-white to-blue-50 font-sans">
+  <section className="py-14 bg-gradient-to-b from-white to-blue-50 font-sans">
     <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-      <div className="text-center max-w-3xl mx-auto mb-12">
-        <h2 className="text-3xl font-bold font-serif text-gray-900 mb-4">Charity Activities</h2>
+      <div className="text-center max-w-3xl mx-auto mb-10">
+        <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900 mb-4 tracking-tight">Charity Activities</h2>
         <div className="w-20 h-1 bg-nclex-blue mx-auto mb-6"></div>
       </div>
       <div className="max-w-4xl mx-auto">

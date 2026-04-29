@@ -91,7 +91,7 @@ export function AnimatedTestimonials({
   }
 
   return (
-    <section ref={sectionRef} id="testimonials" className={`py-24 overflow-hidden bg-muted/30 ${className || ""}`}>
+    <section ref={sectionRef} id="testimonials" className={`py-16 overflow-hidden bg-muted/30 ${className || ""}`}>
       <div className="px-4 md:px-6 max-w-7xl mx-auto">
         <motion.div
           initial="hidden"
@@ -109,7 +109,7 @@ export function AnimatedTestimonials({
                 </div>
               )}
 
-              <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">{title}</h2>
+              <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold tracking-tight">{title}</h2>
 
               <p className="max-w-[600px] text-muted-foreground md:text-xl/relaxed">{subtitle}</p>
 

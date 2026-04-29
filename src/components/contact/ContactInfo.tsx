@@ -15,7 +15,7 @@ const contactSections = [
   {
     icon: <MessageCircle className="h-10 w-10 text-nclex-blue" />,
     title: "NCLEX Amplified Official Page",
-    href: "https://m.me/100183112691578",
+    href: "https://www.facebook.com/NCLEXAmplifiedReviewCenter",
     items: [
       { icon: <Phone className="h-5 w-5 text-nclex-blue" />, label: "Phone Number", value: "09261021491" },
       { icon: <Mail className="h-5 w-5 text-nclex-blue" />, label: "Email Address", value: "nclexamplified@gmail.com" },
@@ -24,16 +24,16 @@ const contactSections = [
   {
     icon: <MessageCircle className="h-10 w-10 text-nclex-blue" />,
     title: "NCLEX Amplified Consultation",
-    href: "https://m.me/913514575178519",
+    href: "https://www.facebook.com/NCLEXAmplifiedMasteryConsultation",
     items: [
-      { icon: <Phone className="h-5 w-5 text-nclex-blue" />, label: "Phone Number", value: "09165297237" },
+      { icon: <Phone className="h-5 w-5 text-nclex-blue" />, label: "Phone Number", value: "09261021491" },
       { icon: <Mail className="h-5 w-5 text-nclex-blue" />, label: "Email Address", value: "consultation.amplifiedrc@gmail.com" },
     ],
   },
   {
     icon: <HelpCircle className="h-10 w-10 text-nclex-blue" />,
     title: "NCLEX Amplified Technical Support",
-    href: "https://m.me/", // replace later
+    href: "https://www.facebook.com/NCLEXAmplifiedTechSupport", // replace later
     items: [
       { icon: <Phone className="h-5 w-5 text-nclex-blue" />, label: "Phone Number", value: "09858099011" },
       { icon: <Mail className="h-5 w-5 text-nclex-blue" />, label: "Email Address", value: "nclexamplifiedtechnical@gmail.com" },
@@ -51,7 +51,7 @@ const ContactInfo: React.FC = () => {
           transition={{ duration: 0.6 }}
           className="text-center max-w-3xl mx-auto mb-20"
         >
-          <h2 className="text-4xl font-extrabold text-gray-900 mb-4">
+          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900 mb-4 tracking-tight">
             Connect with Our Team of NCLEX Experts
           </h2>
           <p className="text-lg text-gray-600 font-medium">
@@ -127,7 +127,7 @@ const ContactInfo: React.FC = () => {
             className="bg-nclex-blue hover:bg-blue-600 h-14 text-base font-semibold flex-1 rounded-xl"
           >
             <a
-              href="https://www.facebook.com/NCLEX.Amplified.Official"
+              href="https://www.facebook.com/NCLEXAmplifiedReviewCenter"
               className="flex items-center justify-center"
             >
               <Facebook className="h-5 w-5 mr-2" />

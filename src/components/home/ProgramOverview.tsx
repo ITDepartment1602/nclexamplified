@@ -42,7 +42,7 @@ const ProgramOverview: React.FC = () => {
       <div className="container mx-auto px-4 lg:px-8">
         {/* HEADER */}
         <div className="text-center max-w-3xl mx-auto mb-10">
-          <h2 className="text-4xl md:text-5xl font-serif font-semibold text-gray-900 mb-4 tracking-wide">
+          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900 mb-4 tracking-tight">
             NCLEX Comprehensive Review Program
           </h2>
 

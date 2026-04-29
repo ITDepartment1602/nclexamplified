@@ -12,7 +12,7 @@ const Hero: React.FC = () => {
   };
 
   return (
-    <div className="relative pt-20 pb-16 overflow-hidden font-sans">
+    <div className="relative pt-20 pb-10 overflow-hidden font-sans">
       {/* 🌤️ Lightened Background with Blue-White Gradient */}
       <div
         className="absolute inset-0 bg-cover bg-center bg-no-repeat"
@@ -119,18 +119,20 @@ const Hero: React.FC = () => {
               <span className="text-sm font-medium text-white tracking-wide uppercase">
                 Your Ultimate Key to{" "}
                 <span className="text-white font-bold">NCLEX</span>{" "}
-                <span className="text-blue-200 font-bold">Success!</span>
+                <span className="text-nclex-red font-black italic drop-shadow-[0_2px_4px_rgba(255,255,255,0.3)] ml-1">Success!</span>
               </span>
             </div>
 
             {/* Title */}
-            <h1 className="text-3xl sm:text-5xl font-serif font-bold leading-tight text-white drop-shadow-[0_2px_4px_rgba(0,0,0,0.3)] relative z-10">
-              <span className="text-white">NCLEX</span>{" "}
-              <span className="text-blue-300">Amplified</span> Review Center
+            <h1 className="text-4xl sm:text-5xl font-sans font-bold leading-tight relative z-10">
+              <span className="text-white drop-shadow-md">NCLEX</span>{" "}
+              <span className="text-white bg-nclex-blue/60 backdrop-blur-sm px-4 py-1.5 rounded-full drop-shadow-lg inline-block transform -rotate-1 mt-1 mb-2 tracking-wide font-black border border-white/20">Amplified</span>{" "}
+              <br className="hidden sm:block" />
+              <span className="text-[#f1f5f9] drop-shadow-md font-semibold tracking-tight">Review Center</span>
             </h1>
 
             {/* Quote */}
-            <p className="text-base sm:text-lg text-white/90 leading-relaxed relative z-10">
+            <p className="text-base sm:text-lg text-white/95 leading-relaxed relative z-10 italic mt-6">
               "Make time for the NCLEX review, your American dream begins once
               you pass the Exam"
             </p>
@@ -168,7 +170,7 @@ const Hero: React.FC = () => {
             {/* Small Footer Text */}
             <p className="text-xs sm:text-sm mt-3 text-white/80 font-medium relative z-10">
               Join{" "}
-              <span className="text-blue-200 font-semibold">
+              <span className="text-nclex-red font-bold drop-shadow-sm mx-1">
                 20,231+ nurses
               </span>{" "}
               who achieved their American dream all over the world

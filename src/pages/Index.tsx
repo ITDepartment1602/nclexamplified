@@ -1,4 +1,3 @@
-
 import React, { useEffect } from "react";
 import { Helmet } from "react-helmet-async";
 import Navbar from "@/components/layout/Navbar";
@@ -20,9 +19,17 @@ const Index: React.FC = () => {
   return (
     <div className="min-h-screen flex flex-col">
       <Helmet>
-        <title>NCLEX Amplified - Leading NCLEX Review Center | 94.7% Passing Rate</title>
-        <meta name="description" content="The Most Successful NCLEX Review Center in the Philippines with 94.7% passing rate. Unlimited review until you pass. Join thousands of successful NCLEX passers." />
-        <meta name="keywords" content="NCLEX, NCLEX Review Center, NCLEX Passer, NCLEX Philippines, NCLEX Exam Preparation, Nursing Exam" />
+        <title>
+          NCLEX Amplified - Leading NCLEX Review Center | 94.7% Passing Rate
+        </title>
+        <meta
+          name="description"
+          content="The Most Successful NCLEX Review Center in the Philippines with 94.7% passing rate. Unlimited review until you pass. Join thousands of successful NCLEX passers."
+        />
+        <meta
+          name="keywords"
+          content="NCLEX, NCLEX Review Center, NCLEX Passer, NCLEX Philippines, NCLEX Exam Preparation, Nursing Exam"
+        />
         <link rel="canonical" href="https://nclexamplified.com" />
         <script type="application/ld+json">
           {`

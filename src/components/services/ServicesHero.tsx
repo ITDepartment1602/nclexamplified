@@ -4,11 +4,11 @@ import { Badge } from "@/components/ui/badge";
 
 const ServicesHero: React.FC = () => {
   return (
-    <section className="py-24 bg-gradient-to-br from-blue-50 via-white to-blue-50 font-sans">
+    <section className="py-16 bg-gradient-to-br from-blue-50 via-white to-blue-50 font-sans">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="max-w-4xl mx-auto text-center">
+        <div className="max-w-4xl mx-auto text-center mb-10 md:mb-12">
           <Badge className="mb-4 bg-nclex-blue text-white border-transparent">Our Services</Badge>
-          <h1 className="text-4xl md:text-5xl font-serif font-bold text-gray-900 mb-6" style={{ fontFamily: 'Poppins, sans-serif' }}>
+          <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-6 tracking-tight">
             <span className="text-nclex-blue">NCLEX</span> <span className="text-nclex-red">AMPLIFIED</span> - Your Ultimate Key to NCLEX Success!
           </h1>
           <p className="text-lg text-gray-700 mb-4" style={{ fontFamily: 'Poppins, sans-serif' }}>

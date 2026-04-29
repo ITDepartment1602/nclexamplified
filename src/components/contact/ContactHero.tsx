@@ -6,7 +6,7 @@ import { motion } from "framer-motion";
 
 const ContactHero: React.FC = () => {
   return (
-    <section className="py-28 bg-gradient-to-b from-white to-blue-50 font-[Poppins]">
+    <section className="py-20 bg-gradient-to-b from-white to-blue-50 font-[Poppins]">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 25 }}
@@ -17,7 +17,7 @@ const ContactHero: React.FC = () => {
           <Badge className="mb-5 bg-nclex-blue text-white border-transparent tracking-wide px-4 py-1 rounded-full">
             Contact Support
           </Badge>
-          <h1 className="text-4xl md:text-6xl font-bold mb-6 leading-tight text-gray-900">
+          <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6 tracking-tight text-gray-900">
             Let’s Talk About Your <span className="text-[#3E58A2]">NCLEX</span>{" "}
             <span className="text-[#BE4143]">Success</span>
           </h1>
@@ -29,7 +29,7 @@ const ContactHero: React.FC = () => {
 
           <div className="flex justify-center gap-4 flex-wrap">
             <a
-              href="https://m.me/100183112691578"
+              href="https://www.facebook.com/NCLEXAmplifiedReviewCenter"
               target="_blank"
               rel="noopener noreferrer"
               className="rounded-full"
