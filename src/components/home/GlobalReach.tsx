@@ -114,7 +114,7 @@ const GlobalReach: React.FC = () => {
   const isInView = useInView(sectionRef, { once: true, margin: "-80px" });
 
   return (
-    <section ref={sectionRef} className="relative bg-white py-24 lg:py-32 overflow-hidden">
+    <section ref={sectionRef} className="relative bg-white py-14 lg:py-16 overflow-hidden">
       {/* subtle radial glow behind the globe area */}
       <div
         className="pointer-events-none absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/3
@@ -124,9 +124,9 @@ const GlobalReach: React.FC = () => {
         }}
       />
 
-      <div className="container relative mx-auto px-4 sm:px-6 lg:px-8">
-        {/* ── HEADER ── */}
-        <div className="mx-auto max-w-3xl text-center">
+      <div className="container relative mx-auto px-4 sm:px-6 lg:px-8 z-10">
+        {/* Header Section */}
+        <div className="max-w-4xl mx-auto text-center mb-10 lg:mb-12">
           <motion.span
             initial={{ opacity: 0, y: 14 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
@@ -144,7 +144,7 @@ const GlobalReach: React.FC = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6, delay: 0.1 }}
-            className="mt-5 text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl lg:text-[2.75rem] lg:leading-[1.2]"
+            className="mt-5 text-2xl sm:text-3xl lg:text-4xl font-bold tracking-tight text-slate-900"
           >
             Empowering Nurses{" "}
             <span style={{ color: "#3e53a0" }}>Across the Globe</span>

@@ -27,7 +27,7 @@ const AboutHero: React.FC = () => {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
-          className="text-4xl md:text-5xl lg:text-7xl font-extrabold text-[#3E58A2] leading-[1.1] tracking-[-0.015em] drop-shadow-md"
+          className="text-3xl md:text-4xl lg:text-5xl font-extrabold text-[#3E58A2] leading-[1.2] tracking-tight drop-shadow-md"
         >
           Empowering Filipino Nurses For
           <br />
