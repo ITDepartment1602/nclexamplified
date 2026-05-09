@@ -6,132 +6,190 @@ import {
   ExternalLink,
   Phone,
   Mail,
+  ArrowUpRight,
 } from "lucide-react";
-import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
 
 const contactSections = [
   {
-    icon: <MessageCircle className="h-10 w-10 text-nclex-blue" />,
+    icon: MessageCircle,
+    tag: "Official",
     title: "NCLEX Amplified Official Page",
     href: "https://www.facebook.com/NCLEXAmplifiedReviewCenter",
-    items: [
-      { icon: <Phone className="h-5 w-5 text-nclex-blue" />, label: "Phone Number", value: "09261021491" },
-      { icon: <Mail className="h-5 w-5 text-nclex-blue" />, label: "Email Address", value: "nclexamplified@gmail.com" },
-    ],
+    phone: "09261021491",
+    email: "nclexamplified@gmail.com",
+    accent: "from-blue-50 to-indigo-50",
   },
   {
-    icon: <MessageCircle className="h-10 w-10 text-nclex-blue" />,
+    icon: MessageCircle,
+    tag: "Consultation",
     title: "NCLEX Amplified Consultation",
     href: "https://www.facebook.com/NCLEXAmplifiedMasteryConsultation",
-    items: [
-      { icon: <Phone className="h-5 w-5 text-nclex-blue" />, label: "Phone Number", value: "09261021491" },
-      { icon: <Mail className="h-5 w-5 text-nclex-blue" />, label: "Email Address", value: "consultation.amplifiedrc@gmail.com" },
-    ],
+    phone: "09261021491",
+    email: "consultation.amplifiedrc@gmail.com",
+    accent: "from-blue-50 to-sky-50",
   },
   {
-    icon: <HelpCircle className="h-10 w-10 text-nclex-blue" />,
+    icon: HelpCircle,
+    tag: "Tech Support",
     title: "NCLEX Amplified Technical Support",
-    href: "https://www.facebook.com/NCLEXAmplifiedTechSupport", // replace later
-    items: [
-      { icon: <Phone className="h-5 w-5 text-nclex-blue" />, label: "Phone Number", value: "09858099011" },
-      { icon: <Mail className="h-5 w-5 text-nclex-blue" />, label: "Email Address", value: "nclexamplifiedtechnical@gmail.com" },
-    ],
+    href: "https://www.facebook.com/NCLEXAmplifiedTechSupport",
+    phone: "09858099011",
+    email: "nclexamplifiedtechnical@gmail.com",
+    accent: "from-indigo-50 to-blue-50",
   },
 ];
 
+const containerVariants = {
+  hidden: {},
+  show: { transition: { staggerChildren: 0.1, delayChildren: 0.1 } },
+};
+
+const itemVariants = {
+  hidden: { opacity: 0, y: 24 },
+  show: { opacity: 1, y: 0, transition: { duration: 0.55, ease: "easeOut" } },
+};
+
 const ContactInfo: React.FC = () => {
   return (
-    <section className="py-24 bg-white relative overflow-hidden">
-      <div className="relative z-10 mx-auto px-4 sm:px-6 lg:px-10">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          className="text-center max-w-3xl mx-auto mb-20"
-        >
-          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900 mb-4 tracking-tight">
-            Connect with Our Team of NCLEX Experts
-          </h2>
-          <p className="text-lg text-gray-600 font-medium">
-            Fast support. Real answers. Let’s build your NCLEX success plan together.
-          </p>
-        </motion.div>
+    <section className="py-8 pb-24 bg-white relative overflow-hidden font-sans">
+      {/* Subtle ambient background */}
+      <div className="pointer-events-none absolute inset-0">
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[700px] h-[300px] rounded-full bg-blue-50/60 blur-3xl" />
+      </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-20">
-          {contactSections.map((section, index) => (
-            <motion.div
-              key={index}
-              whileHover={{ scale: 1.03 }}
-              transition={{ type: "spring", stiffness: 200 }}
-              className="relative"
-            >
-              <Card className="border border-blue-100 shadow-sm hover:shadow-xl transition-all duration-300 rounded-2xl bg-white">
-                <CardContent className="p-6 text-center">
-                  <div className="flex flex-col items-center mb-4">
-                    <div className="rounded-full w-16 h-16 bg-blue-50 flex items-center justify-center mb-4">
-                      {section.icon}
-                    </div>
-                    <h3 className="text-lg font-bold text-gray-900">{section.title}</h3>
-                  </div>
-
-                  <div className="space-y-3 mb-6">
-                    {section.items.map((item, i) => (
-                      <div key={i} className="flex items-center justify-center gap-3 text-gray-700">
-                        {item.icon}
-                        <span className="font-medium">{item.label}:</span>
-                        <span>{item.value}</span>
-                      </div>
-                    ))}
-                  </div>
-
-                  <div className="mt-6">
-                    <a
-                      href={section.href}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex items-center justify-center gap-2 text-nclex-blue font-semibold hover:underline"
-                    >
-                      <Facebook className="h-5 w-5" />
-                      Open Messenger
-                    </a>
-                  </div>
-                </CardContent>
-              </Card>
-            </motion.div>
-          ))}
-        </div>
-
+      <div className="relative z-10 container mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Section header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="flex flex-col sm:flex-row gap-6 justify-center max-w-xl mx-auto"
+          className="text-center max-w-2xl mx-auto mb-14"
+        >
+          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-slate-900 mb-4 tracking-tight">
+            Connect with Our Team of{" "}
+            <span className="text-nclex-blue">NCLEX Experts</span>
+          </h2>
+          <p className="text-slate-500 text-base leading-relaxed">
+            Fast support. Real answers. Let's build your NCLEX success plan
+            together.
+          </p>
+        </motion.div>
+
+        {/* Cards */}
+        <motion.div
+          variants={containerVariants}
+          initial="hidden"
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, margin: "-60px" }}
+          className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-14"
+        >
+          {contactSections.map((s, i) => {
+            const Icon = s.icon;
+            return (
+              <motion.div key={i} variants={itemVariants}>
+                <div className="group relative h-full flex flex-col rounded-2xl border border-slate-200/70 bg-white overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-nclex-blue/8 hover:border-nclex-blue/25">
+                  {/* Top gradient strip */}
+                  <div
+                    className={`h-1.5 w-full bg-gradient-to-r ${s.accent} group-hover:bg-nclex-blue transition-all duration-300`}
+                    style={{ background: undefined }}
+                  >
+                    <div className="h-full bg-gradient-to-r from-nclex-blue/60 to-indigo-400/60" />
+                  </div>
+
+                  <div className="flex flex-col flex-1 p-7">
+                    {/* Icon + tag */}
+                    <div className="flex items-start justify-between mb-5">
+                      <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-blue-50 ring-1 ring-inset ring-blue-100 transition-all duration-300 ">
+                        <Icon className="h-6 w-6 text-nclex-blue transition-colors duration-300 group-hover:text-white" />
+                      </div>
+                      <span className="inline-flex items-center rounded-full bg-slate-100 px-2.5 py-1 text-[0.6rem] font-bold uppercase tracking-wider text-slate-500">
+                        {s.tag}
+                      </span>
+                    </div>
+
+                    {/* Title */}
+                    <h3 className="text-sm font-bold text-slate-900 mb-5 leading-snug transition-colors duration-300 group-hover:text-nclex-blue">
+                      {s.title}
+                    </h3>
+
+                    {/* Contact details */}
+                    <div className="space-y-3 mb-6 flex-1">
+                      <div className="flex items-center gap-3">
+                        <div className="flex h-7 w-7 shrink-0 items-center justify-center rounded-lg bg-slate-50 border border-slate-100">
+                          <Phone className="h-3.5 w-3.5 text-nclex-blue" />
+                        </div>
+                        <span className="text-xs text-slate-600 font-medium">
+                          {s.phone}
+                        </span>
+                      </div>
+                      <div className="flex items-center gap-3">
+                        <div className="flex h-7 w-7 shrink-0 items-center justify-center rounded-lg bg-slate-50 border border-slate-100">
+                          <Mail className="h-3.5 w-3.5 text-nclex-blue" />
+                        </div>
+                        <span className="text-xs text-slate-600 font-medium break-all">
+                          {s.email}
+                        </span>
+                      </div>
+                    </div>
+
+                    {/* Messenger link */}
+                    <a
+                      href={s.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="mt-auto flex items-center justify-between rounded-xl border border-slate-200 px-4 py-2.5 text-xs font-semibold text-nclex-blue transition-all duration-300 hover:text-white hover:border-nclex-blue group/btn"
+                    >
+                      <div className="flex items-center gap-2">
+                        <Facebook className="h-4 w-4" />
+                        Open Facebook Page
+                      </div>
+                      <ArrowUpRight className="h-3.5 w-3.5 opacity-50 group-hover/btn:opacity-100 transition-opacity" />
+                    </a>
+                  </div>
+                </div>
+              </motion.div>
+            );
+          })}
+        </motion.div>
+
+        {/* CTA buttons */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.15 }}
+          className="flex flex-col sm:flex-row gap-4 justify-center max-w-lg mx-auto"
         >
           <Button
             asChild
-            className="bg-blue-600 hover:bg-blue-700 h-14 text-base font-semibold flex-1 rounded-xl"
+            className="bg-nclex-blue hover:bg-blue-800 h-12 text-sm font-semibold flex-1 rounded-xl shadow-md shadow-nclex-blue/20"
           >
             <a
               href="https://nclexamplifiedreviewcenter.com/nclex/login"
-              className="flex items-center justify-center"
+              className="flex items-center justify-center gap-2"
             >
-              <span>Student Login</span>
-              <ExternalLink className="h-4 w-4 ml-2" />
+              Student Login
+              <ExternalLink className="h-3.5 w-3.5" />
             </a>
           </Button>
 
           <Button
             asChild
-            className="bg-nclex-blue hover:bg-blue-600 h-14 text-base font-semibold flex-1 rounded-xl"
+            variant="outline"
+            className="border-slate-200 hover:border-nclex-blue hover:text-nclex-blue h-12 text-sm font-semibold flex-1 rounded-xl"
           >
             <a
               href="https://www.facebook.com/NCLEXAmplifiedReviewCenter"
-              className="flex items-center justify-center"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center justify-center gap-2"
             >
-              <Facebook className="h-5 w-5 mr-2" />
-              <span>Facebook Page</span>
+              <Facebook className="h-4 w-4" />
+              Facebook Page
             </a>
           </Button>
         </motion.div>

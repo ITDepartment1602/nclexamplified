@@ -183,36 +183,9 @@ export function GlobeCdn({
     };
   }, [markers, arcs, speed]);
 
-  const pyramidFaceStyle = (nth: number): React.CSSProperties => {
-    const transforms = [
-      "rotateY(0deg) translateZ(4px) rotateX(19.5deg)",
-      "rotateY(120deg) translateZ(4px) rotateX(19.5deg)",
-      "rotateY(240deg) translateZ(4px) rotateX(19.5deg)",
-      "rotateX(-90deg) rotateZ(60deg) translateY(4px)",
-    ];
-    const colors = ["#7a2622", "#ad3b2e", "#d64a40", "#8b302a"];
-    return {
-      position: "absolute",
-      left: -0.5,
-      top: 0,
-      width: 0,
-      height: 0,
-      borderLeft: "6.5px solid transparent",
-      borderRight: "6.5px solid transparent",
-      borderBottom: `13px solid ${colors[nth]}`,
-      transformOrigin: "center bottom",
-      transform: transforms[nth],
-    };
-  };
 
   return (
     <div className={`relative aspect-square select-none ${className}`}>
-      <style>{`
-        @keyframes pyramid-spin {
-          0% { transform: rotateX(20deg) rotateY(0deg); }
-          100% { transform: rotateX(20deg) rotateY(360deg); }
-        }
-      `}</style>
       <canvas
         ref={canvasRef}
         onPointerDown={handlePointerDown}
@@ -248,19 +221,6 @@ export function GlobeCdn({
               transition: "opacity 0.3s, filter 0.3s",
             }}
           >
-            <div
-              style={{
-                width: isPhilippines ? 16 : 12,
-                height: isPhilippines ? 16 : 12,
-                position: "relative",
-                transformStyle: "preserve-3d" as const,
-                animation: "pyramid-spin 4s linear infinite",
-              }}
-            >
-              {[0, 1, 2, 3].map((n) => (
-                <div key={n} style={pyramidFaceStyle(n)} />
-              ))}
-            </div>
             <span
               style={{
                 fontFamily: "monospace",

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { X, Menu, Home, Info, Layers, CalendarDays, Mail } from "lucide-react";
+import { X, Menu, Home, Info, Layers, Mail } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
 const Navbar: React.FC = () => {
@@ -29,26 +29,6 @@ const Navbar: React.FC = () => {
     }
   };
 
-  const scrollToCalendar = (e: React.MouseEvent) => {
-    e.preventDefault();
-    setIsOpen(false);
-    document.body.style.overflow = 'unset';
-
-    if (location.pathname === '/') {
-      const calendarSection = document.getElementById('calendar');
-      if (calendarSection) {
-        calendarSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      }
-    } else {
-      navigate('/');
-      setTimeout(() => {
-        const calendarSection = document.getElementById('calendar');
-        if (calendarSection) {
-          calendarSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        }
-      }, 100);
-    }
-  };
 
   const handleScrollToTop = (e: React.MouseEvent, path: string) => {
     if (location.pathname === '/' && path === '/') {
@@ -57,35 +37,35 @@ const Navbar: React.FC = () => {
     }
   };
 
+  const isHome = location.pathname === "/";
+  // Transparent effect only on home page; other pages always get solid navbar
+  const isTransparent = isHome && !scrolled;
+
   const navLinks = [
     { name: "Home", path: "/", icon: Home },
     { name: "About", path: "/about", icon: Info },
     { name: "Services", path: "/services", icon: Layers },
-    { name: "Calendar", path: "#calendar", isAnchor: true, icon: CalendarDays },
     { name: "Contact", path: "/contact", icon: Mail },
   ];
 
   return (
     <>
       <nav
-        className={`fixed top-0 left-0 right-0 z-[5000] font-sans border-b border-gray-100/50 transition-all duration-500 ease-in-out ${scrolled
-          ? "bg-white/60 backdrop-blur-md shadow-sm py-1"
-          : "bg-white/95 py-2"
+        className={`fixed top-0 left-0 right-0 z-[5000] font-sans transition-all duration-500 ease-in-out ${isTransparent
+          ? "bg-transparent border-b border-transparent py-2"
+          : "bg-white/70 backdrop-blur-md shadow-sm border-b border-gray-100/50 py-1"
           }`}
       >
         <div className="container mx-auto px-6 lg:px-12 flex justify-between items-center max-w-[1400px]">
-          <Link to="/" onClick={(e) => handleScrollToTop(e, "/")} className="flex items-center gap-2 group transition-transform duration-500 hover:scale-105 z-50">
-            {/* Mobile / Small screen Logo */}
-            <img
-              src="/lovable-uploads/2e6dbcbd-c9b0-4ce8-8284-aff78cf1046d.png"
-              alt="NCLEX Amplified Logo"
-              className="h-8 w-auto md:hidden"
-            />
-            {/* Desktop Logo Text */}
-            <span className="hidden md:block text-2xl font-black tracking-tight text-[#3E53A0] drop-shadow-sm group-hover:text-[#4A64C1] transition-colors duration-300">
-              NARC<span className="text-nclex-red">.</span>
-            </span>
-          </Link>
+          {/* Left: Logo */}
+          <div className="flex-1 flex justify-start z-50">
+            <Link to="/" onClick={(e) => handleScrollToTop(e, "/")} className="flex items-center gap-2 group transition-transform duration-500 hover:scale-105">
+              {/* Logo text — shown on all screen sizes */}
+              <span className={`text-xl md:text-2xl font-black tracking-tight drop-shadow-md transition-colors duration-300 ${isTransparent ? "text-white" : "text-[#3E53A0] group-hover:text-[#4A64C1]"}`}>
+                NARC<span className="text-[#FF2D2D] drop-shadow-[0_0_6px_rgba(255,45,45,0.6)]">.</span>
+              </span>
+            </Link>
+          </div>
 
           {/* Desktop Menu */}
           <div className="hidden lg:flex items-center justify-center space-x-2 flex-1 px-8 relative" onMouseLeave={() => setHoveredPath(null)}>
@@ -96,7 +76,6 @@ const Navbar: React.FC = () => {
                 <a
                   key={link.name}
                   href={link.path}
-                  onClick={scrollToCalendar}
                   onMouseEnter={() => setHoveredPath(link.path)}
                   className="relative px-5 py-2.5 flex items-center justify-center gap-2 text-sm font-medium text-gray-600 hover:text-black transition-colors duration-300 z-10"
                 >
@@ -116,33 +95,47 @@ const Navbar: React.FC = () => {
                   to={link.path}
                   onMouseEnter={() => setHoveredPath(link.path)}
                   onClick={(e) => handleScrollToTop(e, link.path)}
-                  className={`relative px-5 py-2.5 flex items-center justify-center gap-2 text-sm font-medium transition-colors duration-300 z-10 ${isActive ? "text-black" : "text-gray-600 hover:text-black"
-                    }`}
+                  className={`relative px-5 py-2.5 flex items-center justify-center gap-2 text-sm transition-colors duration-300 z-10 ${
+                    isTransparent
+                      ? isActive ? "text-white font-bold drop-shadow-md" : "text-white/90 hover:text-white font-semibold drop-shadow-md"
+                      : isActive ? "text-[#3E53A0] font-bold" : "text-gray-600 hover:text-black font-medium"
+                  }`}
                 >
-                  <Icon className={`w-4 h-4 ${isActive ? "text-primary" : "opacity-70"}`} />
+                  <Icon
+                    className={`w-4 h-4 ${
+                      isTransparent
+                        ? "text-white drop-shadow-md"
+                        : isActive ? "text-[#3E53A0]" : "opacity-70"
+                    }`}
+                    strokeWidth={isTransparent ? 2.5 : 2}
+                  />
                   {link.name}
 
                   {hoveredPath === link.path && (
                     <motion.div
                       layoutId="navbar-indicator"
-                      className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[5px] h-[5px] bg-black rounded-full"
+                      className={`absolute bottom-0 left-1/2 -translate-x-1/2 w-[6px] h-[6px] rounded-full ${isTransparent ? "bg-white shadow-[0_0_8px_rgba(255,255,255,0.8)]" : "bg-black"}`}
                       transition={{ type: "spring", stiffness: 300, damping: 30 }}
                     />
                   )}
                   {isActive && hoveredPath !== link.path && (
-                    <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[5px] h-[5px] bg-primary/40 rounded-full" />
+                    <div className={`absolute bottom-0 left-1/2 -translate-x-1/2 w-[6px] h-[6px] rounded-full ${isTransparent ? "bg-white shadow-[0_0_8px_rgba(255,255,255,0.8)]" : "bg-[#3E53A0]"}`} />
                   )}
                 </Link>
               );
             })}
           </div>
 
-          {/* Desktop Auth Buttons */}
-          <div className="hidden lg:flex items-center gap-3 z-50">
+          {/* Right: Auth Buttons */}
+          <div className="hidden lg:flex flex-1 items-center justify-end gap-3 z-50">
             <a href="https://nclexamplifiedreviewcenter.com/nclex/login">
               <Button
                 variant="ghost"
-                className="h-9 px-5 py-0 text-gray-600 hover:text-black hover:bg-gray-50 text-sm font-semibold rounded-full transition-all duration-300"
+                className={`h-9 px-5 py-0 text-sm font-semibold rounded-full transition-all duration-300 ${
+                  isTransparent
+                    ? "text-white hover:text-white hover:bg-white/10"
+                    : "text-gray-600 hover:text-black hover:bg-gray-50"
+                }`}
               >
                 Login
               </Button>
@@ -160,7 +153,11 @@ const Navbar: React.FC = () => {
           <div className="lg:hidden flex items-center z-50">
             <button
               onClick={toggleMenu}
-              className="p-2 text-gray-600 hover:bg-gray-100 rounded-full transition-colors focus:outline-none flex items-center justify-center overflow-visible"
+              className={`p-2 rounded-full transition-colors focus:outline-none flex items-center justify-center overflow-visible ${
+                isTransparent
+                  ? "text-white hover:bg-white/10"
+                  : "text-gray-600 hover:bg-gray-100"
+              }`}
               aria-label="Toggle menu"
             >
               {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
@@ -177,7 +174,7 @@ const Navbar: React.FC = () => {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.3 }}
-            className="fixed inset-0 bg-gray-900/40 backdrop-blur-sm z-[60] lg:hidden"
+            className="fixed inset-0 bg-gray-900/40 backdrop-blur-sm z-[6000] lg:hidden"
             onClick={toggleMenu}
           >
             <motion.div
@@ -185,7 +182,7 @@ const Navbar: React.FC = () => {
               animate={{ x: 0 }}
               exit={{ x: "100%" }}
               transition={{ type: "spring", damping: 25, stiffness: 200 }}
-              className="fixed right-0 top-0 w-[85vw] max-w-[320px] bg-white h-full shadow-2xl border-l border-gray-100 flex flex-col"
+              className="fixed right-0 top-0 w-[85vw] max-w-[320px] bg-white h-full shadow-2xl border-l border-gray-100 flex flex-col z-[6001]"
               onClick={(e) => e.stopPropagation()}
             >
               <div className="flex justify-between items-center p-6 border-b border-gray-100">
@@ -203,7 +200,6 @@ const Navbar: React.FC = () => {
                     <a
                       key={link.name}
                       href={link.path}
-                      onClick={scrollToCalendar}
                       className="flex items-center gap-4 px-4 py-3.5 text-gray-600 text-lg font-medium rounded-xl hover:bg-gray-50 hover:text-black transition-colors"
                     >
                       <Icon className="w-5 h-5 opacity-50" />

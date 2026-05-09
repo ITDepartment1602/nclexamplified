@@ -1,4 +1,3 @@
-
 import React from "react";
 import {
   Carousel,
@@ -21,10 +20,12 @@ const charityImages = [
 ];
 
 const CharitySlider: React.FC = () => (
-  <section className="py-14 bg-gradient-to-b from-white to-blue-50 font-sans">
+  <section className="py-14 bg-gradient-to-b from-white to-blue-50 font-sans mb-10">
     <div className="container mx-auto px-4 sm:px-6 lg:px-8">
       <div className="text-center max-w-3xl mx-auto mb-10">
-        <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900 mb-4 tracking-tight">Charity Activities</h2>
+        <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900 mb-4 tracking-tight">
+          Charity Activities
+        </h2>
         <div className="w-20 h-1 bg-nclex-blue mx-auto mb-6"></div>
       </div>
       <div className="max-w-4xl mx-auto">
@@ -38,7 +39,10 @@ const CharitySlider: React.FC = () => (
         >
           <CarouselContent>
             {charityImages.map((img, idx) => (
-              <CarouselItem key={idx} className="flex justify-center items-center">
+              <CarouselItem
+                key={idx}
+                className="flex justify-center items-center"
+              >
                 <div className="flex items-center justify-center w-full h-96 sm:h-[32rem] md:h-[40rem]">
                   <img
                     src={img}
@@ -58,4 +62,3 @@ const CharitySlider: React.FC = () => (
 );
 
 export default CharitySlider;
-

@@ -1,0 +1,14 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npx tsc *)",
+      "Bash(npm run *)",
+      "Bash(npx vite-bundle-visualizer *)",
+      "Bash(npx source-map-explorer *)",
+      "Bash(npx rollup-plugin-visualizer *)",
+      "Bash(node -e ' *)",
+      "Bash(node -e \"const c = require\\('./node_modules/cobe/dist/index.js'\\); console.log\\(c.toString\\(\\).slice\\(0,500\\)\\)\")",
+      "Bash(git add *)"
+    ]
+  }
+}

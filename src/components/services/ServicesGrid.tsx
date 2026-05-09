@@ -97,12 +97,16 @@ const ServicesGrid: React.FC = () => {
   return (
     <>
       {/* ════════ Main Services Grid ════════ */}
-      <section className="py-14 bg-gradient-to-b from-white to-gray-50 font-sans">
+      <section className="py-16 lg:py-20 bg-gradient-to-b from-white to-slate-50 font-sans">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {services.map((service, index) => (
-              <div
+              <motion.div
                 key={index}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-80px" }}
+                transition={{ duration: 0.5, delay: (index % 3) * 0.08, ease: "easeOut" }}
                 className="rounded-2xl overflow-hidden shadow-md border border-blue-50 hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300 bg-white flex flex-col group"
               >
                 <div className="w-full h-56 overflow-hidden">
@@ -116,9 +120,9 @@ const ServicesGrid: React.FC = () => {
                   <h3 className="text-base md:text-lg font-bold mb-2 leading-snug tracking-tight">
                     {service.title}
                   </h3>
-                  <p className="text-sm text-gray-500 leading-relaxed">{service.description}</p>
+                  <p className="text-sm text-slate-500 leading-relaxed">{service.description}</p>
                 </div>
-              </div>
+              </motion.div>
             ))}
           </div>
         </div>
@@ -129,7 +133,7 @@ const ServicesGrid: React.FC = () => {
 
         {/* Soft ambient glow */}
         <div className="pointer-events-none absolute inset-0 overflow-hidden">
-          <div className="absolute -top-32 left-1/2 -translate-x-1/2 w-[700px] h-[350px] rounded-full bg-[#3e53a0]/[0.04] blur-3xl" />
+          <div className="absolute -top-32 left-1/2 -translate-x-1/2 w-[700px] h-[350px] rounded-full bg-nclex-blue/[0.04] blur-3xl" />
           <div className="absolute bottom-0 right-0 w-[400px] h-[400px] rounded-full bg-indigo-50/50 blur-3xl" />
         </div>
 
@@ -143,7 +147,7 @@ const ServicesGrid: React.FC = () => {
               className="relative z-10 px-4"
             >
               {/* Eyebrow badge */}
-              <span className="inline-flex items-center gap-2 rounded-full border border-[#3e53a0]/25 bg-[#3e53a0]/[0.06] px-4 py-1.5 text-[0.6rem] font-bold uppercase tracking-[0.25em] text-[#3e53a0] mb-5">
+              <span className="inline-flex items-center gap-2 rounded-full border border-nclex-blue/25 bg-nclex-blue/[0.06] px-4 py-1.5 text-[0.6rem] font-bold uppercase tracking-[0.25em] text-nclex-blue mb-5">
                 <Zap className="h-3 w-3" />
                 Computer Adaptive Test
               </span>
@@ -152,8 +156,8 @@ const ServicesGrid: React.FC = () => {
               <h2 className="text-3xl sm:text-4xl lg:text-[2.75rem] font-extrabold tracking-tight text-slate-900 mb-4 leading-tight">
                 Meet{" "}
                 <span className="relative inline-block">
-                  <span className="text-[#3e53a0]">Studium</span>
-                  <span className="text-[#c04041]"> CAT</span>
+                  <span className="text-nclex-blue">Studium</span>
+                  <span className="text-nclex-red"> CAT</span>
                   {/* gradient underline */}
                   <span className="absolute -bottom-0.5 left-0 right-0 h-[3px] rounded-full bg-gradient-to-r from-[#3e53a0] to-[#c04041]" />
                 </span>
@@ -172,7 +176,7 @@ const ServicesGrid: React.FC = () => {
                     key={i}
                     className="inline-flex items-center gap-1.5 rounded-full border border-slate-200 bg-white/80 backdrop-blur-sm px-3.5 py-1.5 text-xs font-semibold text-slate-600 shadow-sm"
                   >
-                    <span className="text-[#3e53a0]">{pill.icon}</span>
+                    <span className="text-nclex-blue">{pill.icon}</span>
                     {pill.label}
                   </span>
                 ))}
@@ -183,7 +187,7 @@ const ServicesGrid: React.FC = () => {
                 href="https://home.studium.cat"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group inline-flex items-center gap-2 rounded-full bg-[#3e53a0] px-7 py-3 text-sm font-bold text-white shadow-md shadow-[#3e53a0]/25 transition-all duration-300 hover:bg-[#2e3f7a] hover:shadow-lg hover:shadow-[#3e53a0]/30 hover:-translate-y-0.5"
+                className="group inline-flex items-center gap-2 rounded-full bg-nclex-blue px-7 py-3 text-sm font-bold text-white shadow-md shadow-nclex-blue/25 transition-all duration-300 hover:bg-[#2e3f7a] hover:shadow-lg hover:shadow-nclex-blue/30 hover:-translate-y-0.5"
               >
                 Start Your Studium Today
                 <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />

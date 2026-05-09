@@ -1,17 +1,19 @@
 
 import React from "react";
-import { 
-  Award, 
-  DollarSign, 
-  Infinity, 
-  FileText, 
-  BarChart2, 
-  Users, 
-  Layers, 
-  Pill, 
-  Target
+import { motion } from "framer-motion";
+import {
+  Award,
+  DollarSign,
+  Infinity,
+  FileText,
+  BarChart2,
+  Users,
+  Layers,
+  Pill,
+  Target,
 } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
+import SectionHeader from "@/components/common/SectionHeader";
 
 const features = [
   {
@@ -63,28 +65,34 @@ const features = [
 
 const StandoutSection: React.FC = () => {
   return (
-    <section className="py-14 bg-white">
+    <section className="py-16 lg:py-20 bg-white">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center max-w-3xl mx-auto mb-10">
-          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900 mb-4 tracking-tight">
-            Why Choose NCLEX Amplified?
-          </h2>
-          <div className="w-20 h-1 bg-nclex-blue mx-auto mb-6"></div>
-          <p className="text-gray-600">
-            <strong>We prepare you to conquer the NCLEX with confidence!</strong> From world-class lecturers to unlimited reviews, 
-            from global accessibility to personalized mentorship, NCLEX Amplified gives you the competitive edge other review centers can't match.
-          </p>
-        </div>
-        
+        <SectionHeader
+          badge="Why Choose Us"
+          title={<>Why Choose <span className="text-nclex-blue">NCLEX <span className="text-nclex-red">Amplified</span>?</span></>}
+          description={
+            <>
+              <strong>We prepare you to conquer the NCLEX with confidence!</strong> From world-class lecturers to unlimited reviews,
+              from global accessibility to personalized mentorship, NCLEX Amplified gives you the competitive edge other review centers can't match.
+            </>
+          }
+        />
+
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {features.map((feature, index) => (
-            <Card 
-              key={index} 
-              className="group relative overflow-hidden border border-slate-200/60 bg-white/50 backdrop-blur-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-lg hover:shadow-nclex-blue/5 hover:border-nclex-blue/20"
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-80px" }}
+              transition={{ duration: 0.5, delay: index * 0.05, ease: "easeOut" }}
+            >
+            <Card
+              className="group relative h-full overflow-hidden border border-slate-200/60 bg-white/50 backdrop-blur-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-lg hover:shadow-nclex-blue/5 hover:border-nclex-blue/20"
             >
               <div className="absolute inset-0 bg-gradient-to-br from-blue-50/50 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
-              <CardContent className="p-6 sm:p-8 relative z-10 flex flex-col h-full">
-                <div className="mb-5 inline-flex h-12 w-12 items-center justify-center rounded-xl bg-blue-50/80 text-nclex-blue ring-1 ring-inset ring-blue-100/50 transition-all duration-300 group-hover:bg-nclex-blue group-hover:text-white group-hover:shadow-[0_0_15px_rgba(62,83,160,0.3)]">
+              <CardContent className="p-6 pointer-events-none sm:p-8 relative z-10 flex flex-col h-full">
+                <div className="mb-5 inline-flex h-12 w-12 items-center justify-center rounded-xl bg-blue-50/80 text-nclex-blue ring-1 ring-inset ring-blue-100/50 transition-all duration-300 pointer-events-none group-hover:text-white group-hover:shadow-[0_0_15px_rgba(62,83,160,0.3)]">
                   {React.cloneElement(feature.icon as React.ReactElement, { className: "h-6 w-6" })}
                 </div>
                 <h3 className="mb-3 text-lg font-bold tracking-tight text-slate-900 transition-colors group-hover:text-nclex-blue">
@@ -95,6 +103,7 @@ const StandoutSection: React.FC = () => {
                 </p>
               </CardContent>
             </Card>
+            </motion.div>
           ))}
         </div>
       </div>

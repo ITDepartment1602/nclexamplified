@@ -19,4 +19,29 @@ export default defineConfig(({ mode }) => ({
       "@": path.resolve(__dirname, "./src"),
     },
   },
+  build: {
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          "vendor-react":  ["react", "react-dom", "react-router-dom"],
+          "vendor-motion": ["framer-motion"],
+          "vendor-radix":  [
+            "@radix-ui/react-dialog",
+            "@radix-ui/react-tooltip",
+            "@radix-ui/react-dropdown-menu",
+            "@radix-ui/react-slot",
+            "@radix-ui/react-label",
+            "@radix-ui/react-checkbox",
+            "@radix-ui/react-select",
+            "@radix-ui/react-tabs",
+            "@radix-ui/react-toast",
+            "@radix-ui/react-separator",
+          ],
+          "vendor-misc":   ["@tanstack/react-query", "lucide-react", "clsx", "tailwind-merge"],
+          "vendor-globe":  ["cobe"],
+        },
+      },
+    },
+    chunkSizeWarningLimit: 300,
+  },
 }));

@@ -1,14 +1,16 @@
-import React, { useEffect } from "react";
+import React, { lazy, Suspense, useEffect } from "react";
 import { Helmet } from "react-helmet-async";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import Hero from "@/components/home/Hero";
-import StandoutSection from "@/components/home/StandoutSection";
-import ProgramOverview from "@/components/home/ProgramOverview";
-import TestimonialSlider from "@/components/home/TestimonialSlider";
-import GlobalReach from "@/components/home/GlobalReach";
 import BackToTop from "@/components/common/BackToTop";
-import CycleCalendar from "@/components/home/CycleCalendar";
+
+// Heavy below-fold sections — lazy loaded so Hero paints immediately
+const GlobalReach      = lazy(() => import("@/components/home/GlobalReach"));
+const CycleCalendar    = lazy(() => import("@/components/home/CycleCalendar"));
+const StandoutSection  = lazy(() => import("@/components/home/StandoutSection"));
+const TestimonialSlider = lazy(() => import("@/components/home/TestimonialSlider"));
+const ProgramOverview  = lazy(() => import("@/components/home/ProgramOverview"));
 
 const Index: React.FC = () => {
   useEffect(() => {
@@ -38,7 +40,7 @@ const Index: React.FC = () => {
               "@type": "Organization",
               "name": "NCLEX Amplified Review Center",
               "url": "https://nclexamplified.com",
-              "logo": "https://nclexamplified.com/lovable-uploads/2e6dbcbd-c9b0-4ce8-8284-aff78cf1046d.png",
+              "logo": "https://nclexamplified.com/images/Logo.svg",
               "description": "Leading NCLEX Review Center with 94.7% passing rate",
               "address": {
                 "@type": "PostalAddress",
@@ -62,11 +64,13 @@ const Index: React.FC = () => {
       <Navbar />
       <main className="flex-grow">
         <Hero />
-        <GlobalReach />
-        <CycleCalendar />
-        <StandoutSection />
-        <TestimonialSlider />
-        <ProgramOverview />
+        <Suspense fallback={<div className="h-32" />}>
+          <GlobalReach />
+          <CycleCalendar />
+          <StandoutSection />
+          <TestimonialSlider />
+          <ProgramOverview />
+        </Suspense>
       </main>
       <Footer />
       <BackToTop />

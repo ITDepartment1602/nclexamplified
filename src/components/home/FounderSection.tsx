@@ -39,7 +39,7 @@ const FounderSection: React.FC = () => {
           className="text-center max-w-2xl mx-auto mb-14"
         >
           <span className="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-slate-50 px-4 py-1.5 text-[0.65rem] font-semibold uppercase tracking-[0.22em] text-slate-500 mb-5">
-            <span className="inline-block h-1.5 w-1.5 rounded-full bg-[#3e53a0]" />
+            <span className="inline-block h-1.5 w-1.5 rounded-full bg-nclex-blue" />
             Leadership
           </span>
           <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-slate-900 mb-4 tracking-tight">
@@ -78,10 +78,10 @@ const FounderSection: React.FC = () => {
                   <img
                     src={founder.image}
                     alt={founder.name}
-                    className="relative z-10 h-[340px] w-[260px] object-cover object-top rounded-2xl shadow-2xl shadow-[#3e53a0]/20 bg-[#e9eefa]"
+                    className="relative z-10 h-[340px] w-[260px] object-cover object-top rounded-2xl shadow-2xl shadow-nclex-blue/20 bg-[#e9eefa]"
                   />
                   {/* Name plate on image */}
-                  {/* <div className="absolute -bottom-4 left-1/2 -translate-x-1/2 z-20 whitespace-nowrap bg-white shadow-lg rounded-full px-4 py-1.5 text-xs font-bold text-[#3e53a0] border border-slate-100 tracking-wide uppercase">
+                  {/* <div className="absolute -bottom-4 left-1/2 -translate-x-1/2 z-20 whitespace-nowrap bg-white shadow-lg rounded-full px-4 py-1.5 text-xs font-bold text-nclex-blue border border-slate-100 tracking-wide uppercase">
                     {founder.role}
                   </div> */}
                 </div>
@@ -94,7 +94,7 @@ const FounderSection: React.FC = () => {
                 <h3 className="text-3xl sm:text-4xl font-extrabold tracking-tight text-slate-900 leading-tight mb-1">
                   {founder.name}
                 </h3>
-                <p className="text-[#3e53a0] font-semibold text-xs uppercase tracking-[0.2em] mb-6">
+                <p className="text-nclex-blue font-semibold text-xs uppercase tracking-[0.2em] mb-6">
                   {founder.role}
                 </p>
 
