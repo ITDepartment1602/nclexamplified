@@ -9,6 +9,11 @@
       "source": "/nclex/:path*",
       "destination": "https://app.nclexamplifiedreviewcenter.com/nclex/:path*",
       "permanent": true
+    },
+    {
+      "source": "/nclex/",
+      "destination": "https://app.nclexamplifiedreviewcenter.com/nclex/",
+      "permanent": true
     }
   ]
 }
