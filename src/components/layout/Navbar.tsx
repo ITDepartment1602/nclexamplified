@@ -110,7 +110,7 @@ const Navbar: React.FC = () => {
             <Link to="/services" className="text-gray-700 text-lg font-medium transition hover:text-nclex-blue py-2">Services</Link>
             <a href="#calendar" onClick={scrollToCalendar} className="text-gray-700 text-lg font-medium transition hover:text-nclex-blue py-2 cursor-pointer">Calendar</a>
             <Link to="/contact" className="text-gray-700 text-lg font-medium transition hover:text-nclex-blue py-2">Contact</Link>
-            <a href="https://nclexamplifiedreviewcenter.com/nclex/login">
+            <a href="https://app.nclexamplifiedreviewcenter.com/nclex/login">
               <Button className="mt-4 px-5 py-2 bg-primary text-white text-sm font-semibold rounded shadow hover:bg-nclex-blue transition">
                 Login
               </Button>
