@@ -1,0 +1,9 @@
+{
+  "redirects": [
+    {
+      "source": "/nclex/:path*",
+      "destination": "https://app.nclexamplifiedreviewcenter.com/nclex/:path*",
+      "permanent": true
+    }
+  ]
+}
