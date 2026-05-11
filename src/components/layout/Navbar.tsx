@@ -55,7 +55,7 @@ const Navbar: React.FC = () => {
           <Link to="/contact" className="text-gray-700 text-sm font-medium transition hover:text-nclex-blue">Contact</Link>
 
           {/* Login */}
-          <a href="https://nclexamplifiedreviewcenter.com/nclex/login">
+          <a href="https://app.nclexamplifiedreviewcenter.com/nclex/login">
             <Button className="ml-2 px-5 py-2 bg-primary text-white text-sm font-semibold rounded shadow hover:bg-nclex-blue transition">
               Login
             </Button>
