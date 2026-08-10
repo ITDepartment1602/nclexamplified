@@ -44,10 +44,10 @@ const infiniteImages = createInfiniteArray(awardsImages, repetitions);
 const slides = chunkArray(infiniteImages, imagesPerSlide);
 
 const AwardsSlider: React.FC = () => (
-  <section className="py-16 bg-white font-sans">
+  <section className="py-16 bg-white">
     <div className="container mx-auto px-4 sm:px-6 lg:px-8">
       <div className="max-w-2xl mx-auto text-center mb-10">
-        <h2 className="text-3xl font-bold font-serif text-gray-900 mb-4" style={{ fontFamily: 'Poppins, sans-serif' }}>
+        <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900 mb-4 tracking-tight">
           Awarded for Global Nursing Review Excellence
         </h2>
         <div className="w-20 h-1 bg-nclex-blue mx-auto mb-4"></div>

@@ -76,7 +76,7 @@ const EnrollmentSlideshow: React.FC<EnrollmentSlideshowProps> = ({
 
   const handleEnrollNow = () => {
     onOpenChange(false);
-    window.open("https://m.me/NCLEXAmplifiedReviewCenter", "_blank");
+    window.open("https://www.facebook.com/NCLEXAmplifiedReviewCenter", "_blank");
   };
 
   const handleClose = () => {

@@ -15,5 +15,6 @@
       "destination": "https://app.nclexamplifiedreviewcenter.com/nclex/",
       "permanent": true
     }
-  ]
+  ],
+  "rewrites": [{ "source": "/(.*)", "destination": "/" }]
 }

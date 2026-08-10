@@ -4,6 +4,13 @@
 @tailwind components;
 @tailwind utilities;
 
+@keyframes float {
+  0%, 100% { transform: translate(0, 0) rotate(0deg); }
+  25%       { transform: translate(-15px, 10px) rotate(90deg); }
+  50%       { transform: translate(15px, -10px) rotate(180deg); }
+  75%       { transform: translate(-10px, 15px) rotate(270deg); }
+}
+
 @layer base {
   html {
     scroll-behavior: smooth;
@@ -163,6 +170,21 @@
 
 .hover-studium-primary:hover {
   background-color: #0f3a52 !important;
+}
+
+/* Shrink GPT Engineer / Bianca AI widget on mobile */
+@media (max-width: 768px) {
+  gpt-engineer-ai-agent,
+  #gpt-engineer-ai-agent,
+  [id*="gptengineer"],
+  [class*="gptengineer"] {
+    width: 48px !important;
+    height: 48px !important;
+    min-width: unset !important;
+    min-height: unset !important;
+    transform: scale(0.75) !important;
+    transform-origin: bottom right !important;
+  }
 }
 
 /* Remove any left-over purple utility, purple classes, or purple bg/text */
