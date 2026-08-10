@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import {
   CalendarDays,
@@ -64,6 +64,18 @@ const itemVariants = {
 };
 
 const ProgramOverview: React.FC = () => {
+  // The watermark below is desktop-only (hidden lg:flex). Framer Motion's
+  // infinite "breathing" animation on it still runs every frame even while
+  // display:none, so we skip mounting it entirely off desktop.
+  const [isLgUp, setIsLgUp] = useState(false);
+  useEffect(() => {
+    const mql = window.matchMedia("(min-width: 1024px)");
+    const onChange = () => setIsLgUp(mql.matches);
+    onChange();
+    mql.addEventListener("change", onChange);
+    return () => mql.removeEventListener("change", onChange);
+  }, []);
+
   return (
     <section className="py-16 lg:py-24 bg-white">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -104,62 +116,64 @@ const ProgramOverview: React.FC = () => {
         {/* Watermark + grid wrapper — overflow-hidden clips the watermark only here */}
         <div className="relative mx-auto max-w-5xl py-10 overflow-hidden">
           {/* Watermark — lg and up only, two stacked lines, z-0 */}
-          <div
-            aria-hidden="true"
-            className="hidden lg:flex pointer-events-none absolute inset-x-0 top-1/2 -translate-y-1/2 flex-col items-center justify-center select-none"
-            style={{ zIndex: 0 }}
-          >
-            {/* YOU'RE — slides in from left, then breathes */}
-            <motion.span
-              initial={{ opacity: 0, x: -80 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.9, ease: "easeOut" }}
-              className="block font-black uppercase leading-[0.9] text-nclex-blue/50"
-              style={{
-                fontSize: "clamp(8rem, 16vw, 15rem)",
-                letterSpacing: "-0.04em",
-              }}
+          {isLgUp && (
+            <div
+              aria-hidden="true"
+              className="hidden lg:flex pointer-events-none absolute inset-x-0 top-1/2 -translate-y-1/2 flex-col items-center justify-center select-none"
+              style={{ zIndex: 0 }}
             >
+              {/* YOU'RE — slides in from left, then breathes */}
               <motion.span
-                animate={{ scale: [1, 1.015, 1], opacity: [0.3, 0.38, 0.3] }}
-                transition={{
-                  duration: 4,
-                  repeat: Number.POSITIVE_INFINITY,
-                  ease: "easeInOut",
+                initial={{ opacity: 0, x: -80 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.9, ease: "easeOut" }}
+                className="block font-black uppercase leading-[0.9] text-nclex-blue/50"
+                style={{
+                  fontSize: "clamp(8rem, 16vw, 15rem)",
+                  letterSpacing: "-0.04em",
                 }}
-                style={{ display: "inline-block" }}
               >
-                YOU'RE
+                <motion.span
+                  animate={{ scale: [1, 1.015, 1], opacity: [0.3, 0.38, 0.3] }}
+                  transition={{
+                    duration: 4,
+                    repeat: Number.POSITIVE_INFINITY,
+                    ease: "easeInOut",
+                  }}
+                  style={{ display: "inline-block" }}
+                >
+                  YOU'RE
+                </motion.span>
               </motion.span>
-            </motion.span>
 
-            {/* NEXT! — slides in from right, offset delay, then breathes out of phase */}
-            <motion.span
-              initial={{ opacity: 0, x: 80 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.9, ease: "easeOut", delay: 0.15 }}
-              className="block font-black uppercase leading-[0.9] text-nclex-red/50"
-              style={{
-                fontSize: "clamp(8rem, 16vw, 15rem)",
-                letterSpacing: "-0.04em",
-              }}
-            >
+              {/* NEXT! — slides in from right, offset delay, then breathes out of phase */}
               <motion.span
-                animate={{ scale: [1, 1.015, 1], opacity: [0.3, 0.38, 0.3] }}
-                transition={{
-                  duration: 4,
-                  repeat: Number.POSITIVE_INFINITY,
-                  ease: "easeInOut",
-                  delay: 2,
+                initial={{ opacity: 0, x: 80 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.9, ease: "easeOut", delay: 0.15 }}
+                className="block font-black uppercase leading-[0.9] text-nclex-red/50"
+                style={{
+                  fontSize: "clamp(8rem, 16vw, 15rem)",
+                  letterSpacing: "-0.04em",
                 }}
-                style={{ display: "inline-block" }}
               >
-                NEXT!
+                <motion.span
+                  animate={{ scale: [1, 1.015, 1], opacity: [0.3, 0.38, 0.3] }}
+                  transition={{
+                    duration: 4,
+                    repeat: Number.POSITIVE_INFINITY,
+                    ease: "easeInOut",
+                    delay: 2,
+                  }}
+                  style={{ display: "inline-block" }}
+                >
+                  NEXT!
+                </motion.span>
               </motion.span>
-            </motion.span>
-          </div>
+            </div>
+          )}
 
           {/* Label */}
           <motion.p

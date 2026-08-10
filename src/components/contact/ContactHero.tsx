@@ -3,19 +3,24 @@ import { Mail, Phone, ShieldCheck, Sparkles } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { motion } from "framer-motion";
+import { useIsMobile } from "@/hooks/use-mobile";
 
 const ContactHero: React.FC = () => {
+  // Ambient blobs stay static on mobile — the continuous transform + blur-3xl
+  // repaint is expensive and not worth the battery/frame cost on phones.
+  const isMobile = useIsMobile();
+
   return (
     <section className="relative py-24 lg:py-28 overflow-hidden font-sans">
       {/* Ambient blobs */}
       <motion.div
         className="absolute top-[10%] left-[6%] w-80 h-80 bg-blue-200/25 rounded-full blur-3xl pointer-events-none"
-        animate={{ x: [0, 22, -22, 0], y: [0, -18, 18, 0] }}
+        animate={isMobile ? undefined : { x: [0, 22, -22, 0], y: [0, -18, 18, 0] }}
         transition={{ duration: 14, repeat: Number.POSITIVE_INFINITY, ease: "easeInOut" }}
       />
       <motion.div
         className="absolute bottom-[5%] right-[6%] w-96 h-96 bg-indigo-200/25 rounded-full blur-3xl pointer-events-none"
-        animate={{ x: [0, -28, 28, 0], y: [0, 22, -22, 0] }}
+        animate={isMobile ? undefined : { x: [0, -28, 28, 0], y: [0, 22, -22, 0] }}
         transition={{ duration: 16, repeat: Number.POSITIVE_INFINITY, ease: "easeInOut" }}
       />
 
