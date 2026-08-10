@@ -206,7 +206,7 @@ const DestinationGallery: React.FC<{ isInView: boolean }> = React.memo(
               <span className="text-white/70 text-xs font-semibold uppercase tracking-[0.2em]">
                 {COUNTRIES[activeIdx].flag} Destination
               </span>
-              <h4 className="text-4xl sm:text-5xl lg:text-7xl font-bold tracking-tight text-white drop-shadow-[0_4px_12px_rgba(0,0,0,0.9)] whitespace-nowrap">
+              <h4 className="px-6 text-center text-3xl sm:text-5xl lg:text-7xl font-bold tracking-tight text-white drop-shadow-[0_4px_12px_rgba(0,0,0,0.9)] leading-tight sm:whitespace-nowrap">
                 {COUNTRIES[activeIdx].name}
               </h4>
             </motion.div>
