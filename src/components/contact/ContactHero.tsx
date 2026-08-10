@@ -6,7 +6,7 @@ import { motion } from "framer-motion";
 
 const ContactHero: React.FC = () => {
   return (
-    <section className="relative pt-32 pb-16 overflow-hidden font-sans">
+    <section className="relative py-24 lg:py-28 overflow-hidden font-sans">
       {/* Ambient blobs */}
       <motion.div
         className="absolute top-[10%] left-[6%] w-80 h-80 bg-blue-200/25 rounded-full blur-3xl pointer-events-none"
