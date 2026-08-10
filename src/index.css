@@ -15,10 +15,12 @@
   html {
     scroll-behavior: smooth;
   }
-  
+
   body {
     @apply text-gray-800;
     font-family: 'Poppins', sans-serif;
+    overflow-x: hidden;
+    overscroll-behavior-y: contain;
   }
   
   h1, h2, h3, h4, h5, h6 {
@@ -172,21 +174,28 @@
   background-color: #0f3a52 !important;
 }
 
-/* Shrink GPT Engineer / Bianca AI widget on mobile so it doesn't cover page content */
+/*
+ * Shrink the JotForm AI Agent ("Bianca AI") launcher on mobile.
+ * By default it renders as a 220px-wide greeting pill (avatar + "Hi! How
+ * can I assist you?" text) that covers page content on small screens.
+ * These are the widget's real classes (verified from its own embed
+ * bundle) — collapse it down to just the round avatar button.
+ */
 @media (max-width: 768px) {
-  gpt-engineer-ai-agent,
-  #gpt-engineer-ai-agent,
-  [id*="gptengineer"],
-  [class*="gptengineer"] {
-    width: 36px !important;
-    height: 36px !important;
-    min-width: unset !important;
-    min-height: unset !important;
-    transform: scale(0.65) !important;
-    transform-origin: bottom right !important;
-    bottom: 16px !important;
-    right: 16px !important;
-    margin: 0 0 16px 16px !important;
+  .agent-standby__button {
+    width: 52px !important;
+    min-width: 52px !important;
+    height: 52px !important;
+    border-radius: 9999px !important;
+    padding: 0 !important;
+    justify-content: center !important;
+  }
+  .agent-standby__label {
+    display: none !important;
+  }
+  .agent-standby {
+    right: 14px !important;
+    bottom: 14px !important;
   }
 }
 

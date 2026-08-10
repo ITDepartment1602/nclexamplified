@@ -105,8 +105,10 @@ export function GlobeCdn({
   useEffect(() => {
     if (!canvasRef.current) return;
     const canvas = canvasRef.current;
+    const isMobile = window.matchMedia("(max-width: 768px)").matches;
     let globe: ReturnType<typeof createGlobe> | null = null;
-    let animationId: number;
+    let animationId: number | null = null;
+    let isOnScreen = true;
     let phi = 0;
 
     function init() {
@@ -114,14 +116,14 @@ export function GlobeCdn({
       if (width === 0 || globe) return;
 
       globe = createGlobe(canvas, {
-        devicePixelRatio: Math.min(window.devicePixelRatio || 1, 2),
+        devicePixelRatio: Math.min(window.devicePixelRatio || 1, isMobile ? 1.5 : 2),
         width,
         height: width,
         phi: 0,
         theta: 0.2,
         dark: 0,
         diffuse: 1.5,
-        mapSamples: 16000,
+        mapSamples: isMobile ? 8000 : 16000,
         mapBrightness: 10,
         baseColor: [0.97, 0.98, 1],
         markerColor: [0.0157, 0.1804, 0.3765],
@@ -139,17 +141,35 @@ export function GlobeCdn({
         opacity: 0.7,
       });
 
-      function animate() {
-        if (!isPausedRef.current) phi += speed;
-        globe!.update({
-          phi: phi + phiOffsetRef.current + dragOffset.current.phi,
-          theta: 0.2 + thetaOffsetRef.current + dragOffset.current.theta,
-        });
-        animationId = requestAnimationFrame(animate);
-      }
       animate();
       setTimeout(() => canvas && (canvas.style.opacity = "1"));
     }
+
+    // The rAF loop, kept outside init() so the IntersectionObserver can
+    // restart it after it stops itself while off-screen.
+    function animate() {
+      if (!isOnScreen) {
+        animationId = null;
+        return;
+      }
+      if (!isPausedRef.current) phi += speed;
+      globe?.update({
+        phi: phi + phiOffsetRef.current + dragOffset.current.phi,
+        theta: 0.2 + thetaOffsetRef.current + dragOffset.current.theta,
+      });
+      animationId = requestAnimationFrame(animate);
+    }
+
+    // Only render while the globe is actually scrolled into view — a WebGL
+    // canvas re-rendering 60x/sec off-screen is a top cause of mobile jank.
+    const io = new IntersectionObserver(
+      ([entry]) => {
+        isOnScreen = entry.isIntersecting;
+        if (isOnScreen && animationId === null && globe) animate();
+      },
+      { threshold: 0.01 },
+    );
+    io.observe(canvas);
 
     if (canvas.offsetWidth > 0) {
       init();
@@ -164,6 +184,7 @@ export function GlobeCdn({
     }
 
     return () => {
+      io.disconnect();
       if (animationId) cancelAnimationFrame(animationId);
       if (globe) globe.destroy();
     };

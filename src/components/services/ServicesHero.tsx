@@ -1,6 +1,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { Badge } from "@/components/ui/badge";
+import { useIsMobile } from "@/hooks/use-mobile";
 
 const tags = [
   "Comprehensive",
@@ -12,18 +13,22 @@ const tags = [
 ];
 
 const ServicesHero: React.FC = () => {
+  // Ambient blobs stay static on mobile — the continuous transform + blur-3xl
+  // repaint is expensive and not worth the battery/frame cost on phones.
+  const isMobile = useIsMobile();
+
   return (
     <section className="relative py-24 lg:py-28 overflow-hidden font-sans">
       {/* Ambient background — shared with About/Contact heroes */}
       <div className="absolute inset-0 bg-gradient-to-br from-blue-50 via-white to-blue-50" />
       <motion.div
         className="absolute top-[10%] left-[8%] w-72 h-72 sm:w-96 sm:h-96 bg-blue-200/30 rounded-full blur-3xl"
-        animate={{ x: [0, 25, -25, 0], y: [0, -20, 20, 0] }}
+        animate={isMobile ? undefined : { x: [0, 25, -25, 0], y: [0, -20, 20, 0] }}
         transition={{ duration: 14, repeat: Infinity, ease: "easeInOut" }}
       />
       <motion.div
         className="absolute bottom-[10%] right-[8%] w-[300px] h-[300px] sm:w-[450px] sm:h-[450px] bg-indigo-200/30 rounded-full blur-3xl"
-        animate={{ x: [0, -30, 30, 0], y: [0, 25, -25, 0] }}
+        animate={isMobile ? undefined : { x: [0, -30, 30, 0], y: [0, 25, -25, 0] }}
         transition={{ duration: 16, repeat: Infinity, ease: "easeInOut" }}
       />
 
