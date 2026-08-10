@@ -72,40 +72,10 @@ const COUNTRIES = [
     image: "/images/destinations/UAE.webp",
   },
   {
-    flag: "🇸🇬",
-    name: "Singapore",
-    code: "SG",
-    image: "/images/destinations/Singapore.webp",
-  },
-  {
-    flag: "🇩🇪",
-    name: "Germany",
-    code: "DE",
-    image: "/images/destinations/Germany.webp",
-  },
-  {
     flag: "🇸🇦",
     name: "Saudi Arabia",
     code: "SA",
     image: "/images/destinations/Saudi Arabia.webp",
-  },
-  {
-    flag: "🇨🇴",
-    name: "Colombia",
-    code: "CO",
-    image: "/images/destinations/Colombia.webp",
-  },
-  {
-    flag: "🇦🇷",
-    name: "Argentina",
-    code: "AR",
-    image: "/images/destinations/Argentina.webp",
-  },
-  {
-    flag: "🇪🇸",
-    name: "Spain",
-    code: "ES",
-    image: "/images/destinations/Spain.webp",
   },
 ];
 
@@ -337,8 +307,8 @@ const GlobalReach: React.FC = () => {
             className="mx-auto mt-5 max-w-2xl text-base leading-7 text-slate-500 sm:text-[1.05rem] sm:leading-8"
           >
             From the Philippines to the world — our review center equips nurses
-            to pass the NCLEX with confidence and launch careers across 11
-            global destinations.
+            to pass the NCLEX with confidence and launch careers across global
+            destinations.
           </motion.p>
         </div>
 
@@ -377,7 +347,7 @@ const GlobalReach: React.FC = () => {
               />
               <GlobeCdn
                 className="w-[320px] sm:w-[400px] lg:w-[460px]"
-                speed={0.003}
+                speed={0.0012}
               />
             </motion.div>
 
@@ -413,23 +383,14 @@ const GlobalReach: React.FC = () => {
             />
 
             {/* Header row */}
-            <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-              <div>
-                <h3 className="text-lg font-semibold text-slate-900">
-                  Our Nurses Work Worldwide
-                </h3>
-                <p className="mt-1.5 max-w-md text-sm leading-6 text-slate-500">
-                  Filipino nursing talent deployed and thriving in world-class
-                  healthcare systems.
-                </p>
-              </div>
-              <span
-                className="inline-flex shrink-0 items-center gap-1.5 self-start rounded-full px-4 py-2 text-xs font-semibold text-white sm:self-center"
-                style={{ backgroundColor: "#3e53a0" }}
-              >
-                <span className="inline-block h-1.5 w-1.5 animate-pulse rounded-full bg-white/80" />
-                11 Countries
-              </span>
+            <div>
+              <h3 className="text-lg font-semibold text-slate-900">
+                Our Nurses Work Worldwide
+              </h3>
+              <p className="mt-1.5 max-w-md text-sm leading-6 text-slate-500">
+                Filipino nursing talent deployed and thriving in world-class
+                healthcare systems.
+              </p>
             </div>
 
             {/* Divider */}

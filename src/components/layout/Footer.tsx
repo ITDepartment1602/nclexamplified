@@ -109,7 +109,7 @@ const Footer: React.FC = () => {
                 <Facebook size={20} />
               </a>
               <a
-                href="mailto:nclexamplified@gmail.com"
+                href="mailto:amplifiedreviewcenter@gmail.com"
                 className="p-3 rounded-full bg-slate-50 border border-slate-200 text-slate-400 hover:text-white hover:bg-nclex-blue transition-all"
               >
                 <Mail size={20} />
@@ -204,10 +204,10 @@ const Footer: React.FC = () => {
                   <Mail size={20} />
                 </div>
                 <a
-                  href="mailto:nclexamplified@gmail.com"
+                  href="mailto:amplifiedreviewcenter@gmail.com"
                   className="text-sm hover:text-nclex-blue transition-colors"
                 >
-                  nclexamplified@gmail.com
+                  amplifiedreviewcenter@gmail.com
                 </a>
               </li>
             </ul>

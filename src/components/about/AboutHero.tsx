@@ -102,7 +102,7 @@ const AboutHero: React.FC = () => {
             transition={{ duration: 0.5, delay: 0.2 }}
             viewport={{ once: true }}
           >
-            <h2 className="text-2xl font-bold text-nclex-blue mb-4 flex items-center gap-3 tracking-tight">
+            <h2 className="text-2xl  font-bold text-nclex-blue mb-4 flex items-center gap-3 tracking-tight">
               <CheckCircle className="w-6 h-6 text-nclex-blue" /> Our Vision
             </h2>
             <p className="text-slate-700 leading-relaxed text-base">

@@ -1,6 +1,7 @@
 import React from "react";
 import { Mail, Phone, ShieldCheck, Sparkles } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
 import { motion } from "framer-motion";
 
 const ContactHero: React.FC = () => {
@@ -26,10 +27,9 @@ const ContactHero: React.FC = () => {
           className="max-w-3xl mx-auto text-center"
         >
           {/* Badge */}
-          <span className="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-slate-50 px-4 py-1.5 text-[0.65rem] font-semibold uppercase tracking-[0.22em] text-slate-500 mb-6">
-            <span className="inline-block h-1.5 w-1.5 rounded-full bg-nclex-blue" />
+          <Badge className="mb-6 bg-nclex-blue text-white border-transparent tracking-wide px-4 py-1 rounded-full">
             Contact Support
-          </span>
+          </Badge>
 
           <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-5 tracking-tight text-slate-900 leading-tight">
             Let's Talk About Your{" "}

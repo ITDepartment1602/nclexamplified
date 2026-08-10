@@ -26,9 +26,9 @@ const Hero: React.FC = () => {
       </video>
 
       {/* Left-side dark gradient for text readability */}
-      <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-black/25 to-transparent pointer-events-none" />
+      <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/45 to-black/20 pointer-events-none" />
       {/* Subtle bottom fade */}
-      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black/20 pointer-events-none" />
+      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black/40 pointer-events-none" />
 
       {/* TEXT SECTION */}
       <div className="container mx-auto xl:flex xl:justify-start px-4 sm:px-6 lg:px-8 relative z-10 w-full pt-24 pb-16 sm:py-32">

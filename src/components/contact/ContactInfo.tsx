@@ -18,7 +18,7 @@ const contactSections = [
     title: "NCLEX Amplified Official Page",
     href: "https://www.facebook.com/NCLEXAmplifiedReviewCenter",
     phone: "09261021491",
-    email: "nclexamplified@gmail.com",
+    email: "amplifiedreviewcenter@gmail.com",
     accent: "from-blue-50 to-indigo-50",
   },
   {

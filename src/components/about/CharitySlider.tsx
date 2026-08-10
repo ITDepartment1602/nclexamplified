@@ -8,6 +8,7 @@ import {
 } from "@/components/ui/carousel";
 
 const charityImages = [
+  "/lovable-uploads/e78b3212-2e6e-4aec-b36c-170daa9d849b.png",
   "/lovable-uploads/4dc5cd4e-19fb-45d7-9d8e-4a7812746aa6.png",
   "/lovable-uploads/e5f25f15-719f-438b-bd62-9c5f00102568.png",
   "/lovable-uploads/19ee5267-0ef0-419e-87db-f3d3498031b6.png",
@@ -16,7 +17,6 @@ const charityImages = [
   "/lovable-uploads/8d286dcf-3ffd-48ba-aab5-72681c072bf1.png",
   "/lovable-uploads/89fd2c48-14d1-4bfa-8847-64c4c183e3da.png",
   "/lovable-uploads/81e735c7-1645-49a5-9b22-16863db49faf.png",
-  "/lovable-uploads/e78b3212-2e6e-4aec-b36c-170daa9d849b.png",
 ];
 
 const CharitySlider: React.FC = () => (

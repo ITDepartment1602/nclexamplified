@@ -9,76 +9,70 @@ import {
   RotateCcw,
   Zap,
   ArrowRight,
+  Infinity as InfinityIcon,
+  Video,
+  LayoutDashboard,
+  FileQuestion,
+  ClipboardCheck,
+  BookOpenCheck,
+  MessagesSquare,
+  HeartHandshake,
+  CalendarClock,
 } from "lucide-react";
 
 /* ─── Services data ─── */
 const services = [
   {
-    image: "/lovable-uploads/b8392819-b4f7-433f-94fd-cbbc7c918404.png",
-    title: <span className="text-nclex-red font-bold">Unlimited Review Until You Pass</span>,
+    icon: InfinityIcon,
+    title: "Unlimited Review Until You Pass",
     description:
       "No expiration, no limits — attend as many cycles as you need. Learn from top-performing USRN passers with proven experience.",
   },
   {
-    image: "/lovable-uploads/bad1ba00-d88c-4e53-a1f0-580e8e584503.png",
-    title: <span className="text-nclex-blue font-bold">Live, Interactive Zoom Classes</span>,
+    icon: Video,
+    title: "Live, Interactive Zoom Classes",
     description:
       "Real-time coaching & discussion of ALL NCLEX concepts. Regular updates aligned with NCLEX Next Gen (NGN) standards.",
   },
   {
-    image: "/lovable-uploads/7552db56-643b-4af2-9986-2fd2cf12d1a8.png",
-    title: <span className="text-nclex-blue font-bold">Amplified Dashboard</span>,
+    icon: LayoutDashboard,
+    title: "Amplified Dashboard",
     description:
       "Our very own website! Missed a class? Watch recordings anytime. Study at your own pace, anywhere, anytime.",
   },
   {
-    image: "/lovable-uploads/f509d17b-dd79-42bc-9319-d58dd4fef487.png",
-    title: <span className="text-nclex-blue font-bold">Full NGN Question Bank</span>,
+    icon: FileQuestion,
+    title: "Full NGN Question Bank",
     description:
       '4,000+ practice questions with detailed rationales. Practice with trend-based NCLEX questions and understand the "why" behind each answer.',
   },
   {
-    image: "/lovable-uploads/2da9a2ec-1456-4fb2-8430-9dc46cff9942.png",
-    title: <span className="text-nclex-blue font-bold">Simulated Mock Exams</span>,
+    icon: ClipboardCheck,
+    title: "Simulated Mock Exams",
     description:
       "Adaptive style exams that train you under real-exam conditions. Includes quizzes, topic drills, and post-lecture mastery activities.",
   },
   {
-    image: "/lovable-uploads/9c822ddb-5e65-4c65-ab52-afcc43367284.png",
-    title: (
-      <span>
-        <span className="text-nclex-red font-bold">FREE</span>{" "}
-        <span className="text-nclex-blue font-bold">Reviewer PDFs &amp; Ebooks</span>
-      </span>
-    ),
+    icon: BookOpenCheck,
+    title: "FREE Reviewer PDFs & Ebooks",
     description:
       "Care for the NCLEX RN, Practice and Exercises (4th Edition), Linda A. LaCharity – Prioritization & Delegation, NCLEX Success Guide & more.",
   },
   {
-    image: "/lovable-uploads/b8392819-b4f7-433f-94fd-cbbc7c918404.png",
-    title: (
-      <span>
-        <span className="text-nclex-red font-bold">UWorld, Archer, Bootcamp-Style</span>{" "}
-        <span className="text-nclex-blue font-bold">QBank Discussions</span>
-      </span>
-    ),
+    icon: MessagesSquare,
+    title: "UWorld, Archer, Bootcamp-Style QBank Discussions",
     description:
       "Live Zoom Q&A drills to sharpen test-taking skills. Answer breakdowns & rationales in real-time.",
   },
   {
-    image: "/lovable-uploads/bad1ba00-d88c-4e53-a1f0-580e8e584503.png",
-    title: <span className="text-nclex-blue font-bold">Motivational Support Community</span>,
+    icon: HeartHandshake,
+    title: "Motivational Support Community",
     description:
       "Daily reminders, progress tracking, & peer encouragement. You'll never feel alone in your NCLEX journey.",
   },
   {
-    image: "/lovable-uploads/7552db56-643b-4af2-9986-2fd2cf12d1a8.png",
-    title: (
-      <span>
-        <span className="text-nclex-red font-bold">"Amplified Way"</span>{" "}
-        <span className="text-nclex-blue font-bold">Study Cycle</span>
-      </span>
-    ),
+    icon: CalendarClock,
+    title: '"Amplified Way" Study Cycle',
     description:
       "50+ lectures per cycle, 20 NCLEX drills, 4-hour full-length mock exams with rationales. Program Duration: 1 Cycle = 4 Months.",
   },
@@ -99,31 +93,35 @@ const ServicesGrid: React.FC = () => {
       {/* ════════ Main Services Grid ════════ */}
       <section className="py-16 lg:py-20 bg-gradient-to-b from-white to-slate-50 font-sans">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {services.map((service, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-80px" }}
-                transition={{ duration: 0.5, delay: (index % 3) * 0.08, ease: "easeOut" }}
-                className="rounded-2xl overflow-hidden shadow-md border border-blue-50 hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300 bg-white flex flex-col group"
-              >
-                <div className="w-full h-56 overflow-hidden">
-                  <img
-                    src={service.image}
-                    alt=""
-                    className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500"
-                  />
-                </div>
-                <div className="p-6 flex-1 flex flex-col">
-                  <h3 className="text-base md:text-lg font-bold mb-2 leading-snug tracking-tight">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-7">
+            {services.map((service, index) => {
+              const Icon = service.icon;
+              return (
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: "-80px" }}
+                  transition={{ duration: 0.5, delay: (index % 3) * 0.08, ease: "easeOut" }}
+                  className="group relative flex flex-col overflow-hidden rounded-2xl border border-slate-200/70 bg-white p-7 shadow-[0_1px_3px_rgba(0,0,0,0.04)] transition-all duration-300 hover:-translate-y-1.5 hover:border-nclex-blue/25 hover:shadow-[0_18px_40px_rgba(62,83,160,0.14)]"
+                >
+                  {/* Icon tile */}
+                  <div className="relative z-10 mb-6 inline-flex h-14 w-14 items-center justify-center self-start rounded-2xl bg-gradient-to-br from-[#3e53a0] to-[#5068c2] text-white shadow-md shadow-nclex-blue/25 transition-transform duration-300 ease-out group-hover:-rotate-3 group-hover:scale-110">
+                    <Icon className="h-6 w-6" strokeWidth={2.25} />
+                  </div>
+
+                  <h3 className="relative z-10 text-base md:text-lg font-bold mb-2 leading-snug tracking-tight text-nclex-red">
                     {service.title}
                   </h3>
-                  <p className="text-sm text-slate-500 leading-relaxed">{service.description}</p>
-                </div>
-              </motion.div>
-            ))}
+                  <p className="relative z-10 text-sm text-slate-500 leading-relaxed">
+                    {service.description}
+                  </p>
+
+                  {/* Gradient accent that sweeps in on hover */}
+                  <span className="absolute inset-x-0 bottom-0 h-[3px] origin-left scale-x-0 bg-gradient-to-r from-[#3e53a0] to-[#c04041] transition-transform duration-300 ease-out group-hover:scale-x-100" />
+                </motion.div>
+              );
+            })}
           </div>
         </div>
       </section>

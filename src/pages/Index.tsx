@@ -52,7 +52,7 @@ const Index: React.FC = () => {
                 "@type": "ContactPoint",
                 "telephone": "+639858099011",
                 "contactType": "customer service",
-                "email": "nclexamplified@gmail.com"
+                "email": "amplifiedreviewcenter@gmail.com"
               },
               "sameAs": [
                 "https://www.facebook.com/NCLEX.Amplified.Official"
