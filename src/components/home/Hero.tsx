@@ -25,8 +25,8 @@ const Hero: React.FC = () => {
         <source src="/video/hero.mp4" type="video/mp4" />
       </video>
 
-      {/* Left-side dark gradient for text readability */}
-      <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/45 to-black/20 pointer-events-none" />
+      {/* Dark gradient for text readability — soft vignette centered on mobile (text is centered), left-weighted from sm up (text is left-aligned) */}
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_95%_70%_at_50%_45%,rgba(0,0,0,0.55)_0%,rgba(0,0,0,0.3)_55%,rgba(0,0,0,0.1)_100%)] sm:bg-gradient-to-r sm:from-black/80 sm:via-black/45 sm:to-black/20 pointer-events-none" />
       {/* Subtle bottom fade */}
       <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black/40 pointer-events-none" />
 

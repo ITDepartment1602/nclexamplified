@@ -28,7 +28,7 @@ const defaultMarkers: CdnMarker[] = [
     location: [12.8797, 121.774],
     region: "🇵🇭 Philippines",
   },
-  { id: "cdn-usa", location: [40.7128, -74.006], region: "🇺🇸 USA" },
+  { id: "cdn-usa", location: [40.7128, -74.006], region: "🇺🇸 New York" },
   { id: "cdn-canada", location: [43.6629, -79.3957], region: "🇨🇦 Canada" },
   {
     id: "cdn-australia",
@@ -36,21 +36,12 @@ const defaultMarkers: CdnMarker[] = [
     region: "🇦🇺 Australia",
   },
   { id: "cdn-uae", location: [25.2048, 55.2708], region: "🇦🇪 UAE" },
-  { id: "cdn-singapore", location: [1.3521, 103.8198], region: "🇸🇬 Singapore" },
-  { id: "cdn-uk", location: [51.5074, -0.1278], region: "🇬🇧 UK" },
-  { id: "cdn-germany", location: [52.52, 13.405], region: "🇩🇪 Germany" },
+  { id: "cdn-uk", location: [51.5074, -0.1278], region: "🇬🇧 United Kingdom" },
   {
     id: "cdn-saudiarabia",
     location: [24.7136, 46.6753],
     region: "🇸🇦 Saudi Arabia",
   },
-  { id: "cdn-colombia", location: [4.711, -74.0721], region: "🇨🇴 Colombia" },
-  {
-    id: "cdn-argentina",
-    location: [-34.6037, -58.3816],
-    region: "🇦🇷 Argentina",
-  },
-  { id: "cdn-spain", location: [40.4168, -3.7038], region: "🇪🇸 Spain" },
 ];
 
 const defaultArcs: CdnArc[] = [
@@ -58,13 +49,8 @@ const defaultArcs: CdnArc[] = [
   { id: "cdn-arc-2", from: [12.8797, 121.774], to: [43.6629, -79.3957] },
   { id: "cdn-arc-3", from: [12.8797, 121.774], to: [-33.8688, 151.2093] },
   { id: "cdn-arc-4", from: [12.8797, 121.774], to: [25.2048, 55.2708] },
-  { id: "cdn-arc-5", from: [12.8797, 121.774], to: [1.3521, 103.8198] },
   { id: "cdn-arc-6", from: [12.8797, 121.774], to: [51.5074, -0.1278] },
-  { id: "cdn-arc-7", from: [12.8797, 121.774], to: [52.52, 13.405] },
   { id: "cdn-arc-8", from: [12.8797, 121.774], to: [24.7136, 46.6753] },
-  { id: "cdn-arc-9", from: [12.8797, 121.774], to: [4.711, -74.0721] },
-  { id: "cdn-arc-10", from: [12.8797, 121.774], to: [-34.6037, -58.3816] },
-  { id: "cdn-arc-11", from: [12.8797, 121.774], to: [40.4168, -3.7038] },
 ];
 
 export function GlobeCdn({

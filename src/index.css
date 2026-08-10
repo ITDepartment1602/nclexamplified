@@ -172,18 +172,21 @@
   background-color: #0f3a52 !important;
 }
 
-/* Shrink GPT Engineer / Bianca AI widget on mobile */
+/* Shrink GPT Engineer / Bianca AI widget on mobile so it doesn't cover page content */
 @media (max-width: 768px) {
   gpt-engineer-ai-agent,
   #gpt-engineer-ai-agent,
   [id*="gptengineer"],
   [class*="gptengineer"] {
-    width: 48px !important;
-    height: 48px !important;
+    width: 36px !important;
+    height: 36px !important;
     min-width: unset !important;
     min-height: unset !important;
-    transform: scale(0.75) !important;
+    transform: scale(0.65) !important;
     transform-origin: bottom right !important;
+    bottom: 16px !important;
+    right: 16px !important;
+    margin: 0 0 16px 16px !important;
   }
 }
 
