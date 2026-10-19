@@ -102,7 +102,6 @@ export default {
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
-        preloader: "progress 3s ease-in-out",
         typing: "typing 3.5s steps(40, end)",
       },
     },

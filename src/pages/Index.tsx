@@ -4,6 +4,7 @@ import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import Hero from "@/components/home/Hero";
 import BackToTop from "@/components/common/BackToTop";
+import { ReadySignal } from "@/lib/preloader";
 
 // Heavy below-fold sections — lazy loaded so Hero paints immediately
 const GlobalReach      = lazy(() => import("@/components/home/GlobalReach"));
@@ -70,6 +71,8 @@ const Index: React.FC = () => {
           <StandoutSection />
           <TestimonialSlider />
           <ProgramOverview />
+          {/* tells the preloader every section above has rendered */}
+          <ReadySignal name="sections" />
         </Suspense>
       </main>
       <Footer />

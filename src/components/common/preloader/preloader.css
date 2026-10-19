@@ -1,0 +1,65 @@
+/* First-load preloader — see scene.ts for the animation itself. */
+
+/* keep the scrollbar showing while loading so nothing shifts on reveal;
+   Preloader.tsx blocks the actual scrolling */
+html.preloading {
+  overflow-y: scroll;
+}
+
+/* keep the chat launcher from floating over the loader */
+html.preloading .agent-standby {
+  opacity: 0 !important;
+  pointer-events: none !important;
+}
+
+.narc-preloader {
+  --logo-size: 280px;
+  position: fixed;
+  inset: 0;
+  z-index: 99999;
+  overflow: hidden;
+  background: radial-gradient(120% 90% at 50% 46%, #ffffff 0%, #f6f8fd 52%, #e8edf8 100%);
+  font-family: "Poppins", sans-serif;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: none;
+}
+
+.narc-preloader__canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.narc-preloader__logo {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: var(--logo-size);
+  height: var(--logo-size);
+  opacity: 0;
+  transform: translate(-50%, -50%) scale(0);
+  will-change: transform, opacity;
+}
+
+.narc-preloader__logo img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  filter: drop-shadow(0 18px 38px rgba(62, 83, 160, 0.24));
+}
+
+/* light sweep clipped to the logo's own shape */
+.narc-preloader__shine {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  background: linear-gradient(110deg, transparent 40%, rgba(255, 255, 255, 0.8) 50%, transparent 60%);
+  background-size: 260% 100%;
+  background-position: 160% 0;
+  -webkit-mask: url("/images/logo-loader.webp") center / contain no-repeat;
+  mask: url("/images/logo-loader.webp") center / contain no-repeat;
+  pointer-events: none;
+}
