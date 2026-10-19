@@ -16,27 +16,27 @@ const Footer: React.FC = () => {
   const partnerLogos = [
     {
       id: 1,
-      path: "/lovable-uploads/6cf9f4e3-fb7d-4c06-ac24-c9da45a4b005.png",
+      path: "/images/partners/partner-1.webp",
       alt: "Partner 1",
     },
     {
       id: 2,
-      path: "/lovable-uploads/84c683af-ce21-4256-86c2-5870369180f2.png",
+      path: "/images/partners/partner-2.webp",
       alt: "Partner 2",
     },
     {
       id: 3,
-      path: "/lovable-uploads/e5553874-755c-4905-8559-2d555729d0e0.png",
+      path: "/images/partners/partner-3.webp",
       alt: "Partner 3",
     },
     {
       id: 4,
-      path: "/lovable-uploads/c42abda9-809b-43b2-8a8a-4fcbd69195e4.png",
+      path: "/images/partners/partner-4.webp",
       alt: "Partner 4",
     },
     {
       id: 5,
-      path: "/lovable-uploads/b24bdcc0-5a73-4465-ab6d-5d29279bcfa8.png",
+      path: "/images/partners/partner-5.webp",
       alt: "Partner 5",
     },
   ];
@@ -53,8 +53,9 @@ const Footer: React.FC = () => {
           viewport={{ once: true }}
           className="relative overflow-hidden rounded-3xl bg-gradient-to-r from-nclex-blue to-[#2a3a7d] p-8 md:p-12 shadow-xl"
         >
-          <div className="absolute top-0 right-0 -mr-16 -mt-16 w-64 h-64 bg-white/10 rounded-full blur-3xl" />
-          <div className="absolute bottom-0 left-0 -ml-16 -mb-16 w-64 h-64 bg-nclex-red/20 rounded-full blur-3xl" />
+          {/* soft glows as gradients rather than filter: blur() layers */}
+          <div className="absolute top-0 right-0 -mr-16 -mt-16 w-64 h-64 bg-[radial-gradient(circle,rgba(255,255,255,0.1)_30%,transparent_70%)]" />
+          <div className="absolute bottom-0 left-0 -ml-16 -mb-16 w-64 h-64 bg-[radial-gradient(circle,rgba(192,64,65,0.2)_30%,transparent_70%)]" />
 
           <div className="relative flex flex-col md:flex-row items-center justify-between gap-8">
             <div className="text-center md:text-left space-y-4">
@@ -84,7 +85,16 @@ const Footer: React.FC = () => {
           {/* Column 1: Brand & Bio */}
           <div className="space-y-4">
             <div className="flex items-center gap-3">
-              <img src="/images/Logo.svg" alt="Logo" className="h-20 w-auto" />
+              {/* 62 KB raster of Logo.svg (848 KB); the padding matches the SVG's own margin */}
+              <img
+                src="/images/logo-loader.webp"
+                alt="Logo"
+                width={80}
+                height={80}
+                loading="lazy"
+                decoding="async"
+                className="h-20 w-20 p-[4.5px]"
+              />
               <div className="flex flex-col">
                 <span className="text-2xl font-black text-nclex-blue leading-none">
                   NCLEX
@@ -224,6 +234,10 @@ const Footer: React.FC = () => {
                   key={logo.id}
                   src={logo.path}
                   alt={logo.alt}
+                  width={40}
+                  height={40}
+                  loading="lazy"
+                  decoding="async"
                   className="h-8 md:h-10 w-auto object-contain"
                 />
               ))}

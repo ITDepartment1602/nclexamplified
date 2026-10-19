@@ -3,6 +3,10 @@ import { whenReady } from "@/lib/preloader";
 
 /** Never hold the visitor longer than this, whatever is still loading. */
 const MAX_WAIT_MS = 12000;
+/** How long the API-driven sections get to load their data. */
+const API_WAIT_MS = 3000;
+/** How long the reveal waits on the page's images once the page has rendered. */
+const IMAGE_WAIT_MS = 3000;
 
 const nextFrame = () => new Promise<void>((r) => requestAnimationFrame(() => r()));
 const sleep = (ms: number) => new Promise<void>((r) => setTimeout(r, ms));
@@ -80,6 +84,20 @@ export function waitForPageAssets(
       });
   };
 
+  // Starts loading every image on the page not already queued.
+  const queued = new Set<string>();
+  const preloadNewImages = () =>
+    Promise.all(
+      collectPageImages()
+        .filter((src) => !queued.has(src) && queued.add(src))
+        .map((src) => track(preloadImage(src))),
+    );
+
+  // Images keep loading in the background regardless; the reveal only waits
+  // IMAGE_WAIT_MS for them, so a slow device or connection isn't held back
+  // by pictures far below the fold.
+  const capped = (p: Promise<unknown>) => Promise.race([p, sleep(IMAGE_WAIT_MS)]);
+
   // Deliberately not waiting on window "load": the third-party chat widget
   // holds it back for seconds without affecting anything on the page.
   const tasks: Promise<unknown>[] = [
@@ -94,11 +112,21 @@ export function waitForPageAssets(
     tasks.push(
       track(
         whenReady("sections")
-          // sections fill in from the API (testimonials, calendar) — let that land first
-          .then(() => whenQueriesIdle(queryClient))
           .then(nextFrame)
-          .then(nextFrame)
-          .then(() => Promise.all(collectPageImages().map((src) => track(preloadImage(src))))),
+          .then(() =>
+            capped(
+              Promise.all([
+                // what's on the page already starts right away…
+                preloadNewImages(),
+                // …while the API-driven sections (testimonials, calendar) fill in;
+                // their images join once the data lands, or after API_WAIT_MS
+                Promise.race([whenQueriesIdle(queryClient), sleep(API_WAIT_MS)])
+                  .then(nextFrame)
+                  .then(nextFrame)
+                  .then(preloadNewImages),
+              ]),
+            ),
+          ),
         2,
       ),
     );
@@ -107,7 +135,7 @@ export function waitForPageAssets(
       track(
         whenReady("route")
           .then(nextFrame)
-          .then(() => Promise.all(collectPageImages().map((src) => track(preloadImage(src))))),
+          .then(() => capped(preloadNewImages())),
       ),
     );
   }

@@ -42,6 +42,8 @@ export function AnimatedTestimonials({
   // Refs for scroll animations
   const sectionRef = useRef(null)
   const isInView = useInView(sectionRef, { once: true, amount: 0.2 })
+  // Only rotate while the section is on screen — no re-renders for nobody
+  const isOnScreen = useInView(sectionRef, { amount: 0.1 })
   const controls = useAnimation()
 
   // Animation variants
@@ -77,14 +79,15 @@ export function AnimatedTestimonials({
 
   // Auto rotate testimonials
   useEffect(() => {
-    if (autoRotateInterval <= 0 || testimonials.length <= 1) return
+    if (autoRotateInterval <= 0 || testimonials.length <= 1 || !isOnScreen) return
 
     const interval = setInterval(() => {
+      if (document.hidden) return
       setActiveIndex((current) => (current + 1) % testimonials.length)
     }, autoRotateInterval)
 
     return () => clearInterval(interval)
-  }, [autoRotateInterval, testimonials.length])
+  }, [autoRotateInterval, testimonials.length, isOnScreen])
 
   if (testimonials.length === 0) {
     return null

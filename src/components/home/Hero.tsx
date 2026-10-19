@@ -96,7 +96,7 @@ const Hero: React.FC = () => {
           {/* Title */}
           <h1 className="text-3xl sm:text-4xl lg:text-5xl font-sans font-bold leading-tight relative z-10">
             <span className="text-white drop-shadow-md">NCLEX</span>{" "}
-            <span className="text-white bg-nclex-blue/60 backdrop-blur-sm px-3 sm:px-4 py-1 sm:py-1.5 rounded-full drop-shadow-lg inline-block transform -rotate-3 hover:rotate-0 cursor-pointer hover:shadow-md duration-300 mt-1 mb-1 tracking-wide font-black border border-white/20">
+            <span className="text-white bg-nclex-blue/75 px-3 sm:px-4 py-1 sm:py-1.5 rounded-full drop-shadow-lg inline-block transform -rotate-3 hover:rotate-0 cursor-pointer hover:shadow-md duration-300 mt-1 mb-1 tracking-wide font-black border border-white/20">
               Amplified
             </span>{" "}
             <br className="hidden sm:block" />

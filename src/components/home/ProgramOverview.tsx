@@ -64,9 +64,8 @@ const itemVariants = {
 };
 
 const ProgramOverview: React.FC = () => {
-  // The watermark below is desktop-only (hidden lg:flex). Framer Motion's
-  // infinite "breathing" animation on it still runs every frame even while
-  // display:none, so we skip mounting it entirely off desktop.
+  // The watermark below is desktop-only (hidden lg:flex), so we skip mounting
+  // it — and its slide-in animations — entirely off desktop.
   const [isLgUp, setIsLgUp] = useState(false);
   useEffect(() => {
     const mql = window.matchMedia("(min-width: 1024px)");
@@ -134,17 +133,7 @@ const ProgramOverview: React.FC = () => {
                   letterSpacing: "-0.04em",
                 }}
               >
-                <motion.span
-                  animate={{ scale: [1, 1.015, 1], opacity: [0.3, 0.38, 0.3] }}
-                  transition={{
-                    duration: 4,
-                    repeat: Number.POSITIVE_INFINITY,
-                    ease: "easeInOut",
-                  }}
-                  style={{ display: "inline-block" }}
-                >
-                  YOU'RE
-                </motion.span>
+                <span className="animate-breathe">YOU'RE</span>
               </motion.span>
 
               {/* NEXT! — slides in from right, offset delay, then breathes out of phase */}
@@ -159,18 +148,9 @@ const ProgramOverview: React.FC = () => {
                   letterSpacing: "-0.04em",
                 }}
               >
-                <motion.span
-                  animate={{ scale: [1, 1.015, 1], opacity: [0.3, 0.38, 0.3] }}
-                  transition={{
-                    duration: 4,
-                    repeat: Number.POSITIVE_INFINITY,
-                    ease: "easeInOut",
-                    delay: 2,
-                  }}
-                  style={{ display: "inline-block" }}
-                >
+                <span className="animate-breathe" style={{ animationDelay: "-2s" }}>
                   NEXT!
-                </motion.span>
+                </span>
               </motion.span>
             </div>
           )}
@@ -203,7 +183,7 @@ const ProgramOverview: React.FC = () => {
                 <motion.div
                   key={i}
                   variants={itemVariants}
-                  className={`group relative flex items-start gap-4 rounded-2xl border border-slate-200/80 bg-white/5 backdrop-blur-md p-5 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-nclex-blue/10 hover:border-nclex-blue/30${isWide ? " sm:col-span-2 lg:col-span-3" : ""}`}
+                  className={`group relative flex items-start gap-4 rounded-2xl border border-slate-200/80 bg-white/5 lg:backdrop-blur-md p-5 shadow-sm transition-[transform,box-shadow,border-color] duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-nclex-blue/10 hover:border-nclex-blue/30${isWide ? " sm:col-span-2 lg:col-span-3" : ""}`}
                 >
                   {/* Hover wash — z-0 so it never covers icon/text */}
                   <div
