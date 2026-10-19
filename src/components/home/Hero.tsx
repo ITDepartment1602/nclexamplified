@@ -1,11 +1,20 @@
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { Sparkles } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import EnrollmentSlideshow from "./EnrollmentSlideshow";
 import { motion } from "framer-motion";
+import { markHeroVideoReady } from "@/lib/heroVideoReady";
 
 const Hero: React.FC = () => {
   const [isEnrollModalOpen, setIsEnrollModalOpen] = useState(false);
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  // Already buffered (e.g. from cache) before React attached its listeners.
+  useEffect(() => {
+    if ((videoRef.current?.readyState ?? 0) >= HTMLMediaElement.HAVE_ENOUGH_DATA) {
+      markHeroVideoReady();
+    }
+  }, []);
 
   const handleEnrollClick = () => {
     setIsEnrollModalOpen(true);
@@ -13,16 +22,24 @@ const Hero: React.FC = () => {
 
   return (
     <div className="relative min-h-[85vh] flex items-center overflow-hidden font-sans">
-      {/* Background video */}
+      {/* Background video — the poster is its first frame, so the hero never shows
+          blank while the video buffers, and the switch to video is seamless.
+          Desktop gets 720p, phones a lighter 480p (browsers that ignore `media`
+          simply take the first source). */}
       <video
+        ref={videoRef}
         autoPlay
         loop
         muted
         playsInline
         preload="auto"
+        poster="/video/hero-poster.jpg"
+        onCanPlayThrough={markHeroVideoReady}
+        onError={markHeroVideoReady}
         className="absolute inset-0 w-full h-full object-cover"
       >
-        <source src="/video/hero.mp4" type="video/mp4" />
+        <source src="/video/hero-720.mp4" type="video/mp4" media="(min-width: 768px)" />
+        <source src="/video/hero-480.mp4" type="video/mp4" />
       </video>
 
       {/* Dark gradient for text readability — soft vignette centered on mobile (text is centered), left-weighted from sm up (text is left-aligned) */}

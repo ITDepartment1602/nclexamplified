@@ -16,6 +16,18 @@
 
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Home page only: fetch the hero video's poster (its first frame) right away,
+         so it is ready the moment the hero renders. -->
+    <script>
+      if (location.pathname === "/") {
+        var heroPoster = document.createElement("link");
+        heroPoster.rel = "preload";
+        heroPoster.as = "image";
+        heroPoster.href = "/video/hero-poster.jpg";
+        heroPoster.setAttribute("fetchpriority", "high");
+        document.head.appendChild(heroPoster);
+      }
+    </script>
     <link rel="icon" href="/favicon.ico" sizes="any">
     <link rel="icon" href="/favicon-32.png" type="image/png" sizes="32x32">
     <link rel="icon" href="/images/Logo.svg" type="image/svg+xml">
