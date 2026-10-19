@@ -1,11 +1,46 @@
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { Sparkles } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import EnrollmentSlideshow from "./EnrollmentSlideshow";
 import { motion } from "framer-motion";
+import { signalReady, usePageRevealed } from "@/lib/preloader";
 
 const Hero: React.FC = () => {
   const [isEnrollModalOpen, setIsEnrollModalOpen] = useState(false);
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const revealed = usePageRevealed();
+
+  // Tell the preloader when the background video is buffered enough to play
+  // through. If the browser only reaches "can play" (data saver, low-power
+  // mode), give it a short grace period to buffer, then go anyway.
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video) return;
+    const ready = () => signalReady("heroVideo");
+    if (video.readyState >= HTMLMediaElement.HAVE_ENOUGH_DATA) return ready();
+
+    let grace: ReturnType<typeof setTimeout> | undefined;
+    const onCanPlay = () => {
+      if (!grace) grace = setTimeout(ready, 2500);
+    };
+    const source = video.querySelector("source");
+    video.addEventListener("canplaythrough", ready);
+    video.addEventListener("canplay", onCanPlay);
+    video.addEventListener("error", ready);
+    source?.addEventListener("error", ready);
+    return () => {
+      clearTimeout(grace);
+      video.removeEventListener("canplaythrough", ready);
+      video.removeEventListener("canplay", onCanPlay);
+      video.removeEventListener("error", ready);
+      source?.removeEventListener("error", ready);
+    };
+  }, []);
+
+  // Make sure it's actually rolling the moment the page is revealed.
+  useEffect(() => {
+    if (revealed) videoRef.current?.play().catch(() => {});
+  }, [revealed]);
 
   const handleEnrollClick = () => {
     setIsEnrollModalOpen(true);
@@ -15,6 +50,7 @@ const Hero: React.FC = () => {
     <div className="relative min-h-[85vh] flex items-center overflow-hidden font-sans">
       {/* Background video */}
       <video
+        ref={videoRef}
         autoPlay
         loop
         muted
@@ -34,8 +70,8 @@ const Hero: React.FC = () => {
       <div className="container mx-auto xl:flex xl:justify-start px-4 sm:px-6 lg:px-8 relative z-10 w-full pt-24 pb-16 sm:py-32">
         <motion.div
           initial={{ opacity: 0, y: 25 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, ease: "easeOut" }}
+          animate={revealed ? { opacity: 1, y: 0 } : { opacity: 0, y: 25 }}
+          transition={{ duration: 0.8, delay: 0.3, ease: [0.2, 0.8, 0.2, 1] }}
           className="space-y-3 sm:space-y-6 max-w-2xl px-2 sm:p-6 rounded-2xl relative text-center sm:text-left mx-auto xl:ml-[1rem] 2xl:ml-[-6rem]"
         >
           {/* Tagline */}

@@ -132,11 +132,6 @@
   }
 }
 
-@keyframes preloader {
-  0% { width: 0% }
-  100% { width: 100% }
-}
-
 @keyframes typing {
   from { width: 0 }
   to { width: 100% }
