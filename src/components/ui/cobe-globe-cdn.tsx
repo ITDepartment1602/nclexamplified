@@ -2,6 +2,8 @@
 
 import { useEffect, useRef, useCallback, useState } from "react";
 import createGlobe from "cobe";
+import { isLiteDevice } from "@/lib/device";
+import { whenPreloaderDone } from "@/lib/preloader";
 
 interface CdnMarker {
   id: string;
@@ -106,24 +108,27 @@ export function GlobeCdn({
     if (!canvasRef.current) return;
     const canvas = canvasRef.current;
     const isMobile = window.matchMedia("(max-width: 768px)").matches;
+    // Lite devices render at 1x and ~30fps — still smooth for a slow spin
+    const minFrameMs = isLiteDevice ? 32 : 0;
     let globe: ReturnType<typeof createGlobe> | null = null;
     let animationId: number | null = null;
     let isOnScreen = true;
     let phi = 0;
+    let lastFrame = 0;
 
     function init() {
       const width = canvas.offsetWidth;
       if (width === 0 || globe) return;
 
       globe = createGlobe(canvas, {
-        devicePixelRatio: Math.min(window.devicePixelRatio || 1, isMobile ? 1.5 : 2),
+        devicePixelRatio: isLiteDevice ? 1 : Math.min(window.devicePixelRatio || 1, isMobile ? 1.5 : 2),
         width,
         height: width,
         phi: 0,
         theta: 0.2,
         dark: 0,
         diffuse: 1.5,
-        mapSamples: isMobile ? 8000 : 16000,
+        mapSamples: isLiteDevice ? 6000 : isMobile ? 8000 : 16000,
         mapBrightness: 10,
         baseColor: [0.97, 0.98, 1],
         markerColor: [0.0157, 0.1804, 0.3765],
@@ -147,17 +152,22 @@ export function GlobeCdn({
 
     // The rAF loop, kept outside init() so the IntersectionObserver can
     // restart it after it stops itself while off-screen.
-    function animate() {
+    function animate(now: number = performance.now()) {
       if (!isOnScreen) {
         animationId = null;
         return;
       }
-      if (!isPausedRef.current) phi += speed;
+      animationId = requestAnimationFrame(animate);
+      const elapsed = now - lastFrame;
+      if (elapsed < minFrameMs) return;
+      // spin by time, not by frame, so 30/60/120Hz all turn at the same speed
+      const frames = lastFrame ? Math.min(elapsed, 100) / (1000 / 60) : 1;
+      lastFrame = now;
+      if (!isPausedRef.current) phi += speed * frames;
       globe?.update({
         phi: phi + phiOffsetRef.current + dragOffset.current.phi,
         theta: 0.2 + thetaOffsetRef.current + dragOffset.current.theta,
       });
-      animationId = requestAnimationFrame(animate);
     }
 
     // Only render while the globe is actually scrolled into view — a WebGL
@@ -165,25 +175,58 @@ export function GlobeCdn({
     const io = new IntersectionObserver(
       ([entry]) => {
         isOnScreen = entry.isIntersecting;
-        if (isOnScreen && animationId === null && globe) animate();
+        if (isOnScreen && animationId === null && globe) {
+          lastFrame = 0; // don't count the time spent off-screen as spin
+          animate();
+        }
       },
       { threshold: 0.01 },
     );
     io.observe(canvas);
 
-    if (canvas.offsetWidth > 0) {
-      init();
-    } else {
-      const ro = new ResizeObserver((entries) => {
-        if (entries[0]?.contentRect.width > 0) {
-          ro.disconnect();
-          init();
-        }
-      });
-      ro.observe(canvas);
+    let ro: ResizeObserver | null = null;
+    function start() {
+      if (cancelled || started) return;
+      started = true;
+      near.disconnect();
+      if (canvas.offsetWidth > 0) {
+        init();
+      } else {
+        ro = new ResizeObserver((entries) => {
+          if (entries[0]?.contentRect.width > 0) {
+            ro?.disconnect();
+            init();
+          }
+        });
+        ro.observe(canvas);
+      }
     }
 
+    // WebGL setup is one of the heaviest things on the page, and the globe is
+    // far below the fold — so it waits until the preloader is gone and the
+    // browser is idle, or until it's about to scroll into view, whichever is first.
+    let cancelled = false;
+    let started = false;
+    let idleId: number | undefined;
+    const near = new IntersectionObserver(([entry]) => entry.isIntersecting && start(), {
+      rootMargin: "400px",
+    });
+    near.observe(canvas);
+    whenPreloaderDone().then(() => {
+      if (cancelled) return;
+      idleId = window.requestIdleCallback
+        ? window.requestIdleCallback(start, { timeout: 1500 })
+        : window.setTimeout(start, 300);
+    });
+
     return () => {
+      cancelled = true;
+      if (idleId !== undefined) {
+        if (window.cancelIdleCallback) window.cancelIdleCallback(idleId);
+        else clearTimeout(idleId);
+      }
+      near.disconnect();
+      ro?.disconnect();
       io.disconnect();
       if (animationId) cancelAnimationFrame(animationId);
       if (globe) globe.destroy();

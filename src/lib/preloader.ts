@@ -28,6 +28,18 @@ export function usePreloaderPhase() {
   return useSyncExternalStore(subscribe, getPhase, getPhase);
 }
 
+/** Resolves once the preloader is fully gone — for deferring heavy, non-urgent work. */
+export function whenPreloaderDone(): Promise<void> {
+  return new Promise((resolve) => {
+    if (phase === "done") return resolve();
+    const unsubscribe = subscribe(() => {
+      if (phase !== "done") return;
+      unsubscribe();
+      resolve();
+    });
+  });
+}
+
 /** True once the page is being revealed — gate entrance animations on this. */
 export function usePageRevealed() {
   return usePreloaderPhase() !== "loading";

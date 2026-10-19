@@ -88,7 +88,7 @@ const StandoutSection: React.FC = () => {
               transition={{ duration: 0.5, delay: index * 0.05, ease: "easeOut" }}
             >
             <Card
-              className="group relative h-full overflow-hidden border border-slate-200/60 bg-white/50 backdrop-blur-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-lg hover:shadow-nclex-blue/5 hover:border-nclex-blue/20"
+              className="group relative h-full overflow-hidden border border-slate-200/60 bg-white transition-[transform,box-shadow,border-color] duration-300 hover:-translate-y-1 hover:shadow-lg hover:shadow-nclex-blue/5 hover:border-nclex-blue/20"
             >
               <div className="absolute inset-0 bg-gradient-to-br from-blue-50/50 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
               <CardContent className="p-6 pointer-events-none sm:p-8 relative z-10 flex flex-col h-full">

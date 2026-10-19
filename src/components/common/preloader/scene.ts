@@ -1,3 +1,4 @@
+import { isLiteDevice } from "@/lib/device";
 import { iconSvg, ICON_COUNT } from "./icons";
 
 /**
@@ -139,7 +140,7 @@ export function createScene(
   function layout() {
     W = window.innerWidth;
     H = window.innerHeight;
-    dpr = Math.min(window.devicePixelRatio || 1, 2);
+    dpr = Math.min(window.devicePixelRatio || 1, isLiteDevice ? 1.5 : 2);
     canvas.width = Math.round(W * dpr);
     canvas.height = Math.round(H * dpr);
     cx = W / 2;
@@ -293,7 +294,9 @@ export function createScene(
   /* ─── frame ─── */
   function frame(now: number) {
     if (destroyed) return;
-    const dt = Math.min(now - last, 50); // clamp so a background tab doesn't skip the show
+    // Real time, so a busy device drops frames instead of playing in slow
+    // motion; only big gaps (a backgrounded tab) are clamped.
+    const dt = Math.min(now - last, 250);
     last = now;
     clock += dt;
     const t = clock;

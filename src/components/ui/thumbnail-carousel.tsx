@@ -88,6 +88,7 @@ function Thumbnails({ items, index, setIndex }: ThumbnailsProps) {
               alt={item.title}
               className="w-full h-full object-cover pointer-events-none select-none"
               draggable={false}
+              decoding="async"
             />
             {i === index && (
               <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/60 to-transparent p-1">
@@ -183,6 +184,7 @@ function Carousel({ items }: { items: CalendarCycle[] }) {
                       alt={item.title}
                       className="w-full h-full object-contain select-none pointer-events-none"
                       draggable={false}
+                      decoding="async"
                     />
                   </div>
                 ))}

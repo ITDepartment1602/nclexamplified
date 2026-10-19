@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import { useQueryClient } from "@tanstack/react-query";
 import { setPreloaderPhase } from "@/lib/preloader";
+import { loadChatWidgetWhenIdle } from "@/lib/chatWidget";
 import { createScene } from "./preloader/scene";
 import { preloadImage, waitForPageAssets } from "./preloader/assets";
 import "./preloader/preloader.css";
@@ -62,6 +63,7 @@ const Preloader: React.FC = () => {
         },
         onDone: () => {
           setPreloaderPhase("done");
+          loadChatWidgetWhenIdle();
           setMounted(false);
         },
       },

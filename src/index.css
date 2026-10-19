@@ -1,5 +1,4 @@
 
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -192,6 +191,35 @@
     right: 14px !important;
     bottom: 14px !important;
   }
+}
+
+/* Slow decorative "breathing" — CSS so it runs on the compositor, not the main thread */
+@keyframes breathe {
+  0%, 100% { transform: scale(1); opacity: 0.3; }
+  50%      { transform: scale(1.015); opacity: 0.38; }
+}
+.animate-breathe {
+  display: inline-block;
+  animation: breathe 4s ease-in-out infinite;
+}
+
+/*
+ * Lite devices (see src/lib/device.ts): drop the effects that cost the most
+ * per frame. Backdrop blur re-blurs everything behind it on every scroll or
+ * video frame, and looping decorations keep the GPU busy for nothing.
+ */
+html.lite *,
+html.lite *::before,
+html.lite *::after {
+  -webkit-backdrop-filter: none !important;
+  backdrop-filter: none !important;
+}
+html.lite .animate-breathe,
+html.lite .animate-pulse {
+  animation: none;
+}
+html.lite .animate-breathe {
+  opacity: 0.3; /* the resting frame of the breathe keyframes */
 }
 
 /* Remove any left-over purple utility, purple classes, or purple bg/text */
