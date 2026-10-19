@@ -84,3 +84,27 @@ export const calendarCycles: CalendarCycle[] = fileNames
     url: `/calendar/${encodeURIComponent(fileName)}`,
     title: toTitle(baseName),
   }));
+
+// Managed in the IT dashboard: nclex/admin-it/manage_testimonials (Manage Landing Page → NCLEX Cycle Calendar)
+const CALENDAR_API =
+  import.meta.env.VITE_CALENDAR_API ||
+  "https://app.nclexamplifiedreviewcenter.com/nclex/admin-it/manage_testimonials/calendar_api.php";
+
+interface ApiCalendarCycle {
+  id: number;
+  title: string;
+  url: string;
+}
+
+/** Live cycles from the dashboard, in the order set there. Throws when unreachable. */
+export async function fetchCalendarCycles(): Promise<CalendarCycle[]> {
+  const res = await fetch(CALENDAR_API, { cache: "no-store" });
+  if (!res.ok) throw new Error(`Calendar API responded ${res.status}`);
+  const data: { cycles?: ApiCalendarCycle[] } = await res.json();
+  if (!Array.isArray(data.cycles)) throw new Error("Calendar API returned no cycles list");
+  return data.cycles.map((c) => ({
+    id: String(c.id),
+    url: c.url,
+    title: c.title,
+  }));
+}

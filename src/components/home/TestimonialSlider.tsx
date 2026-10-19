@@ -70,7 +70,8 @@ const fetchTestimonials = async (): Promise<Testimonial[]> => {
   const res = await fetch(TESTIMONIALS_API, { cache: "no-store" });
   if (!res.ok) throw new Error(`Testimonials API responded ${res.status}`);
   const data: { testimonials?: ApiTestimonial[] } = await res.json();
-  return (data.testimonials ?? []).map((t) => ({
+  if (!Array.isArray(data.testimonials)) throw new Error("Testimonials API returned no list");
+  return data.testimonials.map((t) => ({
     id: t.id,
     name: t.name,
     role: t.role,
@@ -89,7 +90,8 @@ const TestimonialSlider = () => {
     refetchOnWindowFocus: false
   });
 
-  const isLive = !!data && data.length > 0;
+  // Once the dashboard answers, its list is final — even when every testimonial is hidden.
+  const isLive = data !== undefined;
   const testimonials = isLive ? data : FALLBACK_TESTIMONIALS;
 
   return (

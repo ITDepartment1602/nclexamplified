@@ -6,10 +6,12 @@ import {
   AnimatePresence,
 } from "framer-motion";
 import { ChevronLeft, ChevronRight } from "lucide-react";
-import { calendarCycles } from "@/lib/calendarCycles";
-
-// Sourced from the images in `public/calendar` — see src/lib/calendarCycles.ts
-const items = calendarCycles;
+import { useQuery } from "@tanstack/react-query";
+import {
+  calendarCycles,
+  fetchCalendarCycles,
+  type CalendarCycle,
+} from "@/lib/calendarCycles";
 
 const FULL_WIDTH_PX = 140;
 const COLLAPSED_WIDTH_PX = 45;
@@ -17,11 +19,12 @@ const GAP_PX = 8;
 const MARGIN_PX = 4;
 
 interface ThumbnailsProps {
+  items: CalendarCycle[];
   index: number;
   setIndex: (index: number) => void;
 }
 
-function Thumbnails({ index, setIndex }: ThumbnailsProps) {
+function Thumbnails({ items, index, setIndex }: ThumbnailsProps) {
   const thumbnailsRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -100,7 +103,7 @@ function Thumbnails({ index, setIndex }: ThumbnailsProps) {
   );
 }
 
-export default function ThumbnailCarousel() {
+function Carousel({ items }: { items: CalendarCycle[] }) {
   const [index, setIndex] = useState(0);
   const [isDragging, setIsDragging] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
@@ -123,7 +126,7 @@ export default function ThumbnailCarousel() {
   const onPrev = () => setIndex((i) => Math.max(0, i - 1));
   const onNext = () => setIndex((i) => Math.min(items.length - 1, i + 1));
 
-  // Nothing uploaded to public/calendar yet
+  // No cycle published yet
   if (items.length === 0) {
     return (
       <div className="w-full max-w-5xl mx-auto">
@@ -220,11 +223,30 @@ export default function ThumbnailCarousel() {
             </div>
 
             <div className="px-2 lg:px-4">
-              <Thumbnails index={index} setIndex={setIndex} />
+              <Thumbnails items={items} index={index} setIndex={setIndex} />
             </div>
           </div>
         </div>
       </div>
     </div>
   );
+}
+
+/**
+ * Cycles come live from Manage Landing Page in the IT dashboard. Until they
+ * load — or if the dashboard is unreachable — the images in `public/calendar`
+ * are shown instead (see src/lib/calendarCycles.ts).
+ */
+export default function ThumbnailCarousel() {
+  const { data } = useQuery({
+    queryKey: ["landing-calendar"],
+    queryFn: fetchCalendarCycles,
+    retry: 1,
+    refetchOnWindowFocus: false,
+  });
+
+  const isLive = data !== undefined;
+
+  // Remount when the live list replaces the fallback so the carousel restarts at the first cycle.
+  return <Carousel key={isLive ? "live" : "fallback"} items={isLive ? data : calendarCycles} />;
 }
