@@ -4,7 +4,7 @@ import { AnimatedTestimonials, type Testimonial } from "@/components/ui/animated
 // Managed in the IT dashboard: nclex/admin-it/manage_testimonials
 const TESTIMONIALS_API =
   import.meta.env.VITE_TESTIMONIALS_API ||
-  "https://nclexamplifiedreviewcenter.com/nclex/admin-it/manage_testimonials/public_api.php";
+  "https://app.nclexamplifiedreviewcenter.com/nclex/admin-it/manage_testimonials/public_api.php";
 
 const PLACEHOLDER_AVATAR = "/placeholder.svg";
 
