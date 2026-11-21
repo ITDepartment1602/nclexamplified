@@ -480,7 +480,7 @@ const GlobalReach: React.FC = () => {
             className="relative z-10 mx-auto -mt-12 max-w-3xl sm:-mt-24 lg:-mt-28 lg:max-w-5xl"
           >
             {/* frosted "liquid glass" bar — lite devices lose the blur (see index.css), so they get a solid fill */}
-            <div className="relative overflow-hidden rounded-3xl border border-white/80 bg-gradient-to-b from-white/60 to-white/80 shadow-[inset_0_1px_0_rgba(255,255,255,0.95),inset_0_0_0_1px_rgba(255,255,255,0.35),0_0_0_1px_rgba(15,23,42,0.06),0_30px_60px_-30px_rgba(62,83,160,0.35)] backdrop-blur-xl backdrop-saturate-150 [html.lite_&]:bg-white/95">
+            <div className="relative overflow-hidden rounded-3xl border border-white/80 bg-gradient-to-b from-white/60 to-white/80 shadow-[inset_0_1px_0_rgba(255,255,255,0.95),inset_0_0_0_1px_rgba(255,255,255,0.35),0_0_0_1px_rgba(15,23,42,0.06),0_30px_60px_-30px_rgba(62,83,160,0.35)] backdrop-blur-md backdrop-saturate-150 [html.lite_&]:bg-white/95">
               {/* specular sheen across the top half */}
               <div aria-hidden className="pointer-events-none absolute inset-x-0 top-0 h-1/2 bg-gradient-to-b from-white/70 via-white/20 to-transparent" />
               <div className="grid grid-cols-2 lg:grid-cols-4">
