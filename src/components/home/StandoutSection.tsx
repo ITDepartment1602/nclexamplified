@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import {
   Award,
   DollarSign,
-  Infinity,
+  Infinity as InfinityIcon,
   FileText,
   BarChart2,
   Users,
@@ -17,7 +17,7 @@ import SectionHeader from "@/components/common/SectionHeader";
 
 const features = [
   {
-    icon: <Infinity className="h-10 w-10 text-nclex-blue" />,
+    icon: <InfinityIcon className="h-10 w-10 text-nclex-blue" />,
     title: "Unlimited Review Until You Pass",
     description: "No expiration, no limits — attend as many cycles as you need. Learn from top-performing USRN passers with proven experience."
   },

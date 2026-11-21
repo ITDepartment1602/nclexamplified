@@ -7,7 +7,7 @@ import {
   BookOpen,
   Video,
   FileText,
-  Infinity,
+  Infinity as InfinityIcon,
   Clock,
 } from "lucide-react";
 import SectionHeader from "@/components/common/SectionHeader";
@@ -44,7 +44,7 @@ const features = [
     detail: "Tailored to your schedule",
   },
   {
-    icon: Infinity,
+    icon: InfinityIcon,
     label: "Unlimited Access to Recorded Videos",
     detail: "Watch every session anytime, anywhere — until you pass",
     isWide: true,

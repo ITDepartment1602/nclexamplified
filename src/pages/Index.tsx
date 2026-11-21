@@ -66,10 +66,11 @@ const Index: React.FC = () => {
       <main className="flex-grow">
         <Hero />
         <Suspense fallback={<div className="h-32" />}>
+          {/* student stories right after the hero — social proof first */}
+          <TestimonialSlider />
           <GlobalReach />
           <CycleCalendar />
           <StandoutSection />
-          <TestimonialSlider />
           <ProgramOverview />
           {/* tells the preloader every section above has rendered */}
           <ReadySignal name="sections" />

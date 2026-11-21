@@ -1,4 +1,3 @@
-
 import React from "react";
 import { Trophy } from "lucide-react";
 import { motion } from "framer-motion";
@@ -21,7 +20,6 @@ const founder = {
 const FounderSection: React.FC = () => {
   return (
     <section className="relative py-16 overflow-hidden bg-white font-sans">
-
       {/* === Ambient background === */}
       <div className="pointer-events-none absolute inset-0">
         <div className="absolute -top-32 left-1/2 -translate-x-1/2 w-[700px] h-[400px] rounded-full bg-blue-50 blur-3xl opacity-60" />
@@ -29,7 +27,6 @@ const FounderSection: React.FC = () => {
       </div>
 
       <div className="container relative z-10 mx-auto px-4 sm:px-6 lg:px-8">
-
         {/* === Section header === */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -48,8 +45,9 @@ const FounderSection: React.FC = () => {
           <p className="text-slate-500 text-base leading-relaxed">
             The visionary leader behind{" "}
             <span className="text-nclex-blue font-bold">NCLEX</span>
-            <span className="text-nclex-red font-bold"> Amplified</span> — dedicated to
-            transforming nursing education and amplifying your American Dream.
+            <span className="text-nclex-red font-bold"> Amplified</span> —
+            dedicated to transforming nursing education and amplifying your
+            American Dream.
           </p>
         </motion.div>
 
@@ -62,13 +60,11 @@ const FounderSection: React.FC = () => {
           className="mx-auto max-w-5xl"
         >
           <div className="relative overflow-hidden rounded-3xl bg-white shadow-[0_20px_80px_-10px_rgba(62,83,160,0.15)] p-8 sm:p-12">
-
             {/* Inner decorative glow */}
             <div className="pointer-events-none absolute -top-24 -right-24 w-80 h-80 rounded-full bg-blue-100/40 blur-2xl" />
             <div className="pointer-events-none absolute -bottom-16 -left-16 w-56 h-56 rounded-full bg-indigo-100/30 blur-2xl" />
 
             <div className="relative z-10 flex flex-col md:flex-row items-center gap-10 lg:gap-16">
-
               {/* ── LEFT: Image ── */}
               <div className="shrink-0 flex justify-center md:justify-start">
                 <div className="relative">
@@ -89,7 +85,6 @@ const FounderSection: React.FC = () => {
 
               {/* ── RIGHT: Info ── */}
               <div className="flex-1 text-center md:text-left">
-
                 {/* Name + Role */}
                 <h3 className="text-3xl sm:text-4xl font-extrabold tracking-tight text-slate-900 leading-tight mb-1">
                   {founder.name}
@@ -132,11 +127,9 @@ const FounderSection: React.FC = () => {
                   <p>{founder.description2}</p>
                 </div>
               </div>
-
             </div>
           </div>
         </motion.div>
-
       </div>
     </section>
   );

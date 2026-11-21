@@ -1,4 +1,5 @@
 import React from "react";
+import SectionHeader from "@/components/common/SectionHeader";
 import {
   Carousel,
   CarouselContent,
@@ -20,15 +21,14 @@ const charityImages = [
 ];
 
 const CharitySlider: React.FC = () => (
-  <section className="py-14 bg-gradient-to-b from-white to-blue-50 font-sans mb-10">
+  <section className="bg-gradient-to-b from-white to-[#f5f7fd] py-16 font-sans lg:py-20">
     <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-      <div className="text-center max-w-3xl mx-auto mb-10">
-        <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900 mb-4 tracking-tight">
-          Charity Activities
-        </h2>
-        <div className="w-20 h-1 bg-nclex-blue mx-auto mb-6"></div>
-      </div>
-      <div className="max-w-4xl mx-auto">
+      <SectionHeader
+        badge="Giving Back"
+        title={<>Charity <span className="text-nclex-blue">Activities</span></>}
+        description="Beyond the review, our team and passers give back to communities and foundations across the Philippines."
+      />
+      <div className="mx-auto max-w-3xl">
         <Carousel
           opts={{
             loop: true,
@@ -43,18 +43,20 @@ const CharitySlider: React.FC = () => (
                 key={idx}
                 className="flex justify-center items-center"
               >
-                <div className="flex items-center justify-center w-full h-96 sm:h-[32rem] md:h-[40rem]">
+                <div className="flex aspect-square w-full items-center justify-center overflow-hidden rounded-3xl border border-slate-200/80 bg-white p-2 shadow-[0_1px_2px_rgba(15,23,42,0.04),0_30px_60px_-36px_rgba(34,48,106,0.5)] sm:aspect-[4/3]">
                   <img
                     src={img}
                     alt={`Charity Event ${idx + 1}`}
-                    className="w-full h-full object-contain rounded-xl shadow-md bg-white"
+                    loading="lazy"
+                    decoding="async"
+                    className="h-full w-full rounded-2xl object-contain"
                   />
                 </div>
               </CarouselItem>
             ))}
           </CarouselContent>
-          <CarouselPrevious className="left-2" />
-          <CarouselNext className="right-2" />
+          <CarouselPrevious className="-left-3 border-slate-200 bg-white text-slate-700 shadow-md hover:bg-nclex-blue hover:text-white sm:-left-12" />
+          <CarouselNext className="-right-3 border-slate-200 bg-white text-slate-700 shadow-md hover:bg-nclex-blue hover:text-white sm:-right-12" />
         </Carousel>
       </div>
     </div>

@@ -2,6 +2,7 @@ import React from "react";
 import { motion } from "framer-motion";
 import { Badge } from "@/components/ui/badge";
 import { useIsMobile } from "@/hooks/use-mobile";
+import { Check } from "lucide-react";
 
 const tags = [
   "Comprehensive",
@@ -53,17 +54,18 @@ const ServicesHero: React.FC = () => {
             Why settle for the usual when you can have the most complete, powerful, and proven NCLEX review experience?
           </p>
 
-          <div className="mt-12 grid grid-cols-2 md:grid-cols-3 gap-4 max-w-2xl mx-auto">
+          <div className="mx-auto mt-10 flex max-w-2xl flex-wrap justify-center gap-2.5">
             {tags.map((tag, i) => (
-              <motion.div
+              <motion.span
                 key={tag}
-                initial={{ opacity: 0, y: 15 }}
+                initial={{ opacity: 0, y: 12 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.4, delay: 0.3 + i * 0.05, ease: "easeOut" }}
-                className="px-6 py-3 bg-gradient-to-r from-blue-100 to-blue-50 rounded-full text-nclex-blue text-sm font-semibold border border-blue-200 hover:shadow-md hover:-translate-y-0.5 transition-all duration-300"
+                className="inline-flex items-center gap-1.5 rounded-full border border-slate-200 bg-white/80 px-4 py-2 text-sm font-medium text-slate-700 shadow-sm"
               >
+                <Check className="h-3.5 w-3.5 text-nclex-blue" strokeWidth={2.5} />
                 {tag}
-              </motion.div>
+              </motion.span>
             ))}
           </div>
         </motion.div>

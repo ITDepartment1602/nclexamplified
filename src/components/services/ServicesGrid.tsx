@@ -18,63 +18,92 @@ import {
   MessagesSquare,
   HeartHandshake,
   CalendarClock,
+  GraduationCap,
+  Target,
+  Users,
+  ArrowUpRight,
 } from "lucide-react";
+import SectionHeader from "@/components/common/SectionHeader";
 
-/* ─── Services data ─── */
-const services = [
+/* ─── Services, grouped so the page reads as three clear promises ─── */
+type Service = { icon: React.ElementType; title: string; description: string };
+
+const GROUPS: { key: string; label: string; blurb: string; icon: React.ElementType; items: Service[] }[] = [
   {
-    icon: InfinityIcon,
-    title: "Unlimited Review Until You Pass",
-    description:
-      "No expiration, no limits — attend as many cycles as you need. Learn from top-performing USRN passers with proven experience.",
+    key: "learn",
+    label: "Learn",
+    blurb: "Live classes and a proven study cycle",
+    icon: GraduationCap,
+    items: [
+      {
+        icon: Video,
+        title: "Live, Interactive Zoom Classes",
+        description:
+          "Real-time coaching & discussion of ALL NCLEX concepts. Regular updates aligned with NCLEX Next Gen (NGN) standards.",
+      },
+      {
+        icon: CalendarClock,
+        title: '"Amplified Way" Study Cycle',
+        description:
+          "50+ lectures per cycle, 20 NCLEX drills, 4-hour full-length mock exams with rationales. 1 Cycle = 4 Months.",
+      },
+      {
+        icon: LayoutDashboard,
+        title: "Amplified Dashboard",
+        description:
+          "Missed a class? Watch recordings anytime on our own website. Study at your own pace, anywhere.",
+      },
+    ],
   },
   {
-    icon: Video,
-    title: "Live, Interactive Zoom Classes",
-    description:
-      "Real-time coaching & discussion of ALL NCLEX concepts. Regular updates aligned with NCLEX Next Gen (NGN) standards.",
+    key: "practice",
+    label: "Practice",
+    blurb: "Exam-style questions until it clicks",
+    icon: Target,
+    items: [
+      {
+        icon: FileQuestion,
+        title: "Full NGN Question Bank",
+        description:
+          '4,000+ trend-based practice questions with detailed rationales, so you understand the "why" behind each answer.',
+      },
+      {
+        icon: ClipboardCheck,
+        title: "Simulated Mock Exams",
+        description:
+          "Adaptive-style exams under real-exam conditions, plus quizzes, topic drills, and post-lecture mastery activities.",
+      },
+      {
+        icon: MessagesSquare,
+        title: "UWorld, Archer & Bootcamp-Style Discussions",
+        description: "Live Zoom Q&A drills that sharpen test-taking skills, with answer breakdowns in real time.",
+      },
+    ],
   },
   {
-    icon: LayoutDashboard,
-    title: "Amplified Dashboard",
-    description:
-      "Our very own website! Missed a class? Watch recordings anytime. Study at your own pace, anywhere, anytime.",
-  },
-  {
-    icon: FileQuestion,
-    title: "Full NGN Question Bank",
-    description:
-      '4,000+ practice questions with detailed rationales. Practice with trend-based NCLEX questions and understand the "why" behind each answer.',
-  },
-  {
-    icon: ClipboardCheck,
-    title: "Simulated Mock Exams",
-    description:
-      "Adaptive style exams that train you under real-exam conditions. Includes quizzes, topic drills, and post-lecture mastery activities.",
-  },
-  {
-    icon: BookOpenCheck,
-    title: "FREE Reviewer PDFs & Ebooks",
-    description:
-      "Care for the NCLEX RN, Practice and Exercises (4th Edition), Linda A. LaCharity – Prioritization & Delegation, NCLEX Success Guide & more.",
-  },
-  {
-    icon: MessagesSquare,
-    title: "UWorld, Archer, Bootcamp-Style QBank Discussions",
-    description:
-      "Live Zoom Q&A drills to sharpen test-taking skills. Answer breakdowns & rationales in real-time.",
-  },
-  {
+    key: "support",
+    label: "Support",
+    blurb: "With you until you pass",
     icon: HeartHandshake,
-    title: "Motivational Support Community",
-    description:
-      "Daily reminders, progress tracking, & peer encouragement. You'll never feel alone in your NCLEX journey.",
-  },
-  {
-    icon: CalendarClock,
-    title: '"Amplified Way" Study Cycle',
-    description:
-      "50+ lectures per cycle, 20 NCLEX drills, 4-hour full-length mock exams with rationales. Program Duration: 1 Cycle = 4 Months.",
+    items: [
+      {
+        icon: InfinityIcon,
+        title: "Unlimited Review Until You Pass",
+        description:
+          "No expiration, no limits. Attend as many cycles as you need, taught by top-performing USRN passers.",
+      },
+      {
+        icon: BookOpenCheck,
+        title: "FREE Reviewer PDFs & Ebooks",
+        description:
+          "Care for the NCLEX RN (4th Ed.), LaCharity's Prioritization & Delegation, NCLEX Success Guide & more.",
+      },
+      {
+        icon: Users,
+        title: "Motivational Support Community",
+        description: "Daily reminders, progress tracking, and peer encouragement. You'll never feel alone.",
+      },
+    ],
   },
 ];
 
@@ -90,35 +119,65 @@ const PILLS = [
 const ServicesGrid: React.FC = () => {
   return (
     <>
-      {/* ════════ Main Services Grid ════════ */}
-      <section className="py-16 lg:py-20 bg-gradient-to-b from-white to-slate-50 font-sans">
+      {/* ════════ What's included — three groups ════════ */}
+      <section className="bg-gradient-to-b from-white to-slate-50 py-16 font-sans lg:py-20">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-7">
-            {services.map((service, index) => {
-              const Icon = service.icon;
+          <SectionHeader
+            badge="What's Included"
+            title={<>Everything You Need to <span className="text-nclex-blue">Pass the NCLEX</span></>}
+            description="One program covers how you learn, how you practice, and who supports you along the way."
+          />
+
+          <div className="grid grid-cols-1 gap-6 lg:grid-cols-3 lg:gap-7">
+            {GROUPS.map((group, gi) => {
+              const GroupIcon = group.icon;
               return (
                 <motion.div
-                  key={index}
+                  key={group.key}
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true, margin: "-80px" }}
-                  transition={{ duration: 0.5, delay: (index % 3) * 0.08, ease: "easeOut" }}
-                  className="group relative flex flex-col overflow-hidden rounded-2xl border border-slate-200/70 bg-white p-7 shadow-[0_1px_3px_rgba(0,0,0,0.04)] transition-all duration-300 hover:-translate-y-1.5 hover:border-nclex-blue/25 hover:shadow-[0_18px_40px_rgba(62,83,160,0.14)]"
+                  transition={{ duration: 0.5, delay: gi * 0.08, ease: "easeOut" }}
+                  className="flex flex-col overflow-hidden rounded-3xl border border-slate-200/80 bg-white shadow-[0_1px_2px_rgba(15,23,42,0.04),0_24px_48px_-32px_rgba(34,48,106,0.45)] transition-shadow duration-300 hover:shadow-[0_1px_2px_rgba(15,23,42,0.04),0_30px_60px_-30px_rgba(34,48,106,0.5)]"
                 >
-                  {/* Icon tile */}
-                  <div className="relative z-10 mb-6 inline-flex h-14 w-14 items-center justify-center self-start rounded-2xl bg-gradient-to-br from-[#3e53a0] to-[#5068c2] text-white shadow-md shadow-nclex-blue/25 transition-transform duration-300 ease-out group-hover:-rotate-3 group-hover:scale-110">
-                    <Icon className="h-6 w-6" strokeWidth={2.25} />
+                  {/* group header — slim brand-navy band */}
+                  <div className="relative flex items-center gap-3.5 overflow-hidden bg-gradient-to-r from-nclex-blue to-[#2a3a7d] px-6 py-4 text-white">
+                    <div aria-hidden className="pointer-events-none absolute -right-10 -top-14 h-36 w-36 rounded-full bg-[radial-gradient(closest-side,rgba(255,255,255,0.12),transparent)]" />
+                    <span className="relative inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-white/10 ring-1 ring-inset ring-white/20">
+                      <GroupIcon className="h-[18px] w-[18px]" strokeWidth={1.75} />
+                    </span>
+                    <div className="relative min-w-0 flex-1">
+                      <h3 className="text-base font-semibold leading-tight tracking-tight !text-white">{group.label}</h3>
+                      <p className="mt-0.5 truncate text-xs !text-white/75">{group.blurb}</p>
+                    </div>
+                    <span className="relative shrink-0 rounded-full bg-white/10 px-2.5 py-1 text-[0.6rem] font-medium uppercase tracking-[0.14em] text-white/80 ring-1 ring-inset ring-white/15">
+                      {group.items.length} services
+                    </span>
                   </div>
 
-                  <h3 className="relative z-10 text-base md:text-lg font-bold mb-2 leading-snug tracking-tight text-nclex-red">
-                    {service.title}
-                  </h3>
-                  <p className="relative z-10 text-sm text-slate-500 leading-relaxed">
-                    {service.description}
-                  </p>
-
-                  {/* Gradient accent that sweeps in on hover */}
-                  <span className="absolute inset-x-0 bottom-0 h-[3px] origin-left scale-x-0 bg-gradient-to-r from-[#3e53a0] to-[#c04041] transition-transform duration-300 ease-out group-hover:scale-x-100" />
+                  {/* the services in this group */}
+                  <ul className="flex flex-1 flex-col px-2 py-2">
+                    {group.items.map((service, si) => {
+                      const Icon = service.icon;
+                      return (
+                        <li
+                          key={service.title}
+                          className={`group relative flex gap-4 rounded-2xl px-4 py-4 transition-colors duration-300 hover:bg-[#f6f7fc] ${
+                            si > 0 ? "before:absolute before:inset-x-4 before:top-0 before:h-px before:bg-slate-100 hover:before:opacity-0" : ""
+                          }`}
+                        >
+                          <Icon className="mt-0.5 h-5 w-5 shrink-0 text-nclex-blue" strokeWidth={1.6} />
+                          <div className="min-w-0 flex-1">
+                            <h4 className="flex items-start justify-between gap-2 text-[0.95rem] font-semibold leading-snug tracking-tight text-slate-900">
+                              {service.title}
+                              <ArrowUpRight className="mt-0.5 h-4 w-4 shrink-0 -translate-x-1 text-nclex-blue opacity-0 transition-all duration-300 group-hover:translate-x-0 group-hover:opacity-100" />
+                            </h4>
+                            <p className="mt-1 text-sm leading-relaxed text-slate-500">{service.description}</p>
+                          </div>
+                        </li>
+                      );
+                    })}
+                  </ul>
                 </motion.div>
               );
             })}
@@ -130,9 +189,11 @@ const ServicesGrid: React.FC = () => {
       <section className="relative bg-white overflow-hidden font-sans">
 
         {/* Soft ambient glow */}
-        <div className="pointer-events-none absolute inset-0 overflow-hidden">
-          <div className="absolute -top-32 left-1/2 -translate-x-1/2 w-[700px] h-[350px] rounded-full bg-nclex-blue/[0.04] blur-3xl" />
-          <div className="absolute bottom-0 right-0 w-[400px] h-[400px] rounded-full bg-indigo-50/50 blur-3xl" />
+        {/* soft brand light — radial gradients that fade out well inside the section,
+            so nothing is cut off at its edges */}
+        <div aria-hidden className="pointer-events-none absolute inset-0">
+          <div className="absolute left-1/2 top-0 h-[420px] w-[900px] max-w-full -translate-x-1/2 bg-[radial-gradient(closest-side,rgba(62,83,160,0.07),transparent)]" />
+          <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-b from-transparent to-white" />
         </div>
 
         <ContainerScroll
@@ -153,12 +214,7 @@ const ServicesGrid: React.FC = () => {
               {/* Headline */}
               <h2 className="text-3xl sm:text-4xl lg:text-[2.75rem] font-extrabold tracking-tight text-slate-900 mb-4 leading-tight">
                 Meet{" "}
-                <span className="relative inline-block">
-                  <span className="text-nclex-blue">Studium</span>
-                  <span className="text-nclex-red"> CAT</span>
-                  {/* gradient underline */}
-                  <span className="absolute -bottom-0.5 left-0 right-0 h-[3px] rounded-full bg-gradient-to-r from-[#3e53a0] to-[#c04041]" />
-                </span>
+                <span className="text-nclex-blue">Studium CAT</span>
               </h2>
 
               <p className="mx-auto max-w-xl text-slate-500 text-base leading-relaxed mb-7">

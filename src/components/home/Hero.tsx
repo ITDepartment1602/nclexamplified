@@ -63,15 +63,20 @@ const Hero: React.FC = () => {
         preload="auto"
         poster="/video/hero-poster.jpg"
         className="absolute inset-0 w-full h-full object-cover"
+        // the footage is a dusk scene — lift it so the hero reads bright, not gloomy
+        style={{ filter: "brightness(1.18) saturate(1.12) contrast(1.02)" }}
       >
         <source src="/video/hero-720.mp4" type="video/mp4" media="(min-width: 768px)" />
         <source src="/video/hero-480.mp4" type="video/mp4" />
       </video>
 
-      {/* Dark gradient for text readability — soft vignette centered on mobile (text is centered), left-weighted from sm up (text is left-aligned) */}
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_95%_70%_at_50%_45%,rgba(0,0,0,0.55)_0%,rgba(0,0,0,0.3)_55%,rgba(0,0,0,0.1)_100%)] sm:bg-gradient-to-r sm:from-black/80 sm:via-black/45 sm:to-black/20 pointer-events-none" />
-      {/* Subtle bottom fade */}
-      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black/40 pointer-events-none" />
+      {/* Readability shade in brand navy (not flat black) and only where the text
+          is: a soft centred vignette on mobile (text is centred); from sm up it
+          sits behind the left-aligned text and clears before the middle, so the
+          right side of the video stays bright */}
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_95%_70%_at_50%_45%,rgba(14,24,58,0.5)_0%,rgba(14,24,58,0.28)_55%,rgba(14,24,58,0.08)_100%)] sm:bg-[linear-gradient(to_right,rgba(14,24,58,0.74)_0%,rgba(14,24,58,0.6)_36%,rgba(14,24,58,0.16)_60%,transparent_76%)] pointer-events-none" />
+      {/* light bottom fade */}
+      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-[rgba(14,24,58,0.25)] pointer-events-none" />
 
       {/* TEXT SECTION */}
       <div className="container mx-auto xl:flex xl:justify-start px-4 sm:px-6 lg:px-8 relative z-10 w-full pt-24 pb-16 sm:py-32">
