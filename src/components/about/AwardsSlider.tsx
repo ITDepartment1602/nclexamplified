@@ -1,5 +1,6 @@
 
 import React from "react";
+import SectionHeader from "@/components/common/SectionHeader";
 import {
   Carousel,
   CarouselContent,
@@ -44,14 +45,13 @@ const infiniteImages = createInfiniteArray(awardsImages, repetitions);
 const slides = chunkArray(infiniteImages, imagesPerSlide);
 
 const AwardsSlider: React.FC = () => (
-  <section className="py-16 bg-white">
+  <section className="relative overflow-hidden bg-gradient-to-b from-white to-[#f5f7fd] py-16 lg:py-20">
     <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-      <div className="max-w-2xl mx-auto text-center mb-10">
-        <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900 mb-4 tracking-tight">
-          Awarded for Global Nursing Review Excellence
-        </h2>
-        <div className="w-20 h-1 bg-nclex-blue mx-auto mb-4"></div>
-      </div>
+      <SectionHeader
+        badge="Recognition"
+        title={<>Awarded for <span className="text-nclex-blue">Global Nursing Review Excellence</span></>}
+        description="Recognized by industry bodies for the quality of our review program and the results of our nurses."
+      />
       <Carousel
         opts={{
           loop: true,
@@ -63,13 +63,18 @@ const AwardsSlider: React.FC = () => (
         <CarouselContent>
           {slides.map((group, idx) => (
             <CarouselItem key={idx}>
-              <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-6 place-items-center">
+              <div className="grid grid-cols-2 gap-4 px-1 py-3 sm:grid-cols-3 sm:gap-5 lg:grid-cols-6">
                 {group.map((img, i) => (
-                  <div key={i} className="flex items-center justify-center w-full h-40 sm:h-44 md:h-48 lg:h-56">
+                  <div
+                    key={i}
+                    className="group flex aspect-[3/4] items-center justify-center rounded-2xl border border-slate-200/80 bg-white p-3 shadow-[0_1px_2px_rgba(15,23,42,0.04),0_14px_28px_-22px_rgba(62,83,160,0.4)] transition-[transform,box-shadow] duration-300 hover:-translate-y-1 hover:shadow-[0_1px_2px_rgba(15,23,42,0.04),0_22px_40px_-22px_rgba(62,83,160,0.45)]"
+                  >
                     <img
                       src={img}
                       alt={`Award ${idx * imagesPerSlide + i + 1}`}
-                      className="w-full h-full object-contain rounded-xl shadow"
+                      loading="lazy"
+                      decoding="async"
+                      className="h-full w-full rounded-lg object-contain"
                     />
                   </div>
                 ))}
@@ -77,8 +82,8 @@ const AwardsSlider: React.FC = () => (
             </CarouselItem>
           ))}
         </CarouselContent>
-        <CarouselPrevious className="left-2" />
-        <CarouselNext className="right-2" />
+        <CarouselPrevious className="-left-2 border-slate-200 bg-white text-slate-700 shadow-md hover:bg-nclex-blue hover:text-white sm:-left-4" />
+        <CarouselNext className="-right-2 border-slate-200 bg-white text-slate-700 shadow-md hover:bg-nclex-blue hover:text-white sm:-right-4" />
       </Carousel>
     </div>
   </section>
