@@ -63,13 +63,15 @@ const Hero: React.FC = () => {
         preload="auto"
         poster="/video/hero-poster.jpg"
         className="absolute inset-0 w-full h-full object-cover"
-        // the footage is a dusk scene — lift it so the hero reads bright, not gloomy
-        style={{ filter: "brightness(1.18) saturate(1.12) contrast(1.02)" }}
       >
         <source src="/video/hero-720.mp4" type="video/mp4" media="(min-width: 768px)" />
         <source src="/video/hero-480.mp4" type="video/mp4" />
       </video>
 
+      {/* The footage is a dusk scene: a faint white wash lifts it so the hero reads
+          bright. (A CSS filter on the <video> did the same but re-filters every
+          video frame, which lagged on low-end phones — plain blending is cheap.) */}
+      <div className="absolute inset-0 bg-white/[0.10] pointer-events-none" />
       {/* Readability shade in brand navy (not flat black) and only where the text
           is: a soft centred vignette on mobile (text is centred); from sm up it
           sits behind the left-aligned text and clears before the middle, so the

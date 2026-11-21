@@ -149,7 +149,7 @@ export function GlobeCdn({
         theta,
         dark: 0,
         diffuse: 1.2,
-        mapSamples: isLiteDevice ? 6000 : isMobile ? 12000 : 16000,
+        mapSamples: isLiteDevice ? 6000 : isMobile ? 8000 : 16000,
         mapBrightness: 8,
         mapBaseBrightness: 0.04,
         baseColor: [1, 1, 1],

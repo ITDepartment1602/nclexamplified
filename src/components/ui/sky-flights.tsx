@@ -1,4 +1,5 @@
 import { useEffect, useRef } from "react";
+import { isLiteDevice } from "@/lib/device";
 
 /*
  * "Your next stop" flight: a minimalist plane flying from the Philippines HQ
@@ -42,7 +43,7 @@ type Pt = { x: number; y: number };
 const FADE_IN_MS = 240;
 const FADE_OUT_MS = 380;
 const SPHERE = 0.88; // cobe's sphere diameter as a share of the canvas
-const TRAIL_STEPS = 56;
+const TRAIL_STEPS = 32;
 const TOP_GAP = 64; // keep the route clear of the heading text above the globe
 const LIFT = (24 * Math.PI) / 180; // matches GlobalReach's focusLift — where the destination sits
 // top-down airliner silhouette, 24×24, nose pointing straight up
@@ -75,6 +76,7 @@ export function SkyFlights({
   const pulseRef = useRef<SVGCircleElement>(null);
   const bannerRef = useRef<SVGGElement>(null);
   const bannerBgRef = useRef<SVGRectElement>(null);
+  const bannerShadowRef = useRef<SVGRectElement>(null);
   const bannerTextRef = useRef<SVGTextElement>(null);
   const bannerPlaceRef = useRef<SVGTSpanElement>(null);
 
@@ -94,7 +96,8 @@ export function SkyFlights({
     const bannerPlace = bannerPlaceRef.current;
     if (!svg || !trail || !plane || !origin || !pulse || !banner || !bannerBg || !bannerText || !bannerPlace)
       return;
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    // decorative only: skip on low-end devices (and reduced motion) so it never costs frames
+    if (isLiteDevice || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
 
     const sizeUp = () =>
       svg.setAttribute("viewBox", `0 0 ${svg.clientWidth || 1} ${svg.clientHeight || 1}`);
@@ -114,8 +117,9 @@ export function SkyFlights({
       if (found) anchors.set(id, found);
       return found ?? null;
     };
-    const isVisible = (id: string) =>
-      getComputedStyle(document.documentElement).getPropertyValue(`--cobe-visible-${id}`).trim() !== "";
+    // one live computed-style object, reused every frame
+    const rootStyle = getComputedStyle(document.documentElement);
+    const isVisible = (id: string) => rootStyle.getPropertyValue(`--cobe-visible-${id}`).trim() !== "";
     const screenOf = (id: string, sr: DOMRect): Pt | null => {
       const a = anchorOf(id);
       if (!a || !isVisible(id)) return null;
@@ -146,6 +150,7 @@ export function SkyFlights({
       bannerPlace.textContent = props.current.label;
       bannerW = bannerText.getComputedTextLength() + 26;
       bannerBg.setAttribute("width", String(bannerW));
+      bannerShadowRef.current?.setAttribute("width", String(bannerW));
     };
 
     let raf: number | null = null;
@@ -309,11 +314,15 @@ export function SkyFlights({
       <circle ref={originRef} r={3} fill="#fff" stroke="#c04041" strokeOpacity={0.8} strokeWidth={1.25} />
       {/* landing pulse */}
       <circle ref={pulseRef} r={4} fill="none" stroke="#3e53a0" strokeWidth={1.5} style={{ opacity: 0 }} />
-      <g ref={planeRef} style={{ filter: "drop-shadow(0 3px 4px rgba(30,41,90,0.28))" }}>
+      {/* no CSS filters on the moving parts (they re-render every frame and lag on
+          low-end phones) — the "shadow" is a soft offset copy of the shape instead */}
+      <g ref={planeRef}>
+        <path d={PLANE_PATH} transform="translate(0 2)" fill="#1e295a" opacity={0.18} />
         <path d={PLANE_PATH} fill="#3e53a0" stroke="#fff" strokeWidth={0.9} strokeLinejoin="round" />
       </g>
       {/* "Your next stop · Canada" banner */}
-      <g ref={bannerRef} style={{ filter: "drop-shadow(0 6px 10px rgba(30,41,90,0.14))" }}>
+      <g ref={bannerRef}>
+        <rect ref={bannerShadowRef} x={0} y={3} height={26} rx={13} fill="#1e295a" opacity={0.08} />
         <rect ref={bannerBgRef} x={0} y={0} height={26} rx={13} fill="#fff" stroke="#3e53a0" strokeOpacity={0.18} />
         <circle cx={12} cy={13} r={3} fill="#c04041" />
         <text ref={bannerTextRef} x={20} y={17} fontSize={11} fontFamily="Poppins, sans-serif" fill="#64748b">

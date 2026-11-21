@@ -82,7 +82,6 @@ const ContactInfo: React.FC = () => {
         <motion.div
           variants={containerVariants}
           initial="hidden"
-          initial="hidden"
           whileInView="show"
           viewport={{ once: true, margin: "-60px" }}
           className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-14"

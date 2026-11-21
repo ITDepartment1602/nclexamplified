@@ -42,7 +42,8 @@ const Navbar: React.FC = () => {
   // Transparent effect only on home page; other pages always get solid navbar
   const isTransparent = isHome && !scrolled;
 
-  const navLinks = [
+  // isAnchor: an in-page "#section" link (none right now; the render code supports it)
+  const navLinks: { name: string; path: string; icon: typeof Home; isAnchor?: boolean }[] = [
     { name: "Home", path: "/", icon: Home },
     { name: "About", path: "/about", icon: Info },
     { name: "Services", path: "/services", icon: Layers },
